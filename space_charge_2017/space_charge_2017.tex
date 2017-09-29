@@ -2,7 +2,7 @@
 %%%%%%%%% Select one of the options, and comment the rest of them
 
 %%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
-\documentclass[professionalfonts]{beamer}
+\documentclass[professionalfonts,t]{beamer}
 %sans font?
 
 %%%%%%%%%% Option 3: to create handout for print
@@ -42,15 +42,18 @@
 
 \setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
 \addtobeamertemplate{frametitle}{}{%
+	\iffalse
+	
 	\begin{tikzpicture}[remember picture,overlay]
-	\node[anchor=center, yshift=-11pt, xshift=-5pt] at (current page.north) 
+	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
 	{\includegraphics[height=1.1cm]{../images/ANL_black}\hspace{10cm}};
 	
 	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
 	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
-	\end{tikzpicture}}
-
-
+	\end{tikzpicture}
+    
+     \fi
+}
 % other possibilities to include LOGO. it puts it in RLC
 
 %
@@ -158,8 +161,9 @@
 %   just say so once. Everybody will be happy with that.
 
 \section{Facility Introduction}
-
-\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Photoinjectors}
+\begin{frame}[t]
 \frametitle{AWA Facility}
 \begin{columns}[T] % align columns
 	\begin{column}{.48\textwidth}
@@ -179,7 +183,6 @@
 					\item{Energy $\leq$ 15 MeV}
 				\end{itemize}
 			\end{itemize}
-
 	\end{column}%
 	\hfill%
 	\begin{column}{.48\textwidth}
@@ -188,40 +191,39 @@
 	\end{column}%
 \end{columns}
 \end{frame}
-
-\begin{frame}{How to compile. Ya!}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ongoing Experiments}
+\begin{frame}[t]
+	\frametitle{AWA Facility}
+	\vspace{-1em}
+	Current experiments include:
+	\begin{itemize}
+		\item{Two Beam Acceleration (TBA)}
+		\item{Beam line design for TBA = my thesis}
+		\item{Dielectric accelerating and decelerating structure tests}	
+	\end{itemize}
+    \vspace{1em}
+    % for trim = left, lower, right, upper
+	\includegraphics[width=0.5\linewidth, trim={0 0 0 1.65cm},clip]{../images/stage}\hfill%
+	\includegraphics[width=0.5\linewidth]{../images/dielectrics}	
 \end{frame}
-
-\subsection{Simple Examples}
-\begin{frame}[containsverbatim, shrink]{Example}
-\begin{verbatim}
-\documentclass{beamer}
-\title{Example Presentation Created with the Beamer Package}
-\author{Your Name Here} \date{\today}
-
-\begin{document}
-\frame{\titlepage}
-
-\section{Introduction}
-\subsection{Overview of the Beamer Class}
-
-\begin{frame}{Features of the Beamer Class}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{AWA Facility}
+	\vspace{-1em}
+Current experiments include:
 \begin{itemize}
-  \item<1-> Normal LaTeX class.
-  \item<2-> Easy overlays.
-  \item<3-> No external programs needed.
-  \end{itemize}
+	\item{Emittance Exchange (EEX)}
+	\item{Electron Radiography Imaging (ERI)}
+	\item{Cathode Studies}
+\end{itemize}
+\vspace{0.3cm}
+\centering
+\includegraphics[width=0.5\linewidth]{../images/EEX}\includegraphics[width=0.5\linewidth]{../images/cathode1}
 \end{frame}
-\end{document}
-
-\end{verbatim}
-\end{frame}
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Simulations}
+\subsection{Code}
 \begin{frame}[containsverbatim]{Select the Theme/ColorTheme}
 \begin{verbatim}
 \usetheme{Dresden}      %\usetheme{Berlin}
@@ -239,16 +241,13 @@
 not a slide-show for Vouge or Glamour Magazine.
 \end{itemize}
 \end{frame}
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{High Charge}
 \begin{frame}[containsverbatim]{Cover Slide}
 
 
 \end{frame}
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[containsverbatim]
 
 Make fancy numbering and bullets:
@@ -273,8 +272,7 @@ Put something in a block
 \end{verbatim}
 
 \end{frame}
-
-\subsection{blocks}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[containsverbatim]{Blocks, Theorems, Examples}
 
@@ -296,11 +294,7 @@ For example $3^2+4^2=5^2$
     \end{example}
 \end{verbatim}
 \end{frame}
-
-
-\subsection{overlays}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Transition}
 
 Pause command
@@ -309,8 +303,6 @@ Pause command
 \pause \item Two
 \pause \item The end.
 \end{itemize}
-
-
 
 Or More complicated (not necessarily better)\pause
 
@@ -321,7 +313,7 @@ Or More complicated (not necessarily better)\pause
 \item<-8>  Lenon
 \end{enumerate}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[containsverbatim]{The code}
 \begin{verbatim}
 Pause command
@@ -342,8 +334,9 @@ Or More complicated (not necessarily better)\pause
 
 \end{verbatim}
 \end{frame}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Measurements}
+\subsection{Beam Size Measurements}
 \begin{frame}{Finally}
 \begin{block}{Remark}
 Avoid complicated overlays and too much animation. Usually ``pause'' is more than enough.
@@ -357,10 +350,5 @@ Other overlay commands: ONLY, UNCOVER, INVISIBLE, ALT,
 {\Large  The End \\[.5cm] Good Luck with your slides!}
 \end{center}
 \end{frame}
-
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
