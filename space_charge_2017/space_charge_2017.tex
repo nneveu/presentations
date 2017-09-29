@@ -2,7 +2,7 @@
 %%%%%%%%% Select one of the options, and comment the rest of them
 
 %%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
-\documentclass[professionalfont]{beamer}
+\documentclass[professionalfonts]{beamer}
 %sans font?
 
 %%%%%%%%%% Option 3: to create handout for print
@@ -10,8 +10,7 @@
 %\usepackage{pgfpages}              % to put several slides on one page
 %\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]             % 2 slides on 1 page
 %\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]   % 4 slides on 1 page, and landscaped
-\usepackage{xcolor}
-\usepackage{tikz}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% Select the Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,11 +43,11 @@
 \setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
 \addtobeamertemplate{frametitle}{}{%
 	\begin{tikzpicture}[remember picture,overlay]
-	\node[anchor=center, yshift=-15pt, xshift=-5pt] at (current page.north) 
+	\node[anchor=center, yshift=-11pt, xshift=-5pt] at (current page.north) 
 	{\includegraphics[height=1.1cm]{../images/ANL_black}\hspace{10cm}};
 	
-	\node[anchor=north east, yshift=1pt, xshift=-5pt] at (current page.north east) 
-	{\includegraphics[height=0.8cm]{../images/IIT_Logo_blk}};
+	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
+	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
 	\end{tikzpicture}}
 
 
@@ -60,6 +59,7 @@
 
 
 % load additional packages
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -67,7 +67,12 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{color}
-
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
 
 % Your Abbreviations
 \newcommand\bE{{\mathbb{E}}}
@@ -75,6 +80,13 @@
 \newcommand\bH{{\mathbf{H}}}
 % End abbreviations
 
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%
+}
 
 %%%%%%%%%%%%%%%%%%%%% to edit the main text below
 %NOTES ON SOME TECHNICS
@@ -117,7 +129,10 @@
 \begin{frame}
   \titlepage
 \end{frame}
-
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
 
 %\begin{frame}{Outline of the talk}
 %  \tableofcontents
@@ -142,39 +157,40 @@
 % - If you omit details that are vital to the proof/implementation,
 %   just say so once. Everybody will be happy with that.
 
-\section{Starting Point}
+\section{Facility Introduction}
 
-\subsection{Install Beamer}
+\begin{frame}
+\frametitle{AWA Facility}
+\begin{columns}[T] % align columns
+	\begin{column}{.48\textwidth}
+		%\color{red}\rule{\linewidth}{4pt}		
+		
+			Two photocathode guns and accompanying linacs:
+			\begin{itemize}
+				\item{\underline{\textbf{Drive Line}}: $Cs_2Te$ cathode, 6 linac cavities}
+				\begin{itemize}
+					\item{Charge 0.1-100nC}
+					\item{Energy $\leq$ 65 MeV}
+					
+				\end{itemize}
+				\item{\underline{\textbf{Witness Line}}: $Mg$ cathode, 1 linac cavity}
+				\begin{itemize}
+					\item{Charge 0.1-10nC}
+					\item{Energy $\leq$ 15 MeV}
+				\end{itemize}
+			\end{itemize}
 
-\begin{frame}{Beamer Installation}
-
-\begin{itemize}
-
-\item the official web site \\[.2cm]
-\quad \url{http://latex-beamer.sourceforge.net} \\[.4cm]
-
-\item download the latest release and find User Guide \\[.4cm]
-
-\item User Guide, files this talk and some additional materials \\[.2cm]
-\quad \url{ math.iit.edu/~igor/beamer} \\[.4cm]
-
-\item Mik\TeX\&WinEdt will recognize (most likely) the missing packages and install them automatically
-when you try to compile a presentation \\[.4cm]
-
-\item try to compile  the SimpleFile.tex (\LaTeX \  $\Rightarrow$ DVIPS $\Rightarrow$ Open PS).
-It should compile and
-you should be able to see the slides. If not, work on installation.
-\end{itemize}
+	\end{column}%
+	\hfill%
+	\begin{column}{.48\textwidth}
+		%\color{blue}\rule{\linewidth}{4pt}
+		\includegraphics[width=1.0\linewidth, right]{../images/drive_gun}
+	\end{column}%
+\end{columns}
 \end{frame}
-
 
 \begin{frame}{How to compile. Ya!}
 
-\begin{itemize}
-\item \LaTeX \  $\Rightarrow$ DVIPS $\Rightarrow$ Open PS \\[.5cm]
-\item PDF\LaTeX \ $\Rightarrow$ view PDF \\[.5cm]
-\item Also after PS you can get the PDF: ps2pdf
-\end{itemize}
 
 \end{frame}
 
@@ -204,26 +220,6 @@ you should be able to see the slides. If not, work on installation.
 \end{frame}
 
 
-\begin{frame}[containsverbatim, shrink]{DocumentClass}
-
-General Form: \begin{verbatim}\documentclass[options]{beamer}
-
-%%%%%%%%%% Option 1:  to compile with pdflatex
-\documentclass[mathserif]{beamer}
-
-%%%%%%%%%% Option 2:  to compile latex, dvips, ps2pdf
-\documentclass[t,dvips, mathserif]{beamer}
-
-%%%%%%%%%% Option 3: to create handouts for print
-\documentclass[t,handout]{beamer}
-\usepackage{pgfpages} % to put several slides on one page
-\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]
-% 2 slides on 1 page
-%\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]
-% 4 slides on 1 page, and landscaped
-\end{verbatim}
-\end{frame}
-
 
 
 \begin{frame}[containsverbatim]{Select the Theme/ColorTheme}
@@ -248,22 +244,6 @@ not a slide-show for Vouge or Glamour Magazine.
 
 \begin{frame}[containsverbatim]{Cover Slide}
 
-\begin{verbatim}
-....
-\title{A Good Title}
-\author{That's your name here}
-\institute{You work somewhere, I guess}
-
-\begin{document}
-
-% make first slide/frame, cover slide
-\begin{frame}
-    \titlepage
-\end{frame}
-
-\end{document}
-
-\end{verbatim}
 
 \end{frame}
 
