@@ -235,6 +235,8 @@ OPAL-T: \begin{verbatim}
 \begin{itemize}
 \item Developed at PSI
 \item Free, open source 
+\item Easy to work with developers
+\item Parallel (scales....)
 \item Features include 3D space charge and wakefields
 \item RF photoinjector benchmark:
 \end{itemize}
@@ -248,12 +250,11 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 	\frametitle{Optimization (Linac only)}
 	\Wider[4em]{
 		\begin{minipage}{0.6\textwidth}
+			Goals:
 			\begin{itemize}
+
 				\item{Determine what emittance and bunch length we can expect from the linac}
-				\begin{itemize}
-					\item{Understand beam at entrance of quads}
-					\item After $L_6$: $z_1=12.51$ m
-				\end{itemize}
+				\item{Determine optimum settings for TBA experiments}
 				\item{Varied 10 parameters:}
 			\end{itemize}
 		\end{minipage}%
@@ -336,7 +337,7 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 	\hfill%
 	\begin{column}{.44\textwidth}
 		\vspace{1em}
-		Main take aways:
+		Code verifies:
 		\begin{itemize}
 		\item Larger laser radius is always better
 		\item Shorter laser pulse length $\rightarrow$ shorter $\sigma_z$
@@ -354,6 +355,13 @@ Took data 1.5 weeks ago!
 Tried to dial in machine settings based on simulations:
 \begin{itemize}
 	\item Initial results did not match simulations - not a surprise
+	\item Identified problems with machine parameters:
+	\begin{itemize}
+		\item Solenoid strength
+		\item Energy 
+	\end{itemize}
+	
+	
 	\item Adjusted settings to approach simulation values
 	\item Took three types of data:
 	\begin{itemize}
@@ -391,17 +399,13 @@ Tried to dial in machine settings based on simulations:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Summary}
-	Ongoing efforts to understand $\SI$ beams at AWA:
+	Goal: Use simulations to optimize beam parameters. 
 	\begin{itemize}
-		\item 2D and 3D simulations
-		\item Measurements:
-		\begin{itemize}
-			\item Charge
-			\item Beam size 
-			\item Emittance
-			\item Bunch length
-		\end{itemize}
 		
+		\item AWA configuration is constantly changing
+		\item Build a set of tools to quickly optimize between beam setting
+		\item Use agreement between simulations and measurements to guide experiments
+	
 	\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
