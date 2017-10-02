@@ -62,6 +62,7 @@
 
 
 % load additional packages
+
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -72,6 +73,7 @@
 \usepackage{color}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{epstopdf}
 \usepackage[export]{adjustbox}
 \usepackage{tikz}
 \usetikzlibrary{shapes.misc}
@@ -88,7 +90,7 @@
 		\begin{minipage}{\dimexpr\textwidth+#1\relax}
 			\raggedright#2
 		\end{minipage}%
-	}%
+	}%\textbf{}
 }
 
 %%%%%%%%%%%%%%%%%%%%% to edit the main text below
@@ -118,7 +120,7 @@
 \date{ \today \\
 \includegraphics[width=3cm,keepaspectratio]{../images/Argonne_cmyk_black}%
 \hfill \hfill \hfill%
-\includegraphics[width=4cm,keepaspectratio]{../images/IIT_logo}%
+\includegraphics[width=4cm,keepaspectratio]{../images/IIT_Logo_blk-eps-converted-to}%
 }
 
 %\date[IIT, April 2009]{
@@ -165,11 +167,11 @@
 \subsection{Photoinjectors}
 \begin{frame}[t]
 \frametitle{AWA Facility}
+\vspace{1em}
 \begin{columns}[T] % align columns
 	\begin{column}{.48\textwidth}
 		%\color{red}\rule{\linewidth}{4pt}		
-		
-			Two photocathode guns and accompanying linacs:
+					Two photocathode guns and accompanying linacs:
 			\begin{itemize}
 				\item{\underline{\textbf{Drive Line}}: $Cs_2Te$ cathode, 6 linac cavities}
 				\begin{itemize}
@@ -185,7 +187,8 @@
 			\end{itemize}
 	\end{column}%
 	\hfill%
-	\begin{column}{.48\textwidth}
+	\begin{column}{.5\textwidth}
+		\vspace{1em}
 		%\color{blue}\rule{\linewidth}{4pt}
 		\includegraphics[width=1.0\linewidth, right]{../images/drive_gun}
 	\end{column}%
@@ -193,9 +196,23 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ongoing Experiments}
+\begin{frame}
+	\frametitle{AWA Facility}
+	%\vspace{-1em}
+	Current experiments include:
+	\begin{itemize}
+		\item{Emittance Exchange (EEX)}
+		\item{Electron Radiography Imaging (ERI)}
+		\item{Cathode Studies}
+	\end{itemize}
+	\vspace{0.3cm}
+	\centering
+	%\includegraphics[width=0.5\linewidth]{../images/EEX}\includegraphics[width=0.5\linewidth]{../images/cathode1}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]
 	\frametitle{AWA Facility}
-	\vspace{-1em}
+	%\vspace{-1em}
 	Current experiments include:
 	\begin{itemize}
 		\item{Two Beam Acceleration (TBA)}
@@ -208,147 +225,211 @@
 	\includegraphics[width=0.5\linewidth]{../images/dielectrics}	
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{AWA Facility}
-	\vspace{-1em}
-Current experiments include:
-\begin{itemize}
-	\item{Emittance Exchange (EEX)}
-	\item{Electron Radiography Imaging (ERI)}
-	\item{Cathode Studies}
-\end{itemize}
-\vspace{0.3cm}
-\centering
-\includegraphics[width=0.5\linewidth]{../images/EEX}\includegraphics[width=0.5\linewidth]{../images/cathode1}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulations}
 \subsection{Code}
-\begin{frame}[containsverbatim]{Select the Theme/ColorTheme}
-\begin{verbatim}
-\usetheme{Dresden}      %\usetheme{Berlin}
-%\usetheme{Luebeck}     %\usetheme{Marburg}
-%\usetheme{Pittsburgh}  %\usetheme{default}
-
-%\usecolortheme{structure} %\usecolortheme{rose}
-\usecolortheme{beaver}
-\end{verbatim}
-
-\begin{itemize}
-\item And many more. Read the manual.
-\item {\bf Rule of Thumbs: Simple is better.}
-\item A math presentation should be a math presentation and
-not a slide-show for Vouge or Glamour Magazine.
-\end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{High Charge}
-\begin{frame}[containsverbatim]{Cover Slide}
-
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[containsverbatim]
-
-Make fancy numbering and bullets:
-\begin{verbatim}
-    \beamertemplateballitem
+\frametitle{Code}
+OPAL-T: \begin{verbatim}
+	https://gitlab.psi.ch/OPAL/src/wikis/home
 \end{verbatim}
-
-\smallskip
-
-Nice splitting of the sections and subsections \begin{verbatim}
-    \usepackage{beamerthemesplit}
-\end{verbatim}
-
-\begin{block}{Summary}
-Put something in a block
-\end{block}
-
-\begin{verbatim}
-    \begin{block}{Summary}
-    Put something in a block
-    \end{block}
-\end{verbatim}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[containsverbatim]{Blocks, Theorems, Examples}
-
-\begin{beamerboxesrounded}[shadow=true]{Theorem}
-Prove that $x^n+y^n=z^n$.
-\end{beamerboxesrounded}
-
-\begin{example}
-For example $3^2+4^2=5^2$
-\end{example}
-
-\begin{verbatim}
-    \begin{beamerboxesrounded}[shadow=true]{Theorem}
-    Prove that $x^n+y^n=z^n$.
-    \end{beamerboxesrounded}
-
-    \begin{example}
-    For example $3^2+4^2=5^2$
-    \end{example}
-\end{verbatim}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Transition}
-
-Pause command
 \begin{itemize}
-\pause \item One Step
-\pause \item Two
-\pause \item The end.
+\item Developed at PSI
+\item Free, open source 
+\item Features include 3D space charge and wakefields
+\item RF photoinjector benchmark:
 \end{itemize}
-
-Or More complicated (not necessarily better)\pause
-
-\begin{enumerate}
-\item<5-6> Beatles
-\item<6-7>  Pick Floyd
-\item<-7> Led Zeppelin
-\item<-8>  Lenon
-\end{enumerate}
+\begin{verbatim}
+https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
+\end{verbatim}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[containsverbatim]{The code}
-\begin{verbatim}
-Pause command
-\begin{itemize}
-\pause \item One Step
-\pause \item Two
-\pause \item The end.
-\end{itemize}
-
-Or More complicated (not necessarily better)\pause
-
-\begin{enumerate}
-\item<5-6> Beatles
-\item<6-7>  Pick Floyd
-\item<-7> Led Zeppelin
-\item<-8>  Lenon
-\end{enumerate}
-
-\end{verbatim}
+\subsection{Optimization}
+\begin{frame}
+	\frametitle{Optimization (Linac only)}
+	\Wider[4em]{
+		\begin{minipage}{0.6\textwidth}
+			\begin{itemize}
+				\item{Determine what emittance and bunch length we can expect from the linac}
+				\begin{itemize}
+					\item{Understand beam at entrance of quads}
+					\item After $L_6$: $z_1=12.51$ m
+				\end{itemize}
+				\item{Varied 10 parameters:}
+			\end{itemize}
+		\end{minipage}%
+		\begin{minipage}{0.4\textwidth}
+			\def \gunleft {-1.0}
+			\def \gunright {0.3}
+			\def \loneright {1.0}
+			\def \ltworight {2.0}
+			\def \lthreeright {3.0}
+			\def \lfourright {4.0}
+			\def \lfiveright {5.0}
+			\def \lsixright {6.0}
+			\centering
+			\begin{center}
+				\begin{tikzpicture}[scale=0.55]%,use optics
+				%Gun drawings
+				\draw[fill=orange, very thick, rounded corners =0.1cm] (\gunleft-0.2,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
+				
+				%S1
+				\node[] at (-1.5,2.9) {$S_1$};
+				\draw[ultra thick, fill=black!60!green] (-1.4,-0.5)rectangle  (-1.0,0.5) node[pos=.5, white] {} ;
+				\draw[black, ultra thick] (-1.4,-0.5) -- (-1.0,0.5);
+				\draw[black, ultra thick] (-1.4,0.5) -- (-1.0,-0.5);
+				\draw[ultra thick, fill=black!60!green] (-1.4,1.5)rectangle  (-1.0,2.5) node[pos=.5, white] {} ;
+				\draw[black, ultra thick] (-1.4,1.5) -- (-1.0,2.5);
+				\draw[black, ultra thick] (-1.4,2.5) -- (-1.0,1.5);
+				%S2
+				\node[] at (-0.8,2.9) {$S_2$};
+				\draw[ultra thick, fill=black!60!green] (-1.0,-0.5)rectangle  (-0.6,0.5) node[pos=.5, white] {} ;
+				\draw[black, ultra thick] (-1.0,-0.5) -- (-0.6,0.5);
+				\draw[black, ultra thick] (-1.0,0.5) -- (-0.6,-0.5);
+				\draw[ultra thick, fill=black!60!green] (-1.0,1.5)rectangle  (-0.6,2.5) node[pos=.5, white] {} ;
+				\draw[black, ultra thick] (-1.0,1.5) -- (-0.6,2.5);
+				\draw[black, ultra thick] (-1.0,2.5) -- (-0.6,1.5);
+				
+				%S3
+				\node[] at (0.2,2.9) {$S_3$};
+				\draw[ultra thick, fill=black!60!green] (-0.1,-0.5) rectangle  (0.3,0.5) node[pos=.5, white] {};
+				\draw[black, ultra thick] (-0.1,-0.5) -- (0.3,0.5);
+				\draw[black, ultra thick] (-0.1,0.5) -- (0.3,-0.5);
+				\draw[ultra thick, fill=black!60!green] (-0.1,1.5) rectangle  (0.3,2.5) node[pos=.5, white] {};
+				\draw[black, ultra thick] (-0.1,1.5) -- (0.3,2.5);
+				\draw[black, ultra thick] (-0.1,2.5) -- (0.3,1.5);
+				%Linac drawings 
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\loneright,0)rectangle  ({\loneright+0.84},2) node[pos=.5, white] {$L_1$} ;
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\ltworight,0)rectangle  ({\ltworight+0.84},2) node[pos=.5, white] {$L_2$};
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lthreeright,0)rectangle ({\lthreeright+0.84},2) node[pos=.5, white] {$L_3$};
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lfourright,0)rectangle ({\lfourright+0.84},2) node[pos=.5, white] {$L_4$};
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lfiveright,0)rectangle ({\lfiveright+0.84},2) node[pos=.5, white] {$L_5$};
+				\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lsixright,0)rectangle ({\lsixright+0.84},2) node[pos=.5, white] {$L_6$};
+				\end{tikzpicture}
+			\end{center}
+		\end{minipage}%
+		\begin{center}
+			\setcounter{mpfootnote}{\value{footnote}}%
+			\renewcommand{\thempfootnote}{\arabic{mpfootnote}}%	
+			\begin{tabular}{ l *{3}{c}}
+				%\toprule
+				\textbf{Variable} & \textbf{Range} & \textbf{Unit} \\
+				\midrule
+				Solenoid Strength & $ 0 \le S_3 \le 440$  & amps \\
+				Phase of Gun & $-60 \le \phi_g \le 60$  & degrees \\
+				Laser Radius  & $0.1 \le R \le 30$  & mm \\
+				Laser FWHM  & $2 \le T \le $10  & ps \\
+				Cavity Phase & $-20 \le \phi_L \le 20$\footnote[1]{$\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$} & degrees
+				%\bottomrule    
+			\end{tabular}
+		\end{center}
+	}
+\end{frame}
+\begin{frame}
+	\frametitle{Ongoing Optimization Efforts}
+\begin{columns}[T] % align columns
+	\begin{column}{.56\textwidth}
+		\vspace{1em}
+		%\color{red}\rule{\linewidth}{4pt}		
+		%\color{blue}\rule{\linewidth}{4pt}
+		\includegraphics[width=1.0\linewidth, right]{../images/pareto_emittance_vs_zrms}
+	\end{column}%
+	\hfill%
+	\begin{column}{.44\textwidth}
+		\vspace{1em}
+		Main take aways:
+		\begin{itemize}
+		\item Larger laser radius is always better
+		\item Shorter laser pulse length $\rightarrow$ shorter $\sigma_z$
+		\item Longer laser pulse $\rightarrow$ lower $\epsilon_{x,y}$
+	    \end{itemize}	
+	\end{column}%
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental Measurements}
-\subsection{Beam Size Measurements}
-\begin{frame}{Finally}
-\begin{block}{Remark}
-Avoid complicated overlays and too much animation. Usually ``pause'' is more than enough.
-\end{block}
-\bigskip
-Other overlay commands: ONLY, UNCOVER, INVISIBLE, ALT,
+\subsection{Overview}
+\begin{frame}
+Took data 1.5 weeks ago!
 
-\pause
-\begin{center}
-\bigskip
-{\Large  The End \\[.5cm] Good Luck with your slides!}
-\end{center}
+Tried to dial in machine settings based on simulations:
+\begin{itemize}
+	\item Initial results did not match simulations - not a surprise
+	\item Adjusted settings to approach simulation values
+	\item Took three types of data:
+	\begin{itemize}
+		\item Beam size data - YAG screens
+		\item Emittance - scanning slit
+		\item Bunch length - CTR, interferometer, and, bolometer 
+	\end{itemize}
+\end{itemize}
+%\includegraphics[width=0.25\linewidth]{YAG1}\includegraphics[width=0.25\linewidth]{YAG2}%
+%\includegraphics[width=0.25\linewidth]{YAG3}\includegraphics[width=0.25\linewidth]{YAG3}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Measurements}
+\begin{frame}
+	\frametitle{Beam Size Measurements}
+	\vspace{-1em}
+\begin{columns}[T] % align columns
+	\begin{column}{.5\textwidth}
+		%\color{red}\rule{\linewidth}{4pt}		
+		2D Results:
+    \includegraphics[width=0.75\linewidth]{../images/beamsizes_2Dx} \\ \vspace{0.25em}
+    \includegraphics[width=0.75\linewidth]{../images/beamsizes_2Dy}
+	\end{column}%
+	\hfill%
+	\begin{column}{.5\textwidth}
+		%\vspace{1em}
+		%\color{blue}\rule{\linewidth}{4pt}
+		3D Results:
+		\includegraphics[width=0.75\linewidth]{../images/beamsizes_3Dx} \\ \vspace{0.25em}
+		\includegraphics[width=0.75\linewidth]{../images/beamsizes_3Dy}
+	\end{column}%
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Summary}
+	Ongoing efforts to understand $\SI$ beams at AWA:
+	\begin{itemize}
+		\item 2D and 3D simulations
+		\item Measurements:
+		\begin{itemize}
+			\item Charge
+			\item Beam size 
+			\item Emittance
+			\item Bunch length
+		\end{itemize}
+		
+	\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vspace{5em}
+\Huge {Thanks for your time!} \\ 
+%\normalfont{And thanks to my funding sources:}
+\includegraphics[width=0.5\linewidth]{../images/IIT_Logo_blk-eps-converted-to} %\\%
+\includegraphics[width=0.5\linewidth]{../images/Argonne_cmyk_black}%
+%\includegraphics[width=0.5\linewidth]{../images/DOE_logo_color_cmyk}
+\\
+\end{frame}
+
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
