@@ -42,11 +42,12 @@
 
 \setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
 \addtobeamertemplate{frametitle}{}{%
+	\logo{../images/IIT_logo}
 	\iffalse
 	
 	\begin{tikzpicture}[remember picture,overlay]
 	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
-	{\includegraphics[height=1.1cm]{../images/ANL_black}\hspace{10cm}};
+	{\includegraphics[height=1.1cm]{../images/Argonne_cmyk_black-eps-converted-to}\hspace{10cm}};
 	
 	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
 	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
@@ -166,7 +167,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Photoinjectors}
 \begin{frame}[t]
-\frametitle{AWA Facility}
+\frametitle{Argonne Wakefield Accelerator Facility}
 \vspace{1em}
 \begin{columns}[T] % align columns
 	\begin{column}{.48\textwidth}
@@ -233,13 +234,13 @@ OPAL-T: \begin{verbatim}
 	https://gitlab.psi.ch/OPAL/src/wikis/home
 \end{verbatim}
 \begin{itemize}
-\item Developed at PSI
 \item Free, open source 
-\item Easy to work with developers
-\item Parallel (scales....)
+\item Developed at PSI, easy to work with developers
+\item Parallel (weak scaling)
 \item Features include 3D space charge and wakefields
-\item RF photoinjector benchmark:
+\item Can output data in beam or global reference frame
 \end{itemize}
+RF photoinjector benchmark:
 \begin{verbatim}
 https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 \end{verbatim}
@@ -247,14 +248,13 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Optimization}
 \begin{frame}
-	\frametitle{Current Optimization Goals:}
+	\frametitle{Initial Optimization Goals at 40 nC}
 	\Wider[4em]{
-		\begin{minipage}{0.6\textwidth}
-			
+		\begin{minipage}{0.6\textwidth}			
 			\begin{itemize}
-				\item Linac only
-				\item{Determine what emittance and bunch length we can expect from the linac}
+				\item Linac only, used BOBYQA algorithm
 				\item{Determine optimum settings for TBA experiments}
+				\item {metrics = emittance \& bunch length}
 				\item{Varied 10 parameters:}
 			\end{itemize}
 		\end{minipage}%
@@ -315,9 +315,9 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 				%\toprule
 				\textbf{Variable} & \textbf{Range} & \textbf{Unit} \\
 				\midrule
-				Solenoid Strength & $ 0 \le S_3 \le 440$  & amps \\
-				Phase of Gun & $-60 \le \phi_g \le 60$  & degrees \\
-				Laser Radius  & $0.1 \le R \le 30$  & mm \\
+				Solenoid Strength & $ 150 \le S_3 \le 440$  & amps \\
+				Phase of Gun & $-40 \le \phi_g \le 40$  & degrees \\
+				Laser Radius  & $3 \le R \le 9$  & mm \\
 				Laser FWHM  & $2 \le T \le $10  & ps \\
 				Cavity Phase & $-40 \le \phi_L \le 40$\footnote[1]{$\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$} & degrees
 				%\bottomrule    
@@ -326,17 +326,20 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 	}
 \end{frame}
 \begin{frame}
-	\frametitle{Initial Optimization Results}
+	\frametitle{Initial Optimization Results at 40 nC}
 \begin{columns}[T] % align columns
 	\begin{column}{.56\textwidth}
-		\vspace{1em}
+		%\vspace{1em}
 		%\color{red}\rule{\linewidth}{4pt}		
 		%\color{blue}\rule{\linewidth}{4pt}
 		\includegraphics[width=1.0\linewidth, right]{../images/pareto_emittance_vs_zrms}
+	    \begin{gather*}
+	    f(v,w) = w \,\bar{\epsilon}_x(v,z_1) + (1-w)\, \bar{\sigma}_z(v,z_1)
+	    \end{gather*}
 	\end{column}%
 	\hfill%
 	\begin{column}{.44\textwidth}
-		\vspace{1em}
+		%\vspace{1em}
 		Code verifies:
 		\begin{itemize}
 		\item Larger laser radius is always better
@@ -351,24 +354,27 @@ https://gitlab.psi.ch/OPAL/src/wikis/RFPhotoInjector
 \section{Experimental Measurements}
 \subsection{Overview}
 \begin{frame}
-Took data 1.5 weeks ago!
+	\frametitle{Overview}
+Took data exactly 2 weeks ago!
 
 Tried to dial in machine settings based on simulations:
 \begin{itemize}
 	\item Initial results did not match simulations - not a surprise
-	\item Identified problems with machine parameters:
+	\item Identified issues:
 	\begin{itemize}
+		\item Energy lower than expected
 		\item Solenoid strength
-		\item Energy 
+		\item Shot to shot charge fluctuation
 	\end{itemize}
 	
 	
 	\item Adjusted settings to approach simulation values
-	\item Took three types of data:
+	\item Took four types of data:
 	\begin{itemize}
-		\item Beam size data - YAG screens
+		\item Energy measurements
+		\item \textbf{Beam size data - YAG screens}
 		\item Emittance - scanning slit
-		\item Bunch length - CTR, interferometer, and, bolometer 
+		\item Bunch length - CTR (interferometer, and bolometer) 
 	\end{itemize}
 \end{itemize}
 %\includegraphics[width=0.25\linewidth]{YAG1}\includegraphics[width=0.25\linewidth]{YAG2}%
@@ -376,10 +382,25 @@ Tried to dial in machine settings based on simulations:
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Measurements}
+\subsection{Beam Size Measurements}
 \begin{frame}
-	\frametitle{Beam Size Measurements}
-	\vspace{-1em}
+	%\vspace{-0.5em}
+	%\frametitle{Beam Size Measurements}
+	\vspace{-0.5em}
+	\centering
+    \includegraphics[width=0.415\textheight]{../images/laser}%
+	\includegraphics[width=0.415\textheight]{../images/YAG1}%
+	\includegraphics[width=0.415\textheight]{../images/YAG2}\\
+	\includegraphics[width=0.415\textheight]{../images/YAG3}
+	\includegraphics[width=0.415\textheight]{../images/YAG6}%
+	\includegraphics[width=0.415\textheight]{../images/YAGCTR}\\
+     Hot spot on bottom left corner...origin laser?  
+\end{frame}
+
+
+\begin{frame}
+	%\frametitle{Beam Size Measurements}
+	%\vspace{-0.5em}
 \begin{columns}[T] % align columns
 	\begin{column}{.5\textwidth}
 		%\color{red}\rule{\linewidth}{4pt}		
@@ -400,11 +421,13 @@ Tried to dial in machine settings based on simulations:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Summary}
-	Goal: Use simulations to optimize beam parameters. 
+	\vspace{3em}
+	End Goal: Use simulations to optimize beam parameters. 
 	\begin{itemize}		
-		\item AWA configuration is constantly changing
-		\item We need to build a set of tools to quickly optimize between beam setting
-		\item Use agreement between simulations and measurements to guide experiments
+		\item AWA beam line configuration is dynamic and variable
+		\item Space charge {\tiny {\tiny }}drives the limitations for TBA experiments
+		\item We need a set of tools to quickly optimize extremely different parameters
+		\item Agreement between simulations and measurements should guide experiments
 	
 	\end{itemize}
 \end{frame}
