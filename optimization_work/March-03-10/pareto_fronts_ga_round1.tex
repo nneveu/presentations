@@ -1,0 +1,317 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Select one of the options, and comment the rest of them
+
+%%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
+\documentclass[professionalfonts,t]{beamer}
+%sans font?
+
+%%%%%%%%%% Option 3: to create handout for print
+%\documentclass[t,handout]{beamer}
+%\usepackage{pgfpages}              % to put several slides on one page
+%\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]             % 2 slides on 1 page
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]   % 4 slides on 1 page, and landscaped
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Select the Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Dresden}     % OK
+%\usetheme{Berlin}
+%\usetheme{Bergen}      % NO
+%\usetheme{Boadilla}    % NO
+%\usetheme{Copenhagen}  % NO
+%\usetheme{Hannover}    % NO
+%\usetheme{Luebeck}     % NO
+%\usetheme{Marburg}     % NO
+%\usetheme{Pittsburgh}  % NO
+%\usetheme{default}
+%\usetheme{Singapore}   % OK
+%\usetheme{boxes}
+%\usecolortheme{structure}
+%\usecolortheme{rose}
+%\usecolortheme{beaver}
+
+
+\definecolor{mymaroon}{cmyk}{0.0, 1.0, 1.0, 0.498}
+\definecolor{myblue}{cmyk}{1.0, 1, 0, 0.5}
+\definecolor{mygreen}{cmyk}{100, 0, 100, 50}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=myblue}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=mymaroon}
+
+%\usepackage{beamerthemesplit}              %
+\beamertemplateballitem % fancy bullets and numbering
+
+\setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
+\addtobeamertemplate{frametitle}{}{%
+	\logo{../images/IIT_logo}
+	\iffalse
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
+	{\includegraphics[height=1.1cm]{../images/Argonne_cmyk_black-eps-converted-to}\hspace{10cm}};
+	
+	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
+	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
+	\end{tikzpicture}
+    
+     \fi
+}
+% other possibilities to include LOGO. it puts it in RLC
+
+%
+%\pgfdeclareimage[width=1cm]{logo}{../images/IIT_Logo}
+%\logo{\pgfuseimage{logo}}
+
+
+% load additional packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{epstopdf}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
+
+% Your Abbreviations
+\newcommand\bE{{\mathbb{E}}}
+\newcommand\bR{{\mathbb{R}}}
+\newcommand\bH{{\mathbf{H}}}
+% End abbreviations
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%\textbf{}
+}
+
+%%%%%%%%%%%%%%%%%%%%% to edit the main text below
+%NOTES ON SOME TECHNICS
+%%%% Box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{\fbox{ \parbox[t]{10cm}{ SOME TEXT }}}
+
+%%% include a picture. The file should be with extention EPS, e.g. FILENAME.EPS
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=.7\linewidth]{FILENAME}
+%\caption{{\footnotesize PUT_CAPTION }}
+%\end{figure}
+
+%\subtitle{}
+%\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
+
+\title[]{Optimization and \\ Surrogate Models Work}
+\author[N.Neveu]{{\Large Nicole Neveu}}
+\institute[ANL, IIT] % (optional, but mostly needed)
+{   Illinois Institute of Technology \\
+	Argonne National Laboratory \\
+    %\url{nneveu@anl.gov} 
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{ \today \\
+\includegraphics[width=3cm,keepaspectratio]{../logos/Argonne_cmyk_black}%
+\hfill \hfill \hfill%
+\includegraphics[width=4cm,keepaspectratio]{../logos/IIT_Logo_blk-eps-converted-to}%
+}
+
+%\date[IIT, April 2009]{
+%           Space Charge 2017 \\ Oc 18, 2009  }
+
+
+
+\begin{document}
+%\section{Intro}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+\section{TBA Optimization Work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{TBA Optimization}
+	Goal 1: Finish this arxiv paper in progress: \url{https://arxiv.org/pdf/1302.2889.pdf}
+		\begin{itemize}
+			\item Use TBA beam line as model (up to the septum)
+			\item Results on next two slides, Ex-1-4 stand for various GA parameters
+			\item I will add AWA section to paper
+			\item Hopefully submit in a few weeks, given few rounds of editing
+		\end{itemize} 
+	\vspace{1em}
+	Goal 2: Finish whole TBA optimization
+		\begin{itemize}
+			\item Framework in place and working to do this
+			\item Needs a few more big runs on Bebop 
+			\item Will be done by/before IPAC
+		\end{itemize}
+
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Pareto front at entrance of kicker, z = 16.5 m}
+		\begin{minipage}{0.48\textwidth}
+			Ex-1
+			\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-1_gen96}
+			Ex-2	\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-2_gen81}
+		\end{minipage}
+		\begin{minipage}{0.48\textwidth}
+			Ex-3
+			\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-3_gen53}
+			Ex-4
+			\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-4_gen95}
+		\end{minipage}
+
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Pareto front at entrance of septum, z = 18.5 m}
+	\begin{minipage}{0.48\textwidth}
+		Ex-1
+		\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-1_gen96_z2}
+		Ex-2
+		\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-2_gen81_z2}
+	\end{minipage}
+	\begin{minipage}{0.48\textwidth}
+		Ex-3
+		\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-3_gen53_z2}
+		Ex-4
+		\includegraphics[width=1.0\linewidth]{/home/nicole/Documents/opal_stuff/awa-optim/ex-4_gen95_z2}
+	\end{minipage}	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Surrogate Models}
+\begin{frame}
+	\frametitle{Surrogate Models and Machine Learning}
+	Andreas and Auralee invited me to collaboration on a Surrogate Model and Machine learning (ML) paper that is an extension of the work we did for the ML workshop at SLAC.
+	\vspace{1em}	
+	
+	Goal: Generate 3 sets of data to be used for the paper:
+	\begin{enumerate}
+		\item Optimized data using genetic algorithm in OPAL 
+			\begin{itemize}
+				\item about 33k simulations completed
+			\end{itemize}
+
+		\item Random sample 
+		\begin{itemize}
+			\item 1200 simulations completed
+		\end{itemize}
+		\item Polynomial-chaos set 
+		\begin{itemize}
+			\item 3rd order, about 16.5k simulations completed
+		\end{itemize}
+	\end{enumerate}
+	\vspace{1em}
+	We may need to re-run 1 or 3 depending on post processing results.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Surrogate Models continued...}
+	Software used:
+	\begin{itemize}
+		\item OPAL as forward simulation
+		\item runOPAL python script (from PSI)
+		\item libensemble, library that Jeff Larson from MCS is developing
+		\item Generating functions to go with libensemble (Nicole)
+		\item UQ python code  (Andreas)
+		\item Neural Net python code (Auralee)
+	\end{itemize}
+		
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Surrogate Models: GA optimization}
+	\centering
+				\begin{itemize}
+				\item Model includes gun and first linac cavity
+				\item 7 optimization variables: 2 solenoids, laser radius, 2 gradients, 2 phases.  
+			\end{itemize}
+		\includegraphics[width=0.8\linewidth]{/home/nicole/Documents/opal_stuff/surrogate-ga/zoomed_in_100gen}
+\end{frame}
+
+
+\section{Towards INCITE}
+\begin{frame}
+	\frametitle{Scaling and 1:1 Work }
+	Theta is an intermediate cluster between Bebop and Mira.
+	Goal here is to get OPAL ready for a competitive INCITE proposal. 
+	Project would be 1:1 simulations for plasma wakefield experiment.
+	Work done includes (mostly done by Andreas):
+	
+	\begin{itemize}
+		\item Worked with Kevin at ALCF to install OPAL on Theta
+		\item Did scaling study on FFT, passed data to ALCF
+		\item ALCF folks (Kevin) are working on understanding the scalability of the FFT.
+		\item Identified issues with the particle update (already know)
+		\item 4E10 simulations are possible with the current version of OPAL.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Preliminary Scaling Data}
+	\centering
+		\includegraphics[width=.45\linewidth]{scaling-theta-1}
+		\includegraphics[width=.45\linewidth]{scaling-theta-2}\includegraphics[width=.45\linewidth]{scaling-theta-3}
+\end{frame}
+
+\begin{frame}
+	\frametitle{To Do:}
+	\begin{enumerate}
+		\item Finish GA paper
+		\item Finish TBA optimization
+		\item Post process surrogate models data
+		\item Make 4th order PC data set, if needed
+		\item Work on getting surrogate models draft done by end of month.
+		\item Continue scaling studies for INCITE
+	\end{enumerate}
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
