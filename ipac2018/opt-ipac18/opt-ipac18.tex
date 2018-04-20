@@ -1,0 +1,254 @@
+\documentclass[letterpaper,  %a4paper
+               %boxit,
+               %titlepage,   % separate title page
+               %refpage      % separate references
+              ]{jacow-2_3}   %jacow}
+%
+% CHANGE SEQUENCE OF GRAPHICS EXTENSION TO BE EMBEDDED
+% ----------------------------------------------------
+% test for XeTeX where the sequence is by default eps-> pdf, jpg, png, pdf, ...
+%    and the JACoW template provides JACpic2v3.eps and JACpic2v3.jpg which
+%    might generates errors, therefore PNG and JPG first
+%
+\makeatletter%
+	\ifboolexpr{bool{xetex}}
+	 {\renewcommand{\Gin@extensions}{.pdf,%
+	                    .png,.jpg,.bmp,.pict,.tif,.psd,.mac,.sga,.tga,.gif,%
+	                    .eps,.ps,%
+	                    }}{}
+\makeatother
+
+% CHECK FOR XeTeX/LuaTeX BEFORE DEFINING AN INPUT ENCODING
+% --------------------------------------------------------
+%   utf8  is default for XeTeX/LuaTeX 
+%   utf8  in LaTeX only realizes a small portion of codes
+%
+\ifboolexpr{bool{xetex} or bool{luatex}} % test for XeTeX/LuaTeX
+ {}                                      % input encoding is utf8 by default
+ {\usepackage[utf8]{inputenc}}           % switch to utf8
+
+\usepackage[USenglish]{babel}			 
+
+\usepackage[final]{pdfpages}
+\usepackage{multirow}
+\usepackage{ragged2e}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,snakes,backgrounds}
+\usetikzlibrary{mindmap,trees}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{plotmarks}
+%
+% if BibLaTeX is used
+%
+\ifboolexpr{bool{jacowbiblatex}}%
+ {%
+  \addbibresource{jacow-test.bib}
+  \addbibresource{biblatex-examples.bib}
+ }{}
+\listfiles
+
+%
+% command for typesetting a \section like word
+%
+\newcommand\SEC[1]{\textbf{\uppercase{#1}}}
+
+%%
+%%   Lengths for the spaces in the title
+%%   \setlength\titleblockstartskip{..}  %before title, default 3pt
+%%   \setlength\titleblockmiddleskip{..} %between title + author, default 1em
+%%   \setlength\titleblockendskip{..}    %afterauthor, default 1em
+
+%\copyrightspace %default 1cm. arbitrary size with e.g. \copyrightspace[2cm]
+
+% testing to fill the copyright space
+%\usepackage{eso-pic}
+%\AddToShipoutPictureFG*{\AtTextLowerLeft{\textcolor{red}{COPYRIGHTSPACE}}}
+
+\begin{document}
+
+\title{Photoinjector Optimization Studies at the AWA}
+
+\author{N. Neveu\thanks{nneveu@anl.gov}\textsuperscript{1}, 
+	    L. Spentzouris, Illinois Institute of Technology, Chicago, USA \\
+	    J. Larson, J. G. Power, \textsuperscript{1}Argonne National Laboratory}
+\maketitle
+
+%
+\begin{abstract}
+With a variable charge range of 0.1 nC - 100 nC, 
+the Argonne Wakefield Accelerator facility (AWA) 
+has a unique and dynamic set of operating parameters. 
+Adjustment of the optics and occasionally the rf phases is 
+required each time the bunch charge is changed. 
+Presently, these adjustments are done by the operator during each experiment. 
+This is time consuming and inefficient, more so at high charge and for complex experimental set ups.
+In an attempt to reduce the amount of time spent adjusting parameters by hand, 
+several optimization methods in simulation are being explored. 
+This includes using the well-known Genetic Algorithm (NSGA-II),
+incorporated into OPAL-T. 
+We have also investigated a model-based method and novel
+structure based algorithms developed at ANL. 
+Ongoing efforts include using these optimization methods to improve operations at the AWA. 
+Simulation results will be compared to measured beam parameters at the AWA, 
+and one optimization method will be selected for use in guiding operations going forward.
+\end{abstract}
+
+
+\section{AWA Facility}
+The AWA Facility houses two rf photoinjectors, both 
+operating at \SI{1.3}{GHz}. The photoinjector used for 
+these studies consists of a gun and solenoids followed
+by six accelerating cavities, as shown in Fig.~\ref{beamline}. 
+This beam line is capable of low (\SI{0.1}{nC}) and 
+high charge (\SI{100}{nC}) operation. The bunch charge is 
+routinely adjusted for depending on the requirements 
+of the experiments downstream of the photoinjector.
+Typical operating charges are 1, 4, 10, and \SI{40}{nC}. 
+While these are the most
+common operating modes, other charges have been requested 
+and provided depending on the experiment.
+Recent experiments include emittance exchange \cite{eex}, 
+structure tests \cite{pets}, thermal emittance measurements \cite{therm}, 
+and two beam acceleration \cite{tba}. 
+
+\section{Simulations}
+Simulations of the AWA beam line shown in Fig~\ref{beamline}
+were performed in the PIC codes OPAL~\cite{opal}.
+The gun, accelerating cavities, and solenoids were modeled with 2D
+Poisson/Superfish~\cite{fish} files. All field maps were in the T7 format.
+Input parameters for the simulations are shown in Table~\ref{simparam}.
+Note that on crest refers to the phase of max energy gain.
+In the case of the gun, a -~$20^{\circ}$ phase is measured 
+w.r.t the phase of max energy gain. 
+In other words, we ran $-20^{\circ}$ off crest.
+
+\section{Model based method: BOBYQA}
+Last year...
+
+\section{Current Work: GA}
+Now....
+
+\section{Future Work: Novel Methods}
+Next year....
+
+
+
+\begin{figure*}[!tbh]
+	\centering
+	\begin{tikzpicture}[scale=0.7, text=black]
+	\input{tikz-opt.tex}
+	\end{tikzpicture}	
+	\caption{Beam line layout at the AWA.}
+	\label{beamline}
+\end{figure*}
+
+
+\begin{table}[hbt]
+	%   \vspace*{-.5\baselineskip}
+	\centering
+	\caption{Simulation Parameters}
+	\begin{tabular}{lcc}
+		\toprule
+		\textbf{Parameter} & \textbf{Low Charge}  & \textbf{High Charge} \\
+		\midrule
+		Charge       & \SI{1}{nC}        & \SI{40}{nC}    \\ %[3pt]
+		Gun Gradient & \SI{65}{MV/m}     & \SI{65}{MV/m}  \\ %[3pt]
+		Gun Phase    & \SI{-20}{}$^{\circ}$ & \SI{-20}{}$^{\circ}$ \\		 
+		$S_1$        & \SI{500}{A}		 & \SI{500}{A}	  \\
+		$S_2$		 & \SI{}{A}   	 & \SI{185}{A}		 \\
+		Linac Phases & On crest          & On crest       \\
+		Laser FWHM   & \SI{1.5}{ps}      & \SI{1.5}{ps}   \\ %[3pt]
+		Laser Radius & \SI{2}{mm}        & \SI{9}{mm}     \\
+		\bottomrule
+	\end{tabular}
+	\label{simparam}
+	%   \vspace*{-\baselineskip}
+\end{table}
+
+
+\begin{figure}[!htb]
+	%   \vspace*{-.5\baselineskip}
+	\centering
+	%\includegraphics*[width=174pt]{JACpic_mc}
+	\caption{Layout of papers.}
+	\label{l2ea4-f1}
+	%   \vspace*{-\baselineskip}
+\end{figure}
+
+\section{Conclusion}
+Any conclusions should be in a separate section directly preceding
+the \SEC{Acknowledgment}, \SEC{Appendix}, or \SEC{References} sections, in that
+order.
+
+\section{acknowledgments}
+We gratefully acknowledge the computing resources
+provided on Bebop, a high-performance computing cluster
+operated by the LCRC at Argonne National Laboratory.
+This material is based upon work supported by the 
+U.S. Department of Energy, Office of Science, under 
+contract number DE-AC02-06CH11357 and grant number DE-SC0015479. 
+Travel to IPAC'18 supported by the Division of Physics 
+of the United States National Science Foundation 
+Accelerator Science Program and the Division of 
+Beam Physics of the American Physical Society.
+
+
+\begin{thebibliography}{9}
+\bibitem{eex}
+G.~Ha \emph{et al.}, “Demonstration of Current Profile 
+Shaping using Double Dog-Leg Emittance Exchange Beam 
+Line at Argonne Wakefield Accelerator”
+in \textit{Proc. IPAC’16}, 
+Busan, South Korea, May 2016, 
+paper TUOBB01.\\
+
+\bibitem{pets}
+J.~Shao \emph{et al.}, “PETS....”
+in \textit{Proc. IPAC’18}, 
+Vancouver, Canada, May 2018, 
+paper xxx.\\
+
+\bibitem{therm}
+L.~Zheng \emph{et al.}, “Measurements of Thermal Emittance 
+for Cesium Telluride Photocathodes in an L-Band RF Gun”
+in \textit{Proc. IPAC’17}, 
+Copenhagen, Denmark, May 2017, 
+paper TUPAB074.\\
+
+\bibitem{tba}
+J.~Shao \emph{et al.}, “Recent Two-Beam 
+Acceleration Activities at Argonne Wakefield Accelerator Facility”
+in \textit{Proc. IPAC’17}, 
+Copenhagen, Denmark, May 2017, 
+paper WEPVA022.\\
+
+\bibitem{ctr}
+A.~Alpha \emph{et al.}, 
+“A fascinating paper about CTR,”
+in \emph{Proc. FEL’13}, 
+New York, NY, USA, Aug. 2013, 
+paper WEP033, pp. 27--29.\\
+
+\bibitem{impact}
+J.~Qiang \emph{et al.},
+“...,”
+, California, USA,
+Rep. xxxx, 20xx-20xx.
+
+\bibitem{opal}
+A.~Adelmann \emph{et al.},
+“The OPAL (Object Oriented Parallel Accelerator Library) framework,”
+PSI, Zurich, Switzerland,
+Rep. PSI-PR-08-02, 2008-2017.
+
+\bibitem{fish}
+\emph{Reference Manual for the POISSON/SUPERFISH Group of 
+	Codes},  Los Alamos Accelerator Code Group,  
+ Los Alamos, NM, USA, 
+ Rep. LA-UR-87-126, Jan. 1987.
+\end{thebibliography}
+
+
+
+\end{document}
+	

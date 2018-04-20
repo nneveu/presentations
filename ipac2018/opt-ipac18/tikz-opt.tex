@@ -1,0 +1,95 @@
+\def \gunleft {-1.0}
+\def \gunright {0.3}
+\def \loneright {1.0}
+\def \ltworight {2.0}
+\def \lthreeright {3.0}
+\def \lfourright {4.0}
+\def \lfiveright {5.0}
+\def \lsixright {6.0}
+\def \quadone {7.5}
+\def \quadfour{16}
+
+\draw[fill=orange, very thick, rounded corners =0.1cm] (\gunleft,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
+
+%S1
+\node[] at (-1,2.9) {$S_1$};
+\draw[ultra thick, fill=black!60!green] (-1.4,-0.5)rectangle  (-1.0,0.5) node[pos=.5, white] {} ;
+\draw[black, ultra thick] (-1.4,-0.5) -- (-1.0,0.5);
+\draw[black, ultra thick] (-1.4,0.5) -- (-1.0,-0.5);
+\draw[ultra thick, fill=black!60!green] (-1.4,1.5)rectangle  (-1.0,2.5) node[pos=.5, white] {} ;
+\draw[black, ultra thick] (-1.4,1.5) -- (-1.0,2.5);
+\draw[black, ultra thick] (-1.4,2.5) -- (-1.0,1.5);
+%S2
+
+\draw[ultra thick, fill=black!60!green] (-1.0,-0.5)rectangle  (-0.6,0.5) node[pos=.5, white] {} ;
+\draw[black, ultra thick] (-1.0,-0.5) -- (-0.6,0.5);
+\draw[black, ultra thick] (-1.0,0.5) -- (-0.6,-0.5);
+\draw[ultra thick, fill=black!60!green] (-1.0,1.5)rectangle  (-0.6,2.5) node[pos=.5, white] {} ;
+\draw[black, ultra thick] (-1.0,1.5) -- (-0.6,2.5);
+\draw[black, ultra thick] (-1.0,2.5) -- (-0.6,1.5);
+
+%S3
+\node[] at (0.2,2.9) {$S_2$};
+\draw[ultra thick, fill=black!60!green] (-0.1,-0.5) rectangle  (0.3,0.5) node[pos=.5, white] {};
+\draw[black, ultra thick] (-0.1,-0.5) -- (0.3,0.5);
+\draw[black, ultra thick] (-0.1,0.5) -- (0.3,-0.5);
+\draw[ultra thick, fill=black!60!green] (-0.1,1.5) rectangle  (0.3,2.5) node[pos=.5, white] {};
+\draw[black, ultra thick] (-0.1,1.5) -- (0.3,2.5);
+\draw[black, ultra thick] (-0.1,2.5) -- (0.3,1.5);
+%Linac drawings 
+\node[] at (4,2.5) {Accelerating Cavities};
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\loneright,0)rectangle  ({\loneright+0.84},2) node[pos=.5, white] {$L_1$} ;
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\ltworight,0)rectangle  ({\ltworight+0.84},2) node[pos=.5, white] {$L_2$};
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lthreeright,0)rectangle ({\lthreeright+0.84},2) node[pos=.5, white] {$L_3$};
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lfourright,0)rectangle ({\lfourright+0.84},2) node[pos=.5, white] {$L_4$};
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lfiveright,0)rectangle ({\lfiveright+0.84},2) node[pos=.5, white] {$L_5$};
+\draw[fill=blue, ultra thick, rounded corners =0.1cm] (\lsixright,0)rectangle ({\lsixright+0.84},2) node[pos=.5, white] {$L_6$};
+
+%current optimization point
+%\node[draw, fill=yellow, star, star points=5, star point ratio=0.6, minimum size=0.1cm]
+%at (12.5,1.0) {$z_1$};
+
+
+%Quad drawings
+\node[] at (8.2,2.4) {Quads};
+\draw[fill=black!60!green, ultra thick] (\quadone, 1.0) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green, ultra thick] (\quadone+0.5, 1.0) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green, ultra thick] (\quadone+1.0, 1.0) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green, ultra thick] (\quadone+1.5, 1.0) ellipse (0.2cm and 0.9cm);
+
+%Line between kicker and septum
+\draw[very thick] (\lsixright+5.3,1.0) -- (12.5,0.7);
+
+%Kicker 
+\draw[fill=orange, ultra thick, rounded corners =0.1cm] (\lsixright+3.5,0.5)rectangle ({\lsixright+0.84+4.6},1.5) node[pos=.5, white] {$Kicker$};
+
+%Septum
+\node[] at (12.7,-0.8) {Septum};
+\draw[fill=black!60!green, ultra thick, rounded corners =0.1cm] (12.2,0.9)rectangle ({13.2},-0.1) node[pos=.5, white] {};
+%\draw[latex-latex] (\gunleft,-5.0) -- (14,-5.0) ;
+%\foreach \x in  {0.3, 1.0, 3.5, 5.0, 7.0, 8.5, 10, 12.5} %tick marks
+%\draw[shift={(\x,-5.0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+%\foreach \x in {0.3, 1.0, 3.5, 5.0, 7.0, 8.5, 10, 12.5}
+%\draw[shift={(\x,-5.2)},color=black] (0pt,0pt) node[below] {$\x$};
+
+%Line between kicker and septum
+\draw[very thick] (13.25,0.2) -- (14.5,-0.5);
+
+%Dipole
+\node[] at (15,-1.7) {Dipole};
+\draw[fill=black!60!green, ultra thick, rounded corners =0.1cm] (14.5,0.0)rectangle ({15.6},-1.0) node[pos=.5, white] {};
+
+%Line between septum and dipole
+\draw[very thick] (15.6,-0.5) -- (16.5,-0.5);
+%Second set of quads
+\draw[fill=black!60!green, ultra thick] (\quadfour+0.5, -0.50) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green, ultra thick] (\quadfour+1.0, -0.50) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green, ultra thick] (\quadfour+1.5, -0.50) ellipse (0.2cm and 0.9cm);
+
+%PETS1
+\draw[fill=black!60!yellow, ultra thick, rounded corners =0.1cm] (18,0.0)rectangle (20,-1) node[pos=.5, white] {PETS1};
+
+%Straight through
+\draw[very thick] (15.6,-0.5) -- (16.5,-0.5);
+
+
