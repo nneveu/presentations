@@ -82,13 +82,13 @@ generate a few hundred MW of rf power. This rf power is transferred through an r
 accelerate the witness beam. Staging refers to the sequential acceleration (energy gain) in two or more structures on the witness beam line. A kicker
 was incorporated on the drive beam line to accomplish a modular design so that each accelerating structure can be independently powered by a
 separate drive beam. Simulations were performed in OPAL-T to model the two beam lines. Beam sizes at the center of the structures was minimized to
-ensure good charge transmission. Dispersion was minimized for bunches traveling through the kicker and dipoles. The resulting design will be the basis
+ensure good charge transmission. \textcolor{red}{Dispersion was minimized for bunches traveling through the kicker and dipoles.} The resulting design will be the basis
 for proof of principle experiments that will take place at the Argonne Wakefield Accelerator (AWA) facility.
 \end{abstract}
 
 
 \section{AWA Facility}
-The AWA Facility houses two rf photoinjectors, both 
+The AWA Facility houses two rf photoinjectors
 operating at \SI{1.3}{GHz}. The photoinjector used for 
 these studies consists of a gun and solenoids followed
 by six accelerating cavities, as shown in Fig.~\ref{beamline}. 
@@ -104,9 +104,46 @@ Recent experiments include emittance exchange \cite{eex},
 structure tests \cite{pets}, thermal emittance measurements \cite{therm}, 
 and two beam acceleration \cite{tba}. 
 
+\section{Two Beam Acceleration Layout}
+The AWA facility lends well to TBA experiments due to the 
+close proximity of both operational photoinjectors. 
+They are housed in the same bunker and located about two meters apart.
+This number slightly varies depending on which part of the beam 
+lines you are comparing. For the remainder of this paper, we will
+refer to the low charge (operated at 1nC) beam line as the "witness" line, 
+and the high charge (operated at 40 nC), beam line as the "drive" line.
 
-\section{Kicker Tests}
+As shown in Fig.~\ref{beamline}, the drive line has six accelerating 
+cavities, while the witness line only has one. Also note, the guns
+are located at opposite ends of the bunker and their beam directions
+are also opposite of each other.
 
+\begin{figure*}[!tbh]
+	\centering
+	\begin{tikzpicture}[scale=\textwidth/33cm, text=black]
+	%\begin{tikzpicture}[scale=0.5, text=black]
+	\input{tikz-tba.tex}
+	\end{tikzpicture}
+	\caption{TBA beam line layout at the AWA. The arrow at the end of each line indicates what direction the beam is traveling.
+		PETS stands for Power Extraction and Transfer Structure, and ACC
+		stands for Accelerating structure. The subscript index on each structure refers to which stage the structures belong to, first or second stage. }
+	\label{beamline}
+\end{figure*}
+
+\section{Kicker Test}
+The fast rise time kicker was especially fabricated 
+for this experiment. The initial design was adapted from 
+work done at NIU \cite{kicker}
+\begin{figure}
+	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
+	\node (fig1) at (0,0)
+	{\includegraphics[width=0.5\textwidth]{kicker-hv}};
+	\node[fill=white, inner sep=2pt] (txt2) at (40,15) {Kicker};
+	\node[fill=white, inner sep=2pt] (txt2) at (10,45) {HV Source};
+	\end{tikzpicture}
+	\caption{Kicker in HV testing cage. }
+	\label{inter}
+\end{figure}
 
 \section{Simulations}
 Simulations of the AWA beam line shown in Fig~\ref{beamline}
@@ -119,14 +156,7 @@ In the case of the gun, a -~$20^{\circ}$ phase is measured
 w.r.t the phase of max energy gain. 
 In other words, we ran $-20^{\circ}$ off crest.
 
-\begin{figure*}[!tbh]
-	\centering
-	\begin{tikzpicture}[scale=0.6, text=black]
-	\input{tikz-tba.tex}
-	\end{tikzpicture}	
-	\caption{TBA beam line layout at the AWA. The arrow at the end of each line indicates what direction the beam is traveling.}
-	\label{beamline}
-\end{figure*}
+
 
 
 \begin{table}[hbt]
@@ -152,32 +182,8 @@ In other words, we ran $-20^{\circ}$ off crest.
 \end{table}
 
 
-\begin{figure}
-	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
-	\node (fig1) at (0,0)
-	{\includegraphics[width=0.5\textwidth]{kicker1}};
-	\node[fill=white, inner sep=2pt] (txt2) at (35,15) {Interferometer};
-	\node[fill=white, inner sep=2pt, rotate=26] (txt2) at (18,19.5) {Slit};	
-	\node[fill=white, inner sep=2pt, rotate=20] (txt2) at (13,27) {Window};
-	\end{tikzpicture}
-	\caption{Interferometer used to capture CTR light as it exited a 
-			window on the beam line. }
-	\label{inter}
-\end{figure}
 
 
-
-\begin{figure}
-	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
-	\node (fig1) at (0,0)
-	{\includegraphics[width=0.5\textwidth]{kicker1}};
-	\node[fill=white, inner sep=2pt] (txt2) at (35,8) {Interferometer};	
-	\node[fill=white, inner sep=2pt] (txt2) at (55,25) {Window};	
-	\node[fill=white, inner sep=2pt] (txt2) at (22,35) {Bolometer};
-	\end{tikzpicture}
-	\caption{Bolometer. }
-	\label{bolo}
-\end{figure}
 
 \section{Data Analysis}
 Give link to code used to find bunch length

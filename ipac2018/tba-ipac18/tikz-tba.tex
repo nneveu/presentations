@@ -9,7 +9,7 @@
 \def \quadone {7.5}
 \def \quadfour{16}
 
-\draw[fill=orange, very thick, rounded corners =0.1cm] (\gunleft,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
+\draw[fill=orange, thick, rounded corners =0.1cm] (\gunleft-0.1,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
 
 %S1
 \node[] at (-1,2.9) {$S_1$};
@@ -57,10 +57,10 @@
 \draw[fill=black!60!green,  thick] (\quadone+1.5, 1.0) ellipse (0.2cm and 0.9cm);
 
 %Line between kicker and septum
-\draw[very thick] (\lsixright+5.3,1.0) -- (12.5,0.7);
+\draw[very thick] (\lsixright+5.2,1.0) -- (12.5,0.7);
 
 %Kicker 
-\draw[fill=orange,  thick, rounded corners =0.1cm] (\lsixright+3.5,0.5)rectangle ({\lsixright+0.84+4.6},1.5) node[pos=.5, white] {$Kicker$};
+\draw[fill=orange,  thick, rounded corners =0.1cm] (\lsixright+3.3,0.5)rectangle ({\lsixright+0.84+4.6},1.5) node[pos=.5, white] {$Kicker$};
 
 %Septum
 \node[] at (12.7,-0.8) {Septum};
@@ -79,16 +79,11 @@
 \draw[fill=black!60!green, thick, rounded corners =0.1cm] (14.5,0.0)rectangle ({15.6},-1.0) node[pos=.5, white] {};
 
 %Line between dipole and quads
-\draw[very thick, ->] (15.6,-0.5) -- (25,-0.5);
+\draw[very thick, ->] (15.6,-0.5) -- (22,-0.5);
 %Second set of quads
 \draw[fill=black!60!green,  thick] (\quadfour+0.5, -0.50) ellipse (0.2cm and 0.9cm);
 \draw[fill=black!60!green,  thick] (\quadfour+1.0, -0.50) ellipse (0.2cm and 0.9cm);
 \draw[fill=black!60!green,  thick] (\quadfour+1.5, -0.50) ellipse (0.2cm and 0.9cm);
-
-%PETS1
-\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,0.0)rectangle (20.5,-1) node[pos=.5, white] {PETS1};
-%PETS2
-\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (24,1.5)rectangle (26,0.5) node[pos=.5, white] {PETS2};
 
 %Straight through
 \draw[very thick, ->] (11.4,1) -- (30,1);
@@ -103,8 +98,53 @@
 %Witness
 \draw[very thick, <-] (16,-2.5) -- (30,-2.5);
 
-%ACC1
-\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,-2)rectangle (20.5,-3) node[pos=.5, white] {ACC1};
+%Waveguide
+\draw[very thick] (20,-0.5) -- (20,-3);
+%Waveguide
+\draw[very thick] (25.5,1.5) -- (25.5,-3);
+
+%PETS2
+\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,0.0)rectangle (20.5,-1) node[pos=.5, white] {$\text{PETS}_2$};
+%PETS1
+\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (24,1.5)rectangle (26,0.5) node[pos=.5, white] {$\text{PETS}_1$};
+
 %ACC2
-\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,-2)rectangle (20.5,-3) node[pos=.5, white] {ACC2};
+\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,-2)rectangle (20.5,-3) node[pos=.5, white] {$\text{ACC}_2$};
+%ACC1
+\draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (24,-2)rectangle (26,-3) node[pos=.5, white] {$\text{ACC}_1$};
+
+
+\begin{scope}[yscale=1,xscale=-1, yshift=-3.5cm, xshift=-29.5cm]
+	\draw[fill=orange, thick, rounded corners =0.1cm] (\gunleft-0.1,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
+	
+	%S1
+	\node[] at (-1,2.9) {$S_1$};
+	\draw[thick, fill=black!60!green] (-1.4,-0.5)rectangle  (-1.0,0.5) node[pos=.5, white] {} ;
+	\draw[black,  thick] (-1.4,-0.5) -- (-1.0,0.5);
+	\draw[black,  thick] (-1.4,0.5) -- (-1.0,-0.5);
+	\draw[ thick, fill=black!60!green] (-1.4,1.5)rectangle  (-1.0,2.5) node[pos=.5, white] {} ;
+	\draw[black,  thick] (-1.4,1.5) -- (-1.0,2.5);
+	\draw[black,  thick] (-1.4,2.5) -- (-1.0,1.5);
+	
+	\draw[ thick, fill=black!60!green] (-1.0,-0.5)rectangle  (-0.6,0.5) node[pos=.5, white] {} ;
+	\draw[black,  thick] (-1.0,-0.5) -- (-0.6,0.5);
+	\draw[black,  thick] (-1.0,0.5) -- (-0.6,-0.5);
+	\draw[ thick, fill=black!60!green] (-1.0,1.5)rectangle  (-0.6,2.5) node[pos=.5, white] {} ;
+	\draw[black,  thick] (-1.0,1.5) -- (-0.6,2.5);
+	\draw[black,  thick] (-1.0,2.5) -- (-0.6,1.5);
+	
+	%S2
+	\node[] at (0.2,2.9) {$S_2$};
+	\draw[ thick, fill=black!60!green] (-0.1,-0.5) rectangle  (0.3,0.5) node[pos=.5, white] {};
+	\draw[black,  thick] (-0.1,-0.5) -- (0.3,0.5);
+	\draw[black,  thick] (-0.1,0.5) -- (0.3,-0.5);
+	\draw[ thick, fill=black!60!green] (-0.1,1.5) rectangle  (0.3,2.5) node[pos=.5, white] {};
+	\draw[black,  thick] (-0.1,1.5) -- (0.3,2.5);
+	\draw[black,  thick] (-0.1,2.5) -- (0.3,1.5);
+	%Linac drawings 
+	%\node[] at (4,2.5) {Accelerating Cavities};
+	\draw[fill=blue,  thick, rounded corners =0.1cm] (\loneright,0)rectangle  ({\loneright+0.84},2) node[pos=.5, white] {$L_1$} ;
+	
+\end{scope}
+
 
