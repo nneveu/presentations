@@ -155,8 +155,7 @@ at the AWA \cite{tba}.
 Consider timing on the drive line; the bunch trains are generated
 by a single pulse of the ultraviolet (UV) light that is split
 several times in an set of optics called the multisplitter \cite{korea}.
-The spacing of each UV pulse is \SI{769}{ps}.  
-
+The length of each UV pulse is \SI{769}{ps}, which is one wavelength.....  
 
 
 \section{Kicker}
@@ -211,20 +210,26 @@ tested at the APS.
 \end{figure}
 
 \section{Ongoing Optics Optimization}
-Simulations of the AWA beam line shown in Fig~\ref{beamline}
-were performed in the PIC codes IMPACT~\cite{impact} and OPAL~\cite{opal}.
-The gun, accelerating cavities, and solenoids were modeled with 2D
-Poisson/Superfish~\cite{fish} files. All field maps were in the T7 format.
-Input parameters for the simulations are shown in Table~\ref{simparam}.
-Note that on crest refers to the phase of max energy gain.
-In the case of the gun, a -~$20^{\circ}$ phase is measured 
-w.r.t the phase of max energy gain. 
-In other words, we ran $-20^{\circ}$ off crest.
+While the general number of optics elements and their 
+locations is known, there are still many free parameters that 
+are not determined by that information alone. 
+The strength of each magnet, the phase in each cavity, 
+and the laser profile can all be freely adjusted parameters.
+This leads to a high dimensional optimization problem. 
+The parameters on the drive line are further complicated
+by strong space charge forces and bending elements (kicker, septum, dipole).
+
+A first round multi-objective optimization of the drive line has been performed 
+using the built in genetic algorithm (GA) in OPAL-T \cite{opal}. 
+These simulations included the gun and all elements leading up 
+to the entrance of the septum, as shown in Fig.~\ref{beamline}.
+The objectives were beam size, emittance, and energy spread before the kicker.
+The 
 
 \begin{table}[hbt]
 	%   \vspace*{-.5\baselineskip}
 	\centering
-	\caption{Simulation Parameters}
+	\caption{Optimization Parameters}
 	\begin{tabular}{lcc}
 		\toprule
 		\textbf{Parameter} & \textbf{Low Charge}  & \textbf{High Charge} \\
@@ -324,12 +329,6 @@ Accelerator,”
 in \emph{Proc. IPAC'16}, 
 Busan, South Korea, May 2016, 
 paper TUPMY036.\\
-
-\bibitem{impact}
-J.~Qiang \emph{et al.},
-“...,”
-, California, USA,
-Rep. xxxx, 20xx-20xx.
 
 \bibitem{opal}
 A.~Adelmann \emph{et al.},
