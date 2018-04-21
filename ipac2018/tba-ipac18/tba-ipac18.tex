@@ -138,17 +138,25 @@ The accelerating structures, ACC$_1$ and ACC$_2$, are only
 powered by the PETS on the drive line. There is no other 
 external power source. 
 
+\section{Synchronization}
 The kicker will ensure that one bunch train is supplied to 
 each stage. This must happen in sync with the witness line.
 The rf power generated in the drive line, must reach the 
 accelerating structures as the witness beam is arriving.
-This requires understanding of the beams travel time, 
+This requires understanding of the laser trigger, 
+bunch train spacing, beams travel time, 
 rise time of the rf pulse generated in the PETS, 
 travel time of the pulse in the waveguide, and 
 the fill time needed in the accelerating structures. 
 While implementing this level of synchronization is not trivial, 
 it possible, and has been demonstrated in previous experiments
 at the AWA \cite{tba}. 
+
+Consider timing on the drive line; the bunch trains are generated
+by a single pulse of the ultraviolet (UV) light that is split
+several times in an set of optics called the multisplitter \cite{korea}.
+The spacing of each UV pulse is \SI{769}{ps}.  
+
 
 
 \section{Kicker}
@@ -202,7 +210,7 @@ tested at the APS.
 	\label{cage}
 \end{figure}
 
-\section{Ongoing Optimization}
+\section{Ongoing Optics Optimization}
 Simulations of the AWA beam line shown in Fig~\ref{beamline}
 were performed in the PIC codes IMPACT~\cite{impact} and OPAL~\cite{opal}.
 The gun, accelerating cavities, and solenoids were modeled with 2D
