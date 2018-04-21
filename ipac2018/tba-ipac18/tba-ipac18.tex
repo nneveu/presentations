@@ -72,7 +72,6 @@ drive beam line to accomplish a modular design so that each accelerating structu
 can be independently powered by a separate drive beam. 
 Simulations were performed in OPAL-T to model the two beam lines. 
 Beam sizes at the center of the structures was minimized to ensure good charge transmission. 
-\textcolor{red}{Dispersion was minimized for bunches traveling through the kicker and dipoles.} 
 The resulting design will be the basis for proof of principle experiments that will take place 
 at the Argonne Wakefield Accelerator (AWA) facility.
 \end{abstract}
@@ -114,6 +113,18 @@ the drive line supplies high charge bunch trains.
 The planned experiments will include trains of eight bunches
 with about \SI{40}{nC} in each bunch.
 
+\begin{figure*}[!tbh]
+	\centering
+	\begin{tikzpicture}[scale=\textwidth/33cm, text=black]
+	%\begin{tikzpicture}[scale=0.5, text=black]
+	\input{tikz-tba.tex}
+	\end{tikzpicture}
+	\caption{TBA beam line layout at the AWA. The arrow at the end of each line indicates what direction the beam is traveling.
+		PETS stands for Power Extraction and Transfer Structure, and ACC
+		stands for Accelerating structure. The subscript index on each structure refers to which stage the structures belong to, first or second stage. }
+	\label{beamline}
+\end{figure*}
+
 The high charge bunch trains are supplied to Power Extraction
 and Transfer Structures (PETS) downstream. These are decelerating 
 structures that extract power from the bunches through wakefield generation.
@@ -139,23 +150,47 @@ While implementing this level of synchronization is not trivial,
 it possible, and has been demonstrated in previous experiments
 at the AWA \cite{tba}. 
 
-\begin{figure*}[!tbh]
-	\centering
-	\begin{tikzpicture}[scale=\textwidth/33cm, text=black]
-	%\begin{tikzpicture}[scale=0.5, text=black]
-	\input{tikz-tba.tex}
-	\end{tikzpicture}
-	\caption{TBA beam line layout at the AWA. The arrow at the end of each line indicates what direction the beam is traveling.
-		PETS stands for Power Extraction and Transfer Structure, and ACC
-		stands for Accelerating structure. The subscript index on each structure refers to which stage the structures belong to, first or second stage. }
-	\label{beamline}
-\end{figure*}
 
-\section{Kicker Test}
-The fast rise time kicker was especially fabricated 
+\section{Kicker}
+The kicker was specifically fabricated 
 for this experiment. The initial design was adapted from 
-work done at NIU \cite{kicker}. The plates were lengthened
-to increase the 
+work done at NIU \cite{kicker,korea}. The plates were lengthened
+to increase the angle and the gap adjusted based on 
+beam size simulations and mechanical constraints at the AWA. 
+The design specifications and final kicker parameters 
+are shown in Table~\ref{tkick}. 
+\begin{table}[hbt]
+	%   \vspace*{-.5\baselineskip}
+	\centering
+	\caption{Final Kicker Parameters}
+	\begin{tabular}{lc}
+		\toprule
+		\textbf{Parameter} & \textbf{Value} \\
+		\midrule
+		Charge       		& \SI{40}{nC}   \\ %[3pt]
+		Beam Energy  		& \SI{70}{MeV}  \\ %[3pt]
+		Angle 	     		& $2^{\circ}$ 	\\
+		Gap Between Plates  & \SI{40}{mm}	\\		 
+		Length of Plates    & \SI{500}{A}	\\
+		Field Rise Time  	& \SI{3}{ns}    \\
+		Field Duration   	& \SI{12}{ns}  \\ %[3pt]
+		\bottomrule
+	\end{tabular}
+	\label{tkick}
+	%   \vspace*{-\baselineskip}
+\end{table}
+
+After fabrication, a high voltage test was performed to ensure 
+the electrical feedthroughs were sound. Special thanks to 
+the Power Systems group at the Advanced Photon Source (APS) for testing 
+the kicker in one of their rf cages, see Fig.~\ref{cage}
+A high voltage \SI{60}{Hz} 
+source was used to probe one blade of the kicker at a time. 
+Both sides performed well, with one blade showing slight discharge
+at \SI{8}{KV} RMS, and the other showing no discharge up to \SI{9}{KV}
+(the limit of the source). These results are in line with other kickers
+tested at the APS.  
+
 \begin{figure}
 	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
 	\node (fig1) at (0,0)
@@ -164,7 +199,7 @@ to increase the
 	\node[fill=white, inner sep=2pt] (txt2) at (10,45) {HV Source};
 	\end{tikzpicture}
 	\caption{Kicker in high voltage (HV) testing cage at the Advanced Photon Source. }
-	\label{inter}
+	\label{cage}
 \end{figure}
 
 \section{Ongoing Optimization}
@@ -246,8 +281,6 @@ in \textit{Proc. IPAC’16},
 Busan, South Korea, May 2016, 
 paper TUOBB01.\\
 
-
-
 \bibitem{pets}
 J.~Shao \emph{et al.}, “PETS....”
 in \textit{Proc. IPAC’18}, 
@@ -275,12 +308,14 @@ in \textit{Proc. IPAC’10},
 Kyoto, Japan, May 2010, 
 paper THPEA052.\\
 
-\bibitem{ctr}
-A.~Alpha \emph{et al.}, 
-“A fascinating paper about CTR,”
-in \emph{Proc. FEL’13}, 
-New York, NY, USA, Aug. 2013, 
-paper WEP033, pp. 27--29.\\
+\bibitem{korea}
+N.~Neveu \emph{et al.}, 
+“Drive Generation and Propagation Studies for the Two
+Beam Acceleration Experiment at the Argonne Wakefield
+Accelerator,”
+in \emph{Proc. IPAC'16}, 
+Busan, South Korea, May 2016, 
+paper TUPMY036.\\
 
 \bibitem{impact}
 J.~Qiang \emph{et al.},
