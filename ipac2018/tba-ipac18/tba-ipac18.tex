@@ -47,22 +47,7 @@
  }{}
 \listfiles
 
-%
-% command for typesetting a \section like word
-%
 \newcommand\SEC[1]{\textbf{\uppercase{#1}}}
-
-%%
-%%   Lengths for the spaces in the title
-%%   \setlength\titleblockstartskip{..}  %before title, default 3pt
-%%   \setlength\titleblockmiddleskip{..} %between title + author, default 1em
-%%   \setlength\titleblockendskip{..}    %afterauthor, default 1em
-
-%\copyrightspace %default 1cm. arbitrary size with e.g. \copyrightspace[2cm]
-
-% testing to fill the copyright space
-%\usepackage{eso-pic}
-%\AddToShipoutPictureFG*{\AtTextLowerLeft{\textcolor{red}{COPYRIGHTSPACE}}}
 
 \begin{document}
 
@@ -76,25 +61,27 @@
 
 %
 \begin{abstract}
-Two beam acceleration is a candidate for future high energy physics machines and FEL user facilities. This scheme consists of two independent electron
-beam lines operating synchronously. High-charge, 70 MeV drive bunch trains are injected from the rf photoinjector into decelerating structures to
-generate a few hundred MW of rf power. This rf power is transferred through an rf waveguide to accelerating structures that are used to
-accelerate the witness beam. Staging refers to the sequential acceleration (energy gain) in two or more structures on the witness beam line. A kicker
-was incorporated on the drive beam line to accomplish a modular design so that each accelerating structure can be independently powered by a
-separate drive beam. Simulations were performed in OPAL-T to model the two beam lines. Beam sizes at the center of the structures was minimized to
-ensure good charge transmission. \textcolor{red}{Dispersion was minimized for bunches traveling through the kicker and dipoles.} The resulting design will be the basis
-for proof of principle experiments that will take place at the Argonne Wakefield Accelerator (AWA) facility.
+Two beam acceleration is a candidate for future high energy physics machines and FEL user facilities. 
+This scheme consists of two independent electron beam lines operating synchronously. 
+High-charge, 70 MeV drive bunch trains are injected from the rf photoinjector into
+decelerating structures to generate a few hundred MW of rf power. 
+This rf power is transferred through an rf waveguide to accelerating structures that are used to
+accelerate the witness beam. Staging refers to the sequential acceleration (energy gain) 
+in two or more structures on the witness beam line. A kicker was incorporated on the 
+drive beam line to accomplish a modular design so that each accelerating structure 
+can be independently powered by a separate drive beam. 
+Simulations were performed in OPAL-T to model the two beam lines. 
+Beam sizes at the center of the structures was minimized to ensure good charge transmission. 
+\textcolor{red}{Dispersion was minimized for bunches traveling through the kicker and dipoles.} 
+The resulting design will be the basis for proof of principle experiments that will take place 
+at the Argonne Wakefield Accelerator (AWA) facility.
 \end{abstract}
 
 
 \section{AWA Facility}
-The AWA Facility houses two rf photoinjectors
-operating at \SI{1.3}{GHz}. The photoinjector used for 
-these studies consists of a gun and solenoids followed
-by six accelerating cavities, as shown in Fig.~\ref{beamline}. 
-This beam line is capable of low (\SI{0.1}{nC}) and 
-high charge (\SI{100}{nC}) operation. The bunch charge is 
-routinely adjusted for depending on the requirements 
+The AWA facility houses two rf photoinjectors
+operating at \SI{1.3}{GHz}. 
+The bunch charge is routinely adjusted for depending on the requirements 
 of the experiments downstream of the photoinjector.
 Typical operating charges are 1, 4, 10, and \SI{40}{nC}. 
 While these are the most
@@ -102,7 +89,7 @@ common operating modes, other charges have been requested
 and provided depending on the experiment.
 Recent experiments include emittance exchange \cite{eex}, 
 structure tests \cite{pets}, thermal emittance measurements \cite{therm}, 
-and two beam acceleration \cite{tba}. 
+and two beam acceleration \cite{tba} (TBA), which is the subject of this proceeding. 
 
 \section{Two Beam Acceleration Layout}
 The AWA facility lends well to TBA experiments due to the 
@@ -110,13 +97,19 @@ close proximity of both operational photoinjectors.
 They are housed in the same bunker and located about two meters apart.
 This number slightly varies depending on which part of the beam 
 lines you are comparing. For the remainder of this paper, we will
-refer to the low charge (operated at 1nC) beam line as the "witness" line, 
-and the high charge (operated at 40 nC), beam line as the "drive" line.
+refer to the low charge beam line as the "witness" line, 
+and the high charge, beam line as the "drive" line.
+While the charge on each line can be varied, for TBA experiments, 
+the witness line is operated at \SI{1}{nC} and the drive line
+is operated at \SI{40}{nC}.
 
-As shown in Fig.~\ref{beamline}, the drive line has six accelerating 
-cavities, while the witness line only has one. Also note, the guns
-are located at opposite ends of the bunker and their beam directions
-are also opposite of each other.
+The planned TBA layout is shown in Fig.~\ref{beamline}.
+The drive line has six accelerating 
+cavities with a maximum beam energy of \SI{70}{MeV}. 
+The witness line has accelerating cavity with a max beam energy of \SI{15}{MeV}.
+The guns are located at opposite ends of the bunker and their beam propagation 
+directions are also opposite of each other. The kicker will be supplied 
+by a fast rise time pulsar. 
 
 \begin{figure*}[!tbh]
 	\centering
@@ -133,7 +126,8 @@ are also opposite of each other.
 \section{Kicker Test}
 The fast rise time kicker was especially fabricated 
 for this experiment. The initial design was adapted from 
-work done at NIU \cite{kicker}
+work done at NIU \cite{kicker}. The plates were lengthened
+to increase the 
 \begin{figure}
 	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
 	\node (fig1) at (0,0)
@@ -145,7 +139,7 @@ work done at NIU \cite{kicker}
 	\label{inter}
 \end{figure}
 
-\section{Simulations}
+\section{Ongoing Optimization}
 Simulations of the AWA beam line shown in Fig~\ref{beamline}
 were performed in the PIC codes IMPACT~\cite{impact} and OPAL~\cite{opal}.
 The gun, accelerating cavities, and solenoids were modeled with 2D
@@ -155,9 +149,6 @@ Note that on crest refers to the phase of max energy gain.
 In the case of the gun, a -~$20^{\circ}$ phase is measured 
 w.r.t the phase of max energy gain. 
 In other words, we ran $-20^{\circ}$ off crest.
-
-
-
 
 \begin{table}[hbt]
 	%   \vspace*{-.5\baselineskip}
@@ -180,9 +171,6 @@ In other words, we ran $-20^{\circ}$ off crest.
 	\label{simparam}
 	%   \vspace*{-\baselineskip}
 \end{table}
-
-
-
 
 
 \section{Data Analysis}
@@ -226,6 +214,8 @@ in \textit{Proc. IPAC’16},
 Busan, South Korea, May 2016, 
 paper TUOBB01.\\
 
+
+
 \bibitem{pets}
 J.~Shao \emph{et al.}, “PETS....”
 in \textit{Proc. IPAC’18}, 
@@ -245,6 +235,13 @@ Acceleration Activities at Argonne Wakefield Accelerator Facility”
 in \textit{Proc. IPAC’17}, 
 Copenhagen, Denmark, May 2017, 
 paper WEPVA022.\\
+
+\bibitem{kicker}
+T.~H.~Luo \emph{et al.}, “Design of a Fast
+Extraction Kicker for the ALPHA Project”
+in \textit{Proc. IPAC’10}, 
+Kyoto, Japan, May 2010, 
+paper THPEA052.\\
 
 \bibitem{ctr}
 A.~Alpha \emph{et al.}, 
@@ -271,9 +268,6 @@ Rep. PSI-PR-08-02, 2008-2017.
  Los Alamos, NM, USA, 
  Rep. LA-UR-87-126, Jan. 1987.
 \end{thebibliography}
-
-
-
 
 \end{document}
 	
