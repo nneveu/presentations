@@ -90,18 +90,16 @@ We have also investigated a model-based method and novel
 structure based algorithms developed at ANL. 
 Ongoing efforts include using these optimization methods to improve operations at the AWA. 
 Simulation results will be compared to measured beam parameters at the AWA, 
-and one optimization method will be selected for use in guiding operations going forward.
+and one or more optimization methods will be selected for use in guiding operations in the future.
 \end{abstract}
 
 
 \section{AWA Facility}
 The AWA Facility houses two rf photoinjectors, both 
-operating at \SI{1.3}{GHz}. The photoinjector used for 
-these studies consists of a gun and solenoids followed
-by six accelerating cavities, as shown in Fig.~\ref{beamline}. 
+operating at \SI{1.3}{GHz}. 
 This beam line is capable of low (\SI{0.1}{nC}) and 
 high charge (\SI{100}{nC}) operation. The bunch charge is 
-routinely adjusted for depending on the requirements 
+routinely adjusted depending on the requirements 
 of the experiments downstream of the photoinjector.
 Typical operating charges are 1, 4, 10, and \SI{40}{nC}. 
 While these are the most
@@ -109,9 +107,95 @@ common operating modes, other charges have been requested
 and provided depending on the experiment.
 Recent experiments include emittance exchange \cite{eex}, 
 structure tests \cite{pets}, thermal emittance measurements \cite{therm}, 
-and two beam acceleration \cite{tba}. 
+and Two Beam Acceleration (TBA) \cite{tba}. 
 
-\section{Simulations}
+\section{Model Based Method}
+Last year, we began with the optimization of the front end of 
+the high charge photoinjector at the AWA. The charge
+of interest was \SI{40}{nC}, and chosen to target the needs 
+for upcoming TBA experiments at AWA.
+The simulation model included the gun, two solenoids, 
+and six accelerating cavities, as shown in Fig.~\ref{beamline}. 
+The quadrupoles and bending elements were not included in this work.
+We choose ten variables for the optimization parameters: 
+laser radius, laser full width half maximum, solenoid strength ($S_2$), 
+gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
+\begin{figure*}%[!tbh]
+	\centering
+	\begin{tikzpicture}[scale=0.7, text=black]
+	\input{tikz-opt.tex}
+	\end{tikzpicture}	
+	\caption{Beam line layout at the AWA.}
+	\label{beamline}
+\end{figure*}
+
+The two objectives were emittance and bunch length at the 
+entrance of the quads. We knew further work would include the optics
+downstream, so this section was taken as a first step. 
+We choose to use a local optimization method freely available in the NLOPT package \cite{nlopt}. Bounded Optimization By Quadratic Approximation (BOBYA), 
+is a method that builds a quadratic using the simulation outputs. 
+The next point to evaluate is chosen by minimizing the quadratic.
+Details of this work were presented at IPAC'17, and can be found here \cite{denmark}. 
+
+The results presented were promising, and attempts to measure
+several points on the Pareto front took place.
+Experimentally, some of the parameter values were found to 
+be outside the normal operating conditions at the AWA.
+Using this experience, a second round of optimization 
+was done using the same procedure and method as 
+outlined in \cite{denmark}. The boundaries for the second
+round of optimization work can be found in Table~\ref{bounds}.
+Note that $\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$.
+\begin{table} %or [hbt] ?
+	\centering
+	\caption{Parameter Bounds for Gun and Linac Optimization}
+	\begin{tabular}{ l *{3}{c}}
+		\toprule
+		\textbf{Variable} & \textbf{Range} & \textbf{Unit} \\
+		\midrule
+		Solenoid Strength & $ 50 \le S_2 \le 440$  & amps \\
+		Phase of Gun & $-45 \le \phi_g \le 45$  & degrees \\
+		Laser Radius  & $3.5 \le R \le 9$  & mm \\
+		Laser FWHM & $1.5 \le T \le $10  & ps \\
+		Cavity Phase & $-40 \le \phi_L \le 40$  & degrees \\
+		\bottomrule	
+	\end{tabular}	
+	\label{bounds}
+\end{table}
+
+The parameter values of the new Pareto front in Fig.~\ref{paretob} were analyzed, and 
+several more key points were learned from this work. 
+First, it is clear that varying the laser radius is unnecessary for 
+high charge simulations.
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{pareto_emittance_vs_zrms}
+	\caption{Pareto front for adjusted variable bounds. }
+	\label{paretob}
+\end{figure}
+
+
+
+\section{Genetic Algorithms}
+Explain what GA is....
+
+
+GA's are very popular right now in accelerator physics,
+and have been for several years \cite{bazarov, ga2, ga3}. 
+Many have used GA's, and specifically NSGA-II \cite{nsgaii}, 
+to tackle large multiobjective optimization problems. 
+This is also the algorithm built into the simulation code 
+OPAL \cite{opal}. 
+
+To verify the method used in prior work, the fidelity of the model
+was reduced and compared to a GA. 
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{model_vs_ga}
+	\caption{Comparison of model based optimization and the GA implemented in OPAL. }
+	\label{compare}
+\end{figure}
+
+
+\section{Results}
 Simulations of the AWA beam line shown in Fig~\ref{beamline}
 were performed in the PIC codes OPAL~\cite{opal}.
 The gun, accelerating cavities, and solenoids were modeled with 2D
@@ -122,25 +206,14 @@ In the case of the gun, a -~$20^{\circ}$ phase is measured
 w.r.t the phase of max energy gain. 
 In other words, we ran $-20^{\circ}$ off crest.
 
-\section{Model based method: BOBYQA}
-Last year...
-
-\section{Current Work: GA}
-Now....
-
 \section{Future Work: Novel Methods}
-Next year....
+In the following months, we plan to continue our work with
+the Math and Computer Science (MCS) department at Argonne.
+Using the library libensemble (\url{https://github.com/Libensemble/libensemble}), 
+we will work to deploy methods being developed at ANL, such as APOSMM \cite{jeff}. 
 
 
 
-\begin{figure*}[!tbh]
-	\centering
-	\begin{tikzpicture}[scale=0.7, text=black]
-	\input{tikz-opt.tex}
-	\end{tikzpicture}	
-	\caption{Beam line layout at the AWA.}
-	\label{beamline}
-\end{figure*}
 
 
 \begin{table}[hbt]
@@ -176,9 +249,14 @@ Next year....
 \end{figure}
 
 \section{Conclusion}
-Any conclusions should be in a separate section directly preceding
-the \SEC{Acknowledgment}, \SEC{Appendix}, or \SEC{References} sections, in that
-order.
+Photoinjector optimization projects are ongoing at the AWA.
+Two optimization methods have been used with success:
+BOBYQA and NSGA-II. In the future, novel optimization 
+methods developed at ANL will be tested. The first of 
+which will be APOSMM. All optimization efforts are taking 
+place to further operating conditions at the AWA and 
+complete design work for upcoming experiments.
+
 
 \section{acknowledgments}
 We gratefully acknowledge the computing resources
@@ -193,6 +271,8 @@ Accelerator Science Program and the Division of
 Beam Physics of the American Physical Society.
 
 
+
+
 \begin{thebibliography}{9}
 \bibitem{eex}
 G.~Ha \emph{et al.}, “Demonstration of Current Profile 
@@ -200,40 +280,52 @@ Shaping using Double Dog-Leg Emittance Exchange Beam
 Line at Argonne Wakefield Accelerator”
 in \textit{Proc. IPAC’16}, 
 Busan, South Korea, May 2016, 
-paper TUOBB01.\\
+paper TUOBB01.
 
 \bibitem{pets}
-J.~Shao \emph{et al.}, “PETS....”
+J.~Shao \emph{et al.}, “Recent Progress towards Dielectric Short Pulse Two-Beam Acceleration”
 in \textit{Proc. IPAC’18}, 
 Vancouver, Canada, May 2018, 
-paper xxx.\\
+paper TUYGBE3.
 
 \bibitem{therm}
 L.~Zheng \emph{et al.}, “Measurements of Thermal Emittance 
 for Cesium Telluride Photocathodes in an L-Band RF Gun”
 in \textit{Proc. IPAC’17}, 
 Copenhagen, Denmark, May 2017, 
-paper TUPAB074.\\
+paper TUPAB074.
 
 \bibitem{tba}
 J.~Shao \emph{et al.}, “Recent Two-Beam 
 Acceleration Activities at Argonne Wakefield Accelerator Facility”
 in \textit{Proc. IPAC’17}, 
 Copenhagen, Denmark, May 2017, 
-paper WEPVA022.\\
+paper WEPVA022.
 
-\bibitem{ctr}
-A.~Alpha \emph{et al.}, 
-“A fascinating paper about CTR,”
-in \emph{Proc. FEL’13}, 
-New York, NY, USA, Aug. 2013, 
-paper WEP033, pp. 27--29.\\
+\bibitem{nlopt}
+M. Powell, “The BOBYQA algorithm for bound constrained
+optimization without derivatives,” University of Cambridge,
+U.K., Rep. NA2009/06, Oct. 2009.
 
-\bibitem{impact}
-J.~Qiang \emph{et al.},
-“...,”
-, California, USA,
-Rep. xxxx, 20xx-20xx.
+\bibitem{denmark}
+N.Neveu, J.Larson, J. G. Power, L. Spentzouris, 
+“Photoinjector optimization using a derivative-free, model-based trust-region algorithm for the Argonne Wakefield Accelerator”
+in \textit{Proc. IPAC’17}, 
+Copenhagen, Denmark, May 2017, 
+paper WEPVA022.
+
+\bibitem{bazarov}
+I. V. Bazarov, and C. K. Sinclair,
+"Multivariate optimization of a high brightness dc gun photoinjector",
+\emph{Phys. Rev. ST Accel. Beams}, vol. 8, p. 034202, March 2005. 
+
+
+
+\bibitem{nsgaii}
+K. Deb, A. Pratap, S. Agarwal and T. Meyarivan, 
+"A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II," 
+in IEEE Transactions on Evolutionary Computation, 
+vol. 6, no. 2, pp. 182-197, Apr 2002.
 
 \bibitem{opal}
 A.~Adelmann \emph{et al.},
