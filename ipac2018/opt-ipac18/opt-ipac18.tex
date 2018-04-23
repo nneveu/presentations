@@ -110,7 +110,7 @@ The later is the code used for all simulations in this
 study. 
 We also take advantage of the computing resources provided
 by the Laboratory Computing Resource Center (LCRC), 
-at Argonne National Laboratory (ANL). Access to their 
+at Argonne National Laboratory (ANL). Access to the 
 Blues, and recently installed Bebop clusters has significantly
 increase simulation productivity with the capability to run 
 all simulations in parallel, and large optimization cases
@@ -127,7 +127,7 @@ The quadrupoles and bending elements were not included in this work.
 We choose ten variables for the optimization parameters: 
 laser radius, laser full width half maximum, solenoid strength ($S_2$), 
 gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
-\begin{figure*}%[!tbh]
+\begin{figure*}
 	\centering
 	\begin{tikzpicture}[scale=0.7, text=black]
 	\input{tikz-opt.tex}
@@ -154,9 +154,10 @@ was done using the same procedure and method as
 outlined in \cite{denmark}. The boundaries for the second
 round of optimization work can be found in Table~\ref{bounds}.
 Note that $\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$.
-\begin{table} %or [hbt] ?
+
+\begin{table}[hbt] 
 	\centering
-	\caption{Parameter Bounds for Gun and Linac Optimization}
+	\caption{Parameter Bounds for Linac Optimization}
 	\begin{tabular}{ l *{3}{c}}
 		\toprule
 		\textbf{Variable} & \textbf{Range} & \textbf{Unit} \\
@@ -175,11 +176,11 @@ The parameter values of the new Pareto front in Fig.~\ref{paretob} were analyzed
 several more key points were learned from this work. 
 First, it is clear that varying the laser radius is unnecessary for 
 high charge simulations. All points on the Pareto front
-had a laser radius of \SI{9}{mm}, the maximum value for this parameters.
+had a laser radius of \SI{9}{mm}, the maximum value for this parameter.
 Due to the strong space charge forces, 
 it is always beneficial (at least in the AWA model), to let the 
 laser radius be as large as possible.  This mitigates space charge
-forces and improves the emittance. Ongoing and future high charge optimization work excludes / will exclude the laser radius as an optimization parameter based on 
+and improves the emittance. Ongoing and future high charge optimization work will exclude the laser radius as an optimization parameter based on 
 this result.
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{pareto_emittance_vs_zrms}
@@ -187,38 +188,38 @@ this result.
 	\label{paretob}
 \end{figure}
 
+Second, it was clear that the phase boundaries were also too large.
+None of the gun phases were positive. An upper bound of $\phi = 0^{\circ}$
+will be used in the future. Some of linac phases were positive, 
+but very few. Five out of ten local optimization runs had no positive linac 
+phases. Four out of ten local optimization runs had only one positive 
+linac tank ($\phi_{L_6}$), and only two out of the ten runs had two or three
+positive linac phases ($\phi_{L_4}-\phi_{L_6}$). The upper bounds for 
+$\phi_{L_1}-\phi_{L_3}$ can also be set to $0^{\circ}$. 
 
 
 \section{Genetic Algorithms}
 Explain what GA is....
 
 
-GA's are very popular right now in accelerator physics,
-and have been for several years \cite{bazarov, ga2, ga3}. 
-Many have used GA's, and specifically NSGA-II \cite{nsgaii}, 
-to tackle large multiobjective optimization problems. 
+GA's have been used with success for nearly two decades
+in the accelerator physics community.
+They are used to tackle large multiobjective optimization problems, 
+and a widely used implementation is the NSGA-II \cite{nsgaii}.
+A nice review of work done using GA's can be found here \cite{hofler}. 
+
+ 
 This is also the algorithm built into the simulation code 
 OPAL \cite{opal}. 
 
-To verify the method used in prior work, the fidelity of the model
-was reduced and compared to a GA. 
+To verify the model based method, a low fidelity model was used to do 
+a quick comparison.  
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{model_vs_ga}
 	\caption{Comparison of model based optimization and the GA implemented in OPAL at \SI{40}{nC}. }
 	\label{compare}
 \end{figure}
 
-
-\section{Results}
-Simulations of the AWA beam line shown in Fig~\ref{beamline}
-were performed in the PIC codes OPAL~\cite{opal}.
-The gun, accelerating cavities, and solenoids were modeled with 2D
-Poisson/Superfish~\cite{fish} files. All field maps were in the T7 format.
-Input parameters for the simulations are shown in Table~\ref{simparam}.
-Note that on crest refers to the phase of max energy gain.
-In the case of the gun, a -~$20^{\circ}$ phase is measured 
-w.r.t the phase of max energy gain. 
-In other words, we ran $-20^{\circ}$ off crest.
 
 \section{Future Work: Novel Methods}
 In the following months, we plan to continue our work with
@@ -227,50 +228,14 @@ Using the library libensemble (\url{https://github.com/Libensemble/libensemble})
 we will work to deploy methods being developed at ANL, such as APOSMM \cite{jeff}. 
 
 
-
-
-
-\begin{table}[hbt]
-	%   \vspace*{-.5\baselineskip}
-	\centering
-	\caption{Simulation Parameters}
-	\begin{tabular}{lcc}
-		\toprule
-		\textbf{Parameter} & \textbf{Low Charge}  & \textbf{High Charge} \\
-		\midrule
-		Charge       & \SI{1}{nC}        & \SI{40}{nC}    \\ %[3pt]
-		Gun Gradient & \SI{65}{MV/m}     & \SI{65}{MV/m}  \\ %[3pt]
-		Gun Phase    & \SI{-20}{}$^{\circ}$ & \SI{-20}{}$^{\circ}$ \\		 
-		$S_1$        & \SI{500}{A}		 & \SI{500}{A}	  \\
-		$S_2$		 & \SI{}{A}   	 & \SI{185}{A}		 \\
-		Linac Phases & On crest          & On crest       \\
-		Laser FWHM   & \SI{1.5}{ps}      & \SI{1.5}{ps}   \\ %[3pt]
-		Laser Radius & \SI{2}{mm}        & \SI{9}{mm}     \\
-		\bottomrule
-	\end{tabular}
-	\label{simparam}
-	%   \vspace*{-\baselineskip}
-\end{table}
-
-
-\begin{figure}[!htb]
-	%   \vspace*{-.5\baselineskip}
-	\centering
-	%\includegraphics*[width=174pt]{JACpic_mc}
-	\caption{Layout of papers.}
-	\label{l2ea4-f1}
-	%   \vspace*{-\baselineskip}
-\end{figure}
-
 \section{Conclusion}
 Photoinjector optimization projects are ongoing at the AWA.
 Two optimization methods have been used with success:
 BOBYQA and NSGA-II. In the future, novel optimization 
 methods developed at ANL will be tested. The first of 
 which will be APOSMM. All optimization efforts are taking 
-place to further operating conditions at the AWA and 
+place to improve conditions at the AWA and 
 complete design work for upcoming experiments.
-
 
 \section{acknowledgments}
 We gratefully acknowledge the computing resources
@@ -283,9 +248,6 @@ Travel to IPAC'18 supported by the Division of Physics
 of the United States National Science Foundation 
 Accelerator Science Program and the Division of 
 Beam Physics of the American Physical Society.
-
-
-
 
 \begin{thebibliography}{99}
 \bibitem{eex}
@@ -329,6 +291,12 @@ ASTRA Manual, April 2014,
 \bibitem{gpt}
 GPT,  \url{http://www.pulsar.nl/gpt}
 
+\bibitem{opal}
+A.~Adelmann \emph{et al.},
+“The OPAL (Object Oriented Parallel Accelerator Library) framework,”
+PSI, Zurich, Switzerland,
+Rep. PSI-PR-08-02, 2008-2017.
+
 \bibitem{nlopt}
 M. Powell, “The BOBYQA algorithm for bound constrained
 optimization without derivatives,” University of Cambridge,
@@ -341,10 +309,12 @@ in \textit{Proc. IPAC’17},
 Copenhagen, Denmark, May 2017, 
 paper WEPVA022.
 
-\bibitem{bazarov}
-I. V. Bazarov, and C. K. Sinclair,
-"Multivariate optimization of a high brightness dc gun photoinjector",
-\emph{Phys. Rev. ST Accel. Beams}, vol. 8, p. 034202, March 2005. 
+\bibitem{hofler}
+A. S. Hofler \emph{et al.},
+"Innovative applications of genetic algorithms to 
+problems in accelerator physics",
+\emph{Phys. Rev. ST Accel. Beams}, vol. 16,
+p. 010101, 2013. 
 
 \bibitem{nsgaii}
 K. Deb, A. Pratap, S. Agarwal and T. Meyarivan, 
@@ -352,11 +322,17 @@ K. Deb, A. Pratap, S. Agarwal and T. Meyarivan,
 in IEEE Transactions on Evolutionary Computation, 
 vol. 6, no. 2, pp. 182-197, Apr 2002.
 
-\bibitem{opal}
-A.~Adelmann \emph{et al.},
-“The OPAL (Object Oriented Parallel Accelerator Library) framework,”
-PSI, Zurich, Switzerland,
-Rep. PSI-PR-08-02, 2008-2017.
+\bibitem{lclsii}
+C.~Mitchell \emph{et al.}, “RF Injector Beam Dynamics Optimization 
+and Injected Beam Energy Constraints for LCLS-II”
+in \textit{Proc. IPAC’16}, 
+Busan, South Korea, May 2016, 
+paper TUPOR019.
+
+
+
+
+
 
 \bibitem{fish}
 \emph{Reference Manual for the POISSON/SUPERFISH Group of 
