@@ -204,8 +204,18 @@ Both the drive and witness line electron bunches
 originate from the same ultraviolet (UV) laser pulse. 
 A network of UV optics and splitters deliver one laser 
 pulse to the witness gun, and a pulse train to the drive gun \cite{korea}.
-The length of each UV pulse is \SI{769}{ps}, which is one wavelength
-of the \SI{1.3}{GHz} operating frequency of the beam line.  
+Each UV pulse is \SI{769}{ps} long, which is one wavelength ($\lambda$)
+of the \SI{1.3}{GHz} rf operating frequency of the beam line.  
+An additional wavelength is used as spacing between each bunch train.
+This brings the length of an eight bunch train to $15\lambda$ or about \SI{11.5}{ns}.
+Since only one bunch is send to the witness line, the length of the 
+laser pulse on the witness line is only $1\lambda$.
+
+The bunch train must travel a longer distance to reach PETS$_1$ 
+than the distance the witness bunch must travel to reach ACC$_1$.
+The the difference in travel time is accounted for by adding an optical delay 
+to the UV optics proceeding the witness gun. 
+[ADD MORE HERE ABOUT TIMING...]
 
 
 \section{Kicker}
@@ -233,7 +243,7 @@ possible from the available pulsar.
 		Length of Plates    & \SI{500}{A}	\\
 		Pulsar Voltage      & $\pm$\SI{24}{kV} \\
 		Field Rise Time  	& \SI{3}{ns}    \\
-		Field Duration   	& \SI{12}{ns}  \\ %[3pt]
+		Min Field Duration 	& \SI{12}{ns}  \\ %[3pt]
 		\bottomrule
 	\end{tabular}
 	\label{tkick}
@@ -262,12 +272,12 @@ designed and tested at the APS \cite{mbakicker}.
 	\label{cage}
 \end{figure}
 
-\section{Ongoing Optics Optimization}
+\section{Ongoing Optimization}
 While the number of optics elements and their 
 general locations is known, there are still many free parameters that 
 are not determined by that information alone. 
 The strength of each magnet, the phase in each cavity, 
-and the laser profile can all be freely adjusted parameters.
+and the laser profile can all be freely adjusted.
 This leads to a high dimensional optimization problem. 
 The parameters on the drive line are further complicated
 by strong space charge forces and bending elements (kicker, septum, dipole).
@@ -277,8 +287,9 @@ using the built in genetic algorithm (GA) in OPAL-T \cite{opal}.
 These simulations included the gun and all elements leading up 
 to the entrance of the septum, as shown in Fig.~\ref{beamline}.
 The objectives were beam size, emittance, and energy spread before the kicker.
-The 
-
+Simulation parameters are shown in Table~\ref{simparam}.
+Results of this optimization work will be published soon.
+[Leave it at that? I don't want to add anything that will be in the paper]
 \begin{table}[hbt]
 	%   \vspace*{-.5\baselineskip}
 	\centering
@@ -304,11 +315,13 @@ The
 
 \section{Conclusion}
 The TBA layout for upcoming experiments at the 
-AWA facility is decided. A fast rise time kicker
-was designed and fabricated. Initial optimization 
-work has been done in simulations to decide operating 
+AWA facility is approximately decided. A fast rise time kicker
+was designed and fabricated for this experiment. 
+A high voltage test was preformed at the 
+Advanced Photon Source. Initial optimization 
+work has been done to decide  
 optics parameters for the high charge drive line.
-Additional optimization studies will be done 
+Additional design work and optimization studies will be done 
 to finalize the optics further downstream. 
 
 \section{acknowledgments}
