@@ -261,7 +261,8 @@ to reach the 500th generation. Approximately 107 and 2,133
 core-hours of computation were needed for those runs respectively. 
 Comparison of the three Pareto fronts is shown in Fig~\ref{compare}.
 As expected by the "no free lunch" theorem, both methods give 
-good results, with 
+acceptable results, with only the time to simulation being 
+the difference. 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{model_vs_ga}
 	\caption{Comparison of model based optimization and the GA implemented in OPAL at \SI{40}{nC}. }
@@ -276,12 +277,15 @@ will support upcoming TBA experiments at the AWA.
 In the following months, we plan to continue our work 
 by investigating novel optimization methods and comparing them 
 in efficiency and precision. We will take advantage of the 
-library libensemble (\url{https://github.com/Libensemble/libensemble}), 
-which is developed at ANL, but open source and freely available.
+open source library libensemble:
+\begin{center}
+	\url{https://github.com/Libensemble/libensemble}
+\end{center} 
+which is being developed at ANL.
 This framework allows for massively parallel ensemble simulations in 
 combination with a mechanism for easily interchanging optimization methods. 
 We will work to deploy APOSMM \cite{jeff}, in combination with local optimization
-methods and compare to popular techniques in teh field. 
+methods and compare to popular techniques in the field such as GAs. 
 
 
 \section{Conclusion}
@@ -391,6 +395,9 @@ K. Deb, A. Pratap, S. Agarwal and T. Meyarivan,
 "A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II," 
 in IEEE Transactions on Evolutionary Computation, 
 vol. 6, no. 2, pp. 182-197, Apr 2002.
+
+\bibitem{jeff}
+APOSMM, \url{http://www.mcs.anl.gov/~jlarson/APOSMM/}
 
 
 
