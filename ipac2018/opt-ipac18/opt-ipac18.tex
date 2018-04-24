@@ -132,17 +132,23 @@ gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}
 	\begin{tikzpicture}[scale=0.7, text=black]
 	\input{tikz-opt.tex}
 	\end{tikzpicture}	
-	\caption{Beam line layout at the AWA.}
+	\caption{Partial beam line layout at the AWA.}
 	\label{beamline}
 \end{figure*}
 
 The two objectives were emittance and bunch length at the 
 entrance of the quads. We knew further work would include the optics
 downstream, so this section was taken as a first step. 
-We choose to use a local optimization method freely available in the NLOPT package \cite{nlopt}. Bounded Optimization By Quadratic Approximation (BOBYA), 
+We choose to use a local optimization method that is 
+freely available in the NLOPT package \cite{nlopt}. 
+Bounded Optimization By Quadratic Approximation (BOBYA), 
 is a model based and derivative-free method 
 that builds a quadratic using the results of simulation evaluations. 
 The next point to evaluate is chosen by minimizing the quadratic.
+A random sample was done to decide initial conditions, 
+then ten local optimizations were started. The results 
+from all ten runs were used to form a Pareto front
+comparing transverse emittance and bunch length. 
 Details of this work were presented at IPAC'17, and can be found here \cite{denmark}. 
 
 The initial results were promising, and attempts to measure
@@ -173,15 +179,15 @@ Note that $\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$.
 \end{table}
 
 The parameter values of the new Pareto front in Fig.~\ref{paretob} were analyzed, and 
-several more key points were learned from this work. 
+several key points were learned from this work. 
 First, it is clear that varying the laser radius is unnecessary for 
 high charge simulations. All points on the Pareto front
 had a laser radius of \SI{9}{mm}, the maximum value for this parameter.
 Due to the strong space charge forces, 
 it is always beneficial (at least in the AWA model), to let the 
 laser radius be as large as possible.  This mitigates space charge
-and improves the emittance. Ongoing and future high charge optimization work will exclude the laser radius as an optimization parameter based on 
-this result.
+and improves the emittance. Ongoing and future high charge optimization 
+work will exclude the laser radius as an optimization parameter.
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{pareto_emittance_vs_zrms}
 	\caption{Pareto front for adjusted variable bounds at \SI{40}{nC}. }
@@ -194,8 +200,16 @@ will be used in the future. Some of linac phases were positive,
 but very few. Five out of ten local optimization runs had no positive linac 
 phases. Four out of ten local optimization runs had only one positive 
 linac tank ($\phi_{L_6}$), and only two out of the ten runs had two or three
-positive linac phases ($\phi_{L_4}-\phi_{L_6}$). The upper bounds for 
+positive linac phases ($\phi_{L_4}-\phi_{L_6}$). Therefore, the upper bounds for 
 $\phi_{L_1}-\phi_{L_3}$ can also be set to $0^{\circ}$. 
+
+The last lesson learned from the initial model based work deals with the bunch length
+and energy spread. As stated earlier, every gun phase was negative as were 
+$\phi_{L_1}$ and $\phi_{L_2}$. These negative phases are reducing the 
+energy spread in the bunch. This result is expected based on work by others \cite{lclsii}, 
+and is called velocity bunching. Validation of a known behavior adds 
+credibility to the perception that the model based work is giving 
+valid results.
 
 
 \section{Genetic Algorithms}
@@ -309,6 +323,13 @@ in \textit{Proc. IPAC’17},
 Copenhagen, Denmark, May 2017, 
 paper WEPVA022.
 
+\bibitem{lclsii}
+C.~Mitchell \emph{et al.}, “RF Injector Beam Dynamics Optimization 
+and Injected Beam Energy Constraints for LCLS-II”
+in \textit{Proc. IPAC’16}, 
+Busan, South Korea, May 2016, 
+paper TUPOR019.
+
 \bibitem{hofler}
 A. S. Hofler \emph{et al.},
 "Innovative applications of genetic algorithms to 
@@ -322,12 +343,7 @@ K. Deb, A. Pratap, S. Agarwal and T. Meyarivan,
 in IEEE Transactions on Evolutionary Computation, 
 vol. 6, no. 2, pp. 182-197, Apr 2002.
 
-\bibitem{lclsii}
-C.~Mitchell \emph{et al.}, “RF Injector Beam Dynamics Optimization 
-and Injected Beam Energy Constraints for LCLS-II”
-in \textit{Proc. IPAC’16}, 
-Busan, South Korea, May 2016, 
-paper TUPOR019.
+
 
 
 
