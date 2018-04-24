@@ -6,10 +6,13 @@
 \def \lfourright {4.0}
 \def \lfiveright {5.0}
 \def \lsixright {6.0}
-\def \quadone {7.5}
+\def \quadone {7.3}
 \def \quadfour{16}
 
+\draw[very thick, ->] (0.0,1) -- (30,1);
+
 \draw[fill=orange, thick, rounded corners =0.1cm] (\gunleft-0.1,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
+%Straight through
 
 %S1
 \node[] at (-1,2.9) {$S_1$};
@@ -58,7 +61,7 @@
 
 %Line between kicker and septum
 \node[] at (15,2) {Drive Line};
-\node[] at (22.3,-3.5) {Witness Line};
+\node[] at (23,-4) {Witness Line};
 \draw[very thick] (\lsixright+5.2,1.0) -- (12.5,0.7);
 
 %Kicker 
@@ -87,8 +90,7 @@
 \draw[fill=black!60!green,  thick] (\quadfour+1.0, -0.50) ellipse (0.2cm and 0.9cm);
 \draw[fill=black!60!green,  thick] (\quadfour+1.5, -0.50) ellipse (0.2cm and 0.9cm);
 
-%Straight through
-\draw[very thick, ->] (11.4,1) -- (30,1);
+
 
 \def \quadfive{22}
 %Third set of quads
@@ -98,7 +100,7 @@
 
 
 %Witness
-\draw[very thick, <-] (16,-2.5) -- (30,-2.5);
+\draw[very thick, <-] (16,-2.5) -- (31,-2.5);
 
 %Waveguide
 \draw[very thick] (20,-0.5) -- (20,-3);
@@ -114,9 +116,18 @@
 \draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (18.5,-2)rectangle (20.5,-3) node[pos=.5, white] {$\text{ACC}_2$};
 %ACC1
 \draw[fill=black!60!yellow,  thick, rounded corners =0.1cm] (24,-2)rectangle (26,-3) node[pos=.5, white] {$\text{ACC}_1$};
+\def \quadsix{27}
+%Third set of quads
+\draw[fill=black!60!green,  thick] (\quadsix, -2.5) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green,  thick] (\quadsix+0.5, -2.5) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green,  thick] (\quadsix+1.0, -2.5) ellipse (0.2cm and 0.9cm);
+\def \quadseven{21.5}
+%Third set of quads
+\draw[fill=black!60!green,  thick] (\quadseven, -2.5) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green,  thick] (\quadseven+0.5, -2.5) ellipse (0.2cm and 0.9cm);
+\draw[fill=black!60!green,  thick] (\quadseven+1.0, -2.5) ellipse (0.2cm and 0.9cm);
 
-
-\begin{scope}[yscale=1,xscale=-1, yshift=-3.5cm, xshift=-29.5cm]
+\begin{scope}[yscale=1,xscale=-1, yshift=-3.5cm, xshift=-31cm]
 	\draw[fill=orange, thick, rounded corners =0.1cm] (\gunleft-0.1,0.5)rectangle (\gunright,1.5) node[pos=.5, white] {\textbf{Gun}} ;
 	
 	%S1
