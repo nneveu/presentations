@@ -155,6 +155,19 @@ Focusing will ensure maximum transmission of the \SI{40}{nC}
 bunch train through PEST$_1$. Integrated Current Transformers (ICT's), 
 are located before and after all PETS and ACC structures to monitor the 
 transmission.   
+\begin{figure}
+	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
+	\node (fig1) at (0,0)
+	{\includegraphics[width=0.5\textwidth]{stage}};
+	\node[fill=white, inner sep=2pt] (txt2) at (15,10) {ACC};
+	\node[fill=white, inner sep=2pt] (txt2) at (66,35) {PETS};
+	\node[fill=white, inner sep=2pt, rotate=32] (txt2) at (35,33) {Waveguide};
+	\end{tikzpicture}
+	\caption{Example of a TBA stage at the AWA. This picture was taken during 
+	metallic TBA experiment \cite{tba}. }
+	\label{stage}
+\end{figure}
+
 Although not shown in Fig~\ref{beamline}, 
 a spectrometer will be located at the end of the line. Energy loss
 in the bunch train will serve as a way to infer how much power was
@@ -189,15 +202,16 @@ at the AWA \cite{tba}.
 To understand this timing, we must start with the UV laser.
 Both the drive and witness line electron bunches
 originate from the same ultraviolet (UV) laser pulse. 
-A network of UV optics and splitters deliver a laser 
+A network of UV optics and splitters deliver one laser 
 pulse to the witness gun, and a pulse train to the drive gun \cite{korea}.
-The length of each UV pulse is \SI{769}{ps}, which is one wavelength.....  
+The length of each UV pulse is \SI{769}{ps}, which is one wavelength
+of the \SI{1.3}{GHz} operating frequency of the beam line.  
 
 
 \section{Kicker}
 A kicker was specifically fabricated 
 for this experiment. The initial design was adapted from 
-work done at NIU \cite{kicker,korea}. The plates were lengthened
+work done at Indiana University \cite{kicker,korea}. The plates were lengthened
 to increase the angle and the gap adjusted based on 
 beam size simulations and mechanical constraints at the AWA. 
 The design specifications and final kicker parameters 
@@ -235,7 +249,7 @@ source was used to probe one blade of the kicker at a time.
 Both sides performed well, with one blade showing slight discharge
 at \SI{8}{KV} RMS, and the other showing no discharge up to \SI{9}{KV} RMS
 (the limit of the source). These results are in line with other kickers
-designed and tested at the APS \cite{CY}.  
+designed and tested at the APS \cite{mbakicker}.  
 
 \begin{figure}
 	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
@@ -355,6 +369,16 @@ Accelerator,”
 in \emph{Proc. IPAC'16}, 
 Busan, South Korea, May 2016, 
 paper TUPMY036.
+
+\bibitem{mbakicker}
+C.~Yao \emph{et al.}, 
+“Development of Fast Kickers for the APS
+MBA Upgrade,”
+in \emph{Proc. IPAC'15}, 
+Richmond, VA, USA, May 2015, 
+paper WEPTY014.
+
+
 
 \bibitem{opal}
 A.~Adelmann \emph{et al.},
