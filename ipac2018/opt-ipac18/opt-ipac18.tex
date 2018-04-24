@@ -277,15 +277,18 @@ will support upcoming TBA experiments at the AWA.
 In the following months, we plan to continue our work 
 by investigating novel optimization methods and comparing them 
 in efficiency and precision. We will take advantage of the 
-open source library libensemble:
+open source Python library libensemble:
 \begin{center}
 	\url{https://github.com/Libensemble/libensemble}
 \end{center} 
 which is being developed at ANL.
 This framework allows for massively parallel ensemble simulations in 
 combination with a mechanism for easily interchanging optimization methods. 
-We will work to deploy APOSMM \cite{jeff}, in combination with local optimization
-methods and compare to popular techniques in the field such as GAs. 
+We will work to deploy Asynchronously Parallel Optimization Solver for finding Multiple Minima (APOSMM).
+This multistart algorithm considers all results from previously evaluated simulations when determining where to start or continue a local optimization run \cite{jeff}. This allows for efficient 
+search for a global minimum. This method has already been tested
+(with success) on problems where derivatives are unavailable, 
+as is the case in many non-linear accelerator physics problems. 
 
 
 \section{Conclusion}
@@ -393,18 +396,13 @@ p. 010101, 2013.
 \bibitem{nsgaii}
 K. Deb, A. Pratap, S. Agarwal and T. Meyarivan, 
 "A Fast and Elitist Multiobjective Genetic Algorithm: NSGA-II," 
-in IEEE Transactions on Evolutionary Computation, 
+\emph{IEEE Trans. on Evolutionary Comp.} , 
 vol. 6, no. 2, pp. 182-197, Apr 2002.
 
 \bibitem{jeff}
-APOSMM, \url{http://www.mcs.anl.gov/~jlarson/APOSMM/}
-
-
-
-
-
-
-
+J. Larson, and S.M. Wild, ""
+\emph{Math. Prog. Comp.}, vol. 10, 
+p. 1-30, Feb. 2018. 
 
 \bibitem{fish}
 \emph{Reference Manual for the POISSON/SUPERFISH Group of 
