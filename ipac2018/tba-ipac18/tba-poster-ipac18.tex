@@ -219,28 +219,7 @@ The subscript on each structure refers to which stage the structures belong to (
 The drive line has six accelerating cavities with a maximum beam energy of \SI{70}{MeV}. 
 The witness line has one accelerating cavity with a max beam energy of \SI{15}{MeV}.
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Staging}{name=stage1,column=2,below=beamline, span=2}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Stage 1:}
-The first accelerating stage refers ACC$_1$, and PEST$_1$. This is the straight 
-through portion of the drive beam line. The first bunch train will be allowed
-to pass the kicker when it is unactivated, i.e. not pulse and no field present.
-Focusing in the quads will ensure maximum transmission of the \SI{40}{nC} 
-bunch train through PEST$_1$. Integrated Current Transformers (ICT's), 
-are located before and after all PETS and ACC structures to monitor the 
-transmission. 
-\vspace{1em}
 
-\textbf{Stage 2:}
-Likewise, stage 2 supports ACC$_2$ and PETS$_2$. After the first 
-bunch train passes the kicker and goes on to PETS$_1$, 
-the kicker will be pulsed. The second bunch train will be directed to the bent beam line on drive side.
-Meanwhile the same bunch on the witness side that was accelerated in 
-stage 1 will arrive at stage 2, receiving a second increase in energy.
-\textbf{Successful energy gain in both stages is key to demonstrating staged TBA.}
-	
-}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Experimental Stage}{name=stage3,column=4,below=beamline, span=2}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -255,10 +234,34 @@ stage 1 will arrive at stage 2, receiving a second increase in energy.
 
 \vspace{1em}
 Example of a TBA stage at the AWA. This picture was taken during 
-metallic TBA experiment \cite{tba}.  
+metallic TBA experiment.  
 	
 }
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Staging}{name=stage1,column=2,below=beamline, span=2, bottomaligned=stage3}{
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\textbf{Stage 1:}
+	The first stage refers ACC$_1$, and PEST$_1$. This is the straight 
+	through portion of the drive beam line. The first bunch train will 
+	pass the kicker when it is unactivated, i.e. not pulse and no field present.
+	Integrated Current Transformers (ICT's), 
+	are located before and after all PETS and ACC structures to monitor  
+	transmission. 
+	\vspace{1em}
+	
+	
+	%\begin{singlespace}
+	\textbf{Stage 2:} Likewise, stage 2 supports ACC$_2$ and PETS$_2$. After the first 
+	bunch train passes the kicker and goes on to PETS$_1$, 
+	the kicker will be pulsed. The second bunch train will be directed to the bent beam line on drive side.
+	Meanwhile the same bunch on the witness side that was accelerated in 
+	stage 1 will arrive at stage 2, receiving a second increase in energy.
+	
+	\textbf{Successful energy gain in both stages is key to demonstrating staged TBA.}
+	%\end{singlespace}
+	
+	
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{kicker}{name=kicker,column=0,row=0,span=2, below=beamline}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,23 +274,26 @@ metallic TBA experiment \cite{tba}.
 		The plates will be 
 		operated in differential mode, to get the highest field
 		possible from the available pulsar.
-		\vspace{-1.2em}
+		
+\vspace{2.5em}
 \begin{center}
-	\singlespacing
-		\begin{tabular}{lc}
-		\hline  %\toprule 
-		\textbf{Parameter} & \textbf{Value} \\ \hline
-		%\midrule
-		Charge       		& \SI{40}{nC}    \\ %[3pt]
-		Beam Energy  		& \SI{70}{MeV}  \\ %[3pt]
-		Angle 	     		& $2^{\circ}$ 	\\ 
-		Gap Between Plates  & \SI{40}{mm}	\\		 
-		Length of Plates    & \SI{1}{m}	\\
-		Pulsar Voltage      & $\pm$\SI{24}{kV} \\
-		Field Rise Time  	& \SI{3}{ns}    \\
-		Min Field Duration 	& \SI{12}{ns}  \\ \hline%[3pt]
-		%\bottomrule
-	\end{tabular}
+	\begin{singlespace}
+			\begin{tabular}{lc}
+			\hline  %\toprule 
+			\textbf{Parameter} & \textbf{Value} \\ \hline
+			%\midrule
+			Charge       		& \SI{40}{nC}    \\ %[3pt]
+			Beam Energy  		& \SI{70}{MeV}  \\ %[3pt]
+			Angle 	     		& $2^{\circ}$ 	\\ 
+			Gap Between Plates  & \SI{40}{mm}	\\		 
+			Length of Plates    & \SI{1}{m}	\\
+			Pulsar Voltage      & $\pm$\SI{24}{kV} \\
+			Field Rise Time  	& \SI{3}{ns}    \\
+			Min Field Duration 	& \SI{12}{ns}  \\ \hline%[3pt]
+			%\bottomrule
+		\end{tabular}
+	\end{singlespace}
+
 \end{center}
 
 }
@@ -326,43 +332,50 @@ designed and tested at the APS.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 While the number of optics elements and their 
 general locations is known, there are still many free parameters that 
-are not determined by that information alone. 
+are not determined. 
 The strength of each magnet, the phase in each cavity, 
 and the laser profile can all be freely adjusted.
 This leads to a high dimensional optimization problem. 
 The parameters on the drive line are further complicated
-by strong space charge forces and bending elements (kicker, septum, dipole).
-
+by strong space charge forces and bending elements.
 A first round multi-objective optimization of the drive line has been performed 
-using the built in genetic algorithm (GA) in OPAL-T \cite{opal}. 
-These simulations included the gun and all elements leading up 
-to the entrance of the septum, as shown in Fig.~\ref{beamline}.
+using the built in genetic algorithm (GA) in OPAL-T . 
+These simulations included all elements leading up 
+to the entrance of the septum.
 The objectives were beam size, emittance, and energy spread before the kicker.
-Simulation parameters are shown in Table~\ref{simparam}.
 Results of this optimization work will be published soon.
 
-\centering
-\vspace{-0.5em}
-\begin{minipage}{0.99\textwidth}
-	\centering
-	\begin{tabular}{ lcc}
-		Solenoid Strength & $ 200 \le \text{I}_{\text{bs}}\text{(A)} \le 500$  \Tstrut \\
-		Solenoid Strength & $ 170 \le \text{I}_{\text{s}}\text{(A)} \le 260$  \Tstrut \\
-		Phase of Gun & $-30^\circ \le \phi_{\text{gun}} \le 0^\circ$  \\
-		Quad 1  & $-8.8 \le \text{kQ}_{1}\text{(m}^{-1}) \le 8.8$  \\
-		Quad 2 & $-8.8 \le \text{kQ}_{2}\text{(m}^{-1}) \le 8.8$ 
-		%\bottomrule    
-	\end{tabular}
-\end{minipage}	
+\vspace{-2em}
+\begin{center}
+	\begin{minipage}{0.3\textwidth}
+		\begin{singlespace}
+				\begin{tabular}{ l *{2}{c}}
+				\hline%\toprule
+				\textbf{Variable} & \textbf{Range} \\
+				\hline%\midrule
+				Solenoid Strength & $ 50 \le S_2[A] \le 440$   \\
+				Phase of Gun & $-45 \le \phi_g \le 45$  \\
+				Laser Radius  & $3.5 \le R[mm] \le 9$ \\
+				Laser FWHM & $1.5 \le T[ps] \le $10   \\
+				Cavity Phase & $-40 \le \phi_L \le 40$  \\
+				\hline%\bottomrule	
+			\end{tabular}
+		\end{singlespace}
+	\end{minipage}	\hspace{20mm}
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=1\textwidth]{paper-pareto-ex-vs-rmss}
+	\end{minipage}
+\end{center}
+
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headerbox{Conclusion}{name=ref,column=2,above=bottom, span=2}{%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\noindent 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent 
 The TBA layout for upcoming experiments at the 
-AWA facility is approximately decided. A fast rise time kicker
+AWA facility is approximately decided. A kicker
 was designed and fabricated for this experiment. 
 A high voltage test was preformed at the 
 Advanced Photon Source. Initial optimization 
@@ -370,28 +383,26 @@ work has been done to decide
 optics parameters for the high charge drive line.
 Additional design work and optimization studies will be done 
 to finalize the optics further downstream. 
+
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Acknowlegements}{name=ref,column=4,above=bottom, span=2}{%
+\headerbox{Acknowlegements}{name=ref,column=4,above=bottom, span=2, aligned=ref}{%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent 
 We gratefully acknowledge the computing resources
 provided on Bebop, a HPC cluster operated by the LCRC at ANL.
-This material is based upon work supported by the 
-U.S. DOE, Office of Science, under 
-contract number DE-AC02-06CH11357 and grant number DE-SC0015479. 
+This work is supported by the U.S. DOE, OS,  
+contract DE-AC02-06CH11357 and grant DE-SC0015479. 
 Travel to IPAC'18 supported by the Division of Physics 
-of the United States NSF 
-Accelerator Science Program and the Division of 
-Beam Physics of the APS.
-
-\vspace{1em}
-\begin{centering}
-	\includegraphics[width=0.1\textwidth]{logos/aps-logo}\hspace{5mm}
+of the U.S. NSF 
+Accelerator Science Program and the DBP of the APS.
+\vspace{-1em}
+\hfill
+\begin{center}
 	\includegraphics[width=0.3\textwidth]{logos/DOE_logo_color_cmyk}
-	
-\end{centering}
+\end{center}
+
 
 }
 

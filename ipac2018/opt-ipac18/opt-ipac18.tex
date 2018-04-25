@@ -37,6 +37,7 @@
 \usetikzlibrary{mindmap,trees}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{plotmarks}
+\newcommand{\lsnote}[1]{\textsf{{\color{violet}{ LS note:}   #1 }}}
 %
 % if BibLaTeX is used
 %
@@ -88,7 +89,7 @@ This includes using the well-known Genetic Algorithm (NSGA-II),
 incorporated into OPAL-T. 
 We have also investigated a model-based method and novel
 structure based algorithms developed at ANL. 
-Ongoing efforts include using these optimization methods to improve operations at the AWA. 
+These optimization methods will be implemented to improve operations at the AWA. 
 Simulation results will be compared to measured beam parameters at the AWA, 
 and one or more optimization methods will be selected for use in guiding operations in the future.
 \end{abstract}
@@ -106,24 +107,24 @@ and Two Beam Acceleration (TBA) \cite{tba}.
 Simulation codes used for these and other experiments at
 the AWA include: PARMELA \cite{parmela}, GPT \cite{gpt}, 
 ASTRA \cite{astra}, and more recently OPAL \cite{opal}. 
-The later is the code used for all simulations in this 
+The latter is the code used for all simulations in this 
 study. 
 We also take advantage of the computing resources provided
 by the Laboratory Computing Resource Center (LCRC), 
 at Argonne National Laboratory (ANL). Access to the 
 Blues, and recently installed Bebop clusters has significantly
-increase simulation productivity with the capability to run 
+increased simulation productivity by providing the capability to run 
 all simulations in parallel, and large optimization cases
 on many cores.
 
 \section{Model Based Method}
 Last year, we began with the optimization of the front end of 
-the high charge photoinjector at the AWA. The charge
-of interest was \SI{40}{nC}, and chosen to target the needs 
+the high charge photoinjector at the AWA. A charge
+of \SI{40}{nC} was chosen to target the needs 
 for upcoming TBA experiments at AWA.
 The simulation model included the gun, two solenoids, 
 and six accelerating cavities, as shown in Fig.~\ref{beamline}. 
-The quadrupoles and bending elements were not included in this work.
+The quadrupoles and bending elements were not included in this first effort, they will be included later.
 We choose ten variables for the optimization parameters: 
 laser radius, laser full width half maximum, solenoid strength ($S_2$), 
 gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
@@ -136,18 +137,19 @@ gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}
 	\label{beamline}
 \end{figure*}
 
-The two objectives were emittance and bunch length at the 
-entrance of the quads. We knew further work would include the optics
-downstream, so this section was taken as a first step. 
+The objective was to get an optimal combination of small emittance, and short bunch length at the 
+entrance of the quads. 
 We choose to use a local optimization method that is 
 freely available in the NLOPT package \cite{nlopt}. 
 Bounded Optimization By Quadratic Approximation (BOBYA), 
 is a model based and derivative-free method 
 that builds a quadratic using the results of simulation evaluations. 
 The next point to evaluate is chosen by minimizing the quadratic.
-The initial probe of the parameter space was done with a 1,000-point random sample, 
-and BOBYQA was started from ten promising points. 
-These local optimization runs were ran until they converged.
+The initial probe of the parameter space was done with 1,000 random simulations, 
+inside the bounds of Table~\ref{bounds}.
+Simulations with the best emittance and bunch length were chosen 
+as starting points for ten BOBYQA runs.
+These local optimization runs were carried out until they converged.
 The results from all ten runs were used to form a Pareto front
 comparing transverse emittance and bunch length. 
 Details of this work were presented at IPAC'17, and can be found here \cite{denmark}. 
@@ -184,8 +186,8 @@ several key points were learned from this work.
 First, it is clear that varying the laser radius is unnecessary for 
 high charge simulations. All points on the Pareto front
 had a laser radius of \SI{9}{mm}, the maximum value for this parameter.
-Due to the strong space charge forces, 
-it is always beneficial (at least in the AWA model), to let the 
+Due to the strong space charge forces at the AWA, 
+it is beneficial to let the 
 laser radius be as large as possible.  This mitigates space charge
 and improves the emittance. Ongoing and future high charge optimization 
 work will exclude the laser radius as an optimization parameter.
@@ -200,7 +202,7 @@ None of the gun phases were positive. An upper bound of $\phi = 0^{\circ}$
 will be used in the future. Some of linac phases were positive, 
 but very few. Five out of ten local optimization runs had no positive linac 
 phases. Four out of ten local optimization runs had only one positive 
-linac tank ($\phi_{L_6}$), and only two out of the ten runs had two or three
+linac \lsnote{phase} ($\phi_{L_6}$), and only two out of the ten runs had two or three
 positive linac phases ($\phi_{L_4}-\phi_{L_6}$). Therefore, the upper bounds for 
 $\phi_{L_1}-\phi_{L_3}$ can also be set to $0^{\circ}$. 
 
@@ -218,8 +220,9 @@ They are used to tackle large multiobjective optimization problems on wide varie
 A nice review of work done in the field using GAs can be found here \cite{hofler}. 
 In general, this class of algorithms aims to mimic the natural selection 
 process often seen in biology. In this way, there are several
-steps that most GAs follow in some form:
+steps that most GAs follow: 
 \begin{enumerate}
+	\itemsep0em
 	\item Start with a finite population (simulation evaluations). This is the first generation.
 	\item Decided which individuals (simulations) in the population 
 	are the best based on a selection criteria.
@@ -227,7 +230,7 @@ steps that most GAs follow in some form:
 	\item Repeat many times.
 \end{enumerate}
 
-There has been much research on how implement these steps, 
+There has been much research on how to implement these steps, 
 and what types of selection and mutation criteria should be used.
 A widely used implementation is the \mbox{NSGA-II}~\cite{nsgaii} method.
 This is also the algorithm built into the simulation code 
@@ -245,23 +248,22 @@ Reduction in the fidelity
 allowed us to complete a comparison using a reasonable 
 amount of computing resources and within a weeks time.
 The optimization variables (Table~\ref{bounds}) 
-and objectives are these same as in the previous section, 
-with one important differences. The boundaries were 
+and objectives are these same as those given in the previous section, 
+with one important difference. The boundaries were 
 reduced based on the information learned in the first
 round of optimization.
 
 In total, 2,393 simulations (from the 1,000-point sample plus 
-1,393 points and the BOBYQA optimization runs) were used to
+1,393 points \lsnote{did you mean `of' instead of `and the'}  BOBYQA optimization runs) were used to
 generate the model based approximate Pareto front. 
 This approach required approximately 80 core-hours of computation. 
 We compared this comparable fronts generated by the GA.
 With 128 simulations in each generation, the GA required 3,200
-simulations to reach the 25th generation, and 64,000 simulations
-to reach the 500th generation. Approximately 107 and 2,133 
-core-hours of computation were needed for those runs respectively. 
+simulations to reach the 25th generation\lsnote{107 core-hours}, and 64,000 simulations
+to reach the 500th generation \lsnote{2,133 coure-hours}. 
 Comparison of the three Pareto fronts is shown in Fig~\ref{compare}.
 As expected by the "no free lunch" theorem, both methods give 
-acceptable results, with only the time to simulation being 
+acceptable results, with only the \lsnote{total simulation time} being 
 the difference. 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{model_vs_ga}
@@ -275,8 +277,7 @@ will support upcoming TBA experiments at the AWA.
 
 \section{Future Work: Novel Methods}
 In the following months, we plan to continue our work 
-by investigating novel optimization methods and comparing them 
-in efficiency and precision. We will take advantage of the 
+by investigating novel optimization methods and comparing \lsnote{their} efficiency and precision. We will take advantage of the 
 open source Python library libensemble:
 \begin{center}
 	\url{https://github.com/Libensemble/libensemble}
@@ -285,7 +286,7 @@ which is being developed at ANL.
 This framework allows for massively parallel ensemble simulations in 
 combination with a mechanism for easily interchanging optimization methods. 
 We will work to deploy Asynchronously Parallel Optimization Solver for finding Multiple Minima (APOSMM).
-This multistart algorithm considers all results from previously evaluated simulations when determining where to start or continue a local optimization run \cite{jeff}. This allows for efficient 
+This multistart algorithm considers all results from previously evaluated simulations when determining where to start or continue a local optimization run \cite{jeff}. This allows for \lsnote{an} efficient 
 search for a global minimum. This method has already been tested
 (with success) on problems where derivatives are unavailable, 
 as is the case in many non-linear accelerator physics problems. 
@@ -296,9 +297,8 @@ Photoinjector optimization projects are ongoing at the AWA.
 Two optimization methods have been used with success:
 BOBYQA and NSGA-II. In the future, novel optimization 
 methods developed at ANL will be tested. The first of 
-which will be APOSMM. All optimization efforts are taking 
-place to improve operating conditions at the AWA and 
-complete design work for upcoming experiments.
+which will be APOSMM. All optimization efforts \lsnote{aim} to improve operating conditions at the AWA and 
+\lsnote{aid in the completion of the beamline designs needed} for upcoming experiments.
 
 \section{acknowledgments}
 We gratefully acknowledge the computing resources

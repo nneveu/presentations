@@ -148,8 +148,8 @@ external power source.
 \subsection{Stage 1}
 The first accelerating stage refers to portions of the beam line that 
 support ACC$_1$, and PEST$_1$. This is the straight 
-through portion of the drive beam line. The first bunch train will be allowed
-to pass the kicker when it is unactivated, i.e. not pulse and no field present.
+through portion of the drive beam line. The first bunch train will 
+pass the kicker when it is unactivated, i.e. not pulse and no field present.
 The bunch train will then arrive at the quadrupoles before PETS$_1$. 
 Focusing will ensure maximum transmission of the \SI{40}{nC} 
 bunch train through PEST$_1$. Integrated Current Transformers (ICT's), 
@@ -215,7 +215,8 @@ The bunch train must travel a longer distance to reach PETS$_1$
 than the distance the witness bunch must travel to reach ACC$_1$.
 The the difference in travel time is accounted for by adding an optical delay 
 to the UV optics proceeding the witness gun. 
-[ADD MORE HERE ABOUT TIMING...]
+Once the rough timing is adjusted with the optics, fine timing is adjusted
+by calculating the rise and fill times mentioned previously.
 
 
 \section{Kicker}
@@ -288,8 +289,8 @@ These simulations included the gun and all elements leading up
 to the entrance of the septum, as shown in Fig.~\ref{beamline}.
 The objectives were beam size, emittance, and energy spread before the kicker.
 Simulation parameters are shown in Table~\ref{simparam}.
-Results of this optimization work will be published soon.
-[Leave it at that? I don't want to add anything that will be in the paper]
+The resulting Pareto fronts before the kicker at $Z=16.5m$, and after the 
+kicker at $Z=18.5m$
 \begin{table}[hbt]
 	%   \vspace*{-.5\baselineskip}
 	\centering
@@ -311,7 +312,11 @@ Results of this optimization work will be published soon.
 	\label{simparam}
 	%   \vspace*{-\baselineskip}
 \end{table}
-
+\begin{figure}
+	\includegraphics[width=0.5\textwidth]{paper-pareto-ex-vs-rmss}
+	\caption{Comparison of Pareto fronts before ($Z=16.5m$) and after ($Z=18.5m$) the kicker. }
+	\label{initial}
+\end{figure}
 
 \section{Conclusion}
 The TBA layout for upcoming experiments at the 
