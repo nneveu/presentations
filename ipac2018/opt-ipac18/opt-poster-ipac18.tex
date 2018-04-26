@@ -147,14 +147,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Argonne Wakefield Accelerator (AWA) Facility houses two rf photoinjectors.
 Simulation codes used for experiments at the AWA include: PARMELA, GPT, 
-ASTRA, and more recently OPAL. 
+ASTRA, and OPAL. 
 The latter is the code used for all simulations in this 
 study. 
 We also take advantage of the computing resources provided
 by the LCRC at ANL. Access to the 
 Blues, and recently installed Bebop clusters has significantly
 increased simulation productivity by providing the capability to run 
-all simulations in parallel, and large optimization cases
+all simulations in parallel and large optimization cases
 on many cores.
 }
 
@@ -183,8 +183,7 @@ and six accelerating cavities.
 We choose ten variables for the optimization parameters: 
 laser radius, laser full width half maximum, solenoid strength ($S_2$), 
 gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
-
-The objectives were emittance, and bunch length at the entrance of the quads. 
+The objectives were emittance and bunch length at the entrance of the quads. 
 We choose to use a local optimization method that is 
 freely available in the NLOPT package. 
 Bounded Optimization By Quadratic Approximation (BOBYA), 
@@ -215,7 +214,7 @@ Several key points were learned from this work:
 \begin{itemize}
 	\itemsep0em
 	\item Varying the laser radius is unnecessary. 
-	All points on the Pareto front	had a laser radius of \SI{9}{mm}, the maximum value (results of strong space charge).
+	All points on the Pareto front	had a laser radius of \SI{9}{mm}, the maximum value. This is a result of strong space charge.
 	\item Phase boundaries were too large for gun and linac.
 	\item Phase can be used for velocity bunching	
 \end{itemize}
@@ -250,7 +249,7 @@ Several key points were learned from this work:
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Genetic Algorithm}{name=kicker,column=0,row=0,span=6, below=bob}{
+\headerbox{Genetic Algorithm - Comparison}{name=kicker,column=0,row=0,span=6, below=bob}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Genetic Algorithms (GAs) have been used successfully for over two decades
 in the accelerator physics community.
@@ -271,14 +270,14 @@ steps that most GAs follow:
 		\end{enumerate}
 		There has been much research on how to implement these steps, 
 		and what types of selection and mutation criteria should be used.
-		We used the \mbox{NSGA-II} implementation in OPAL.
+		We used the \mbox{NSGA-II} implementation built into OPAL.
 		To verify the model based method, a low fidelity model 
 		of the photoinjector was used to do a quick comparison.
-		The simulation time to two minutes. 
-		The optimization variables (table above) 
-		and objectives are these same as those given in the previous section.
+		The simulation time took two minutes. 
+		The optimization variables
+		and objectives are these same as in the previous section.
 		The boundaries were reduced based on the information 
-		learned in the first round of optimization.
+		learned in the first rounds of optimization.
 		
 		\vspace{4em}
 		
@@ -297,8 +296,8 @@ steps that most GAs follow:
 \end{singlespace}
 
 \vspace{1em}
-	Comparison of the three Pareto fronts are similar.
-	As expected by the "no free lunch" theorem, both methods give 
+	Comparison of the three Pareto fronts are similar, 
+	as expected by the "no free lunch" theorem. Both methods give 
 	acceptable results, with only the total simulation time being 
 	the difference. 
 	\end{minipage}	%\hspace{1em}
@@ -312,9 +311,10 @@ steps that most GAs follow:
 
 }
 
-\iftrue
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Future Work: Novel Methods}{name=work,column=0,above=bottom, span=3}{%
+\headerbox{Future Work: Novel Methods}{name=work,column=3,above=bottom, span=3}{%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent 
 We will take advantage of the 
@@ -322,49 +322,37 @@ open source Python library libensemble:
 \begin{center}
 	\url{https://github.com/Libensemble/libensemble}
 \end{center} 
+which is being developed at ANL.
 This framework allows for massively parallel ensemble simulations in 
 combination with a mechanism for easily interchanging optimization methods. 
 We will deploy Asynchronously Parallel Optimization Solver for finding Multiple Minima (APOSMM).
-This multistart algorithm considers all results from previously evaluated simulations when determining where to start a local optimization run. 
+This multistart algorithm considers all results from previously evaluated simulations when determining where to start or continue a local optimization run. 
 This allows for an efficient search for a global minimum. 
 This method has already been tested
 (with success) on problems where derivatives are unavailable, 
-as is the case here.	
+as is the case in many non-linear accelerator physics problems. 	
 	
 }
-\iffalse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Conclusion}{name=ref,column=2,above=bottom, span=2}{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noindent 
-Photoinjector optimization projects are ongoing at the AWA.
-Two optimization methods have been used with success:
-BOBYQA and NSGA-II. In the future, novel optimization 
-methods developed at ANL will be tested. The first of 
-which will be APOSMM. All optimization efforts aim to improve operating conditions at the AWA and 
-aid in the completion of the beamline designs needed for upcoming experiments.
-
+\headerbox{Acknowlegements}{name=work,column=0,above=bottom, span=3, above=bottom, aligned=work}{%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\noindent 
+	We gratefully acknowledge the computing resources
+	provided on Bebop, a HPC cluster operated by the LCRC at ANL.
+	This work is supported by the U.S. DOE, OS,  
+	contract DE-AC02-06CH11357 and grant DE-SC0015479. 
+	Travel to IPAC'18 supported by the United States National Science Foundation, 
+	the Division of Physics of Beams of the American Physical Society, and TRIUMF.
+	
+	\hfill
+	\begin{center}
+		\includegraphics[width=0.15\textwidth]{logos/nsf}\hspace{1em}
+		\includegraphics[width=0.5\textwidth]{logos/DOE_logo_color_cmyk}\hspace{1em}
+		\includegraphics[width=0.15\textwidth]{logos/aps-logo}
+	\end{center}
 }
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Acknowlegements}{name=work,column=3,above=bottom, span=3, above=bottom, aligned=work}{%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noindent 
-We gratefully acknowledge the computing resources
-provided on Bebop, a HPC cluster operated by the LCRC at ANL.
-This work is supported by the U.S. DOE, OS,  
-contract DE-AC02-06CH11357 and grant DE-SC0015479. 
-Travel to IPAC'18 supported by the United States National Science Foundation, 
-the Division of Physics of Beams of the American Physical Society, and TRIUMF.
 
-\hfill
-\begin{center}
-	\includegraphics[width=0.15\textwidth]{logos/nsf}\hspace{1em}
-\includegraphics[width=0.5\textwidth]{logos/DOE_logo_color_cmyk}\hspace{1em}
-\includegraphics[width=0.15\textwidth]{logos/aps-logo}
-\end{center}
-}
-\fi
+
 
 \end{poster}%
 %
