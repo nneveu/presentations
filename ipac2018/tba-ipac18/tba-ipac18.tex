@@ -203,21 +203,20 @@ it is possible, and has been demonstrated in previous experiments
 at the AWA \cite{tba}. 
 
 
-\lsnote{I am confused about the following.  How can the laser pulse be one whole RF period?, beam would be spraying 
-all over the place.  Did you mean the repetition rate of the laser is the same as the RF?  Also, why is the one period spacer 
-between bunches needed?  Does this have to do with optimal filling of the decelerating structure?  Don't you need two 
-bunch trains?  When exactly does the witness pulse go out in all of this : after both drive bunch trains?  Also, if you talk 
-about times, you should be using period T, not wavelength lambda.}
-To understand this timing, we must start with the UV laser.
+To start, a \SI{248}{nm} ultraviolet (UV) laser is pulsed at 
+the same repetition rate as the beam line. This is either 1, 2, or \SI{5}{Hz}.
+The full width half maximum (FWHM) of the laser can be varied from \SI{1.5}{ps}
+to \SI{10}{ps}. Depending on the FWHM, the duration of the UV 
+pulse ranges from 1 to 3 degrees of the \SI{1.3}{GHz} rf frequency. 
+ 
 Electron bunches in both the drive and witness line 
-originate from the same ultraviolet (UV) laser pulse. A  network of UV optics and splitters 
+originate from the same UV laser pulse. 
+A  network of UV optics and splitters 
 deliver one laser pulse to the witness gun, and a pulse train to the drive gun \cite{korea}.
-Each UV pulse is \SI{769}{ps} long, which is period (T)
-of the \SI{1.3}{GHz} rf operating frequency of the beam line.  
-An additional wavelength is used as spacing between each bunch train.
-This brings the length of an eight bunch train to 15~T or about \SI{11.5}{ns}.
-Since only one bunch is sent to the witness line, the length of the 
-laser pulse on the witness line is only T.
+Each UV pulse is within one period (T) of the rf frequency; \SI{769}{ps}.
+This brings the length of an eight bunch train to 7~T or about \SI{5.4}{ns}.
+Spacing between the bunches allows the wake from previous bunches to 
+start filling the PETS before the wake from the next bunch is introduced.
 
 The drive bunch train must travel a longer distance to reach PETS$_1$ 
 than the distance the witness bunch must travel to reach ACC$_1$.
@@ -225,6 +224,11 @@ The difference in travel time is accounted for by adding an optical delay
 to the UV optics proceeding the witness gun. 
 Once the rough timing is adjusted with the optics, fine timing is adjusted
 by calculating the rise and fill times of the PETS and accelerating structures. 
+The overall timing depends on two key events. When drive bunch train 1 reaches PETS$_1$, 
+the witness bunch must be near the entrance of ACC$_1$. Next, when 
+drive bunch train 2 reaches $PETS_2$, the same witness bunch that was accelerated
+in ACC$_1$, should be approaching ACC$_2$. If the timing is correct, 
+there will be sequential energy gain in both stages.
 
 
 \section{Kicker}
@@ -252,7 +256,7 @@ possible from the available pulsar.
 		Length of Plates    & \SI{500}{A}	\\
 		Pulsar Voltage      & $\pm$\SI{24}{kV} \\
 		Field Rise Time  	& \SI{3}{ns}    \\
-		Min Field Duration 	& \SI{12}{ns}  \\ %[3pt]
+		Field Duration 		& \SI{12}{ns}  \\ %[3pt]
 		\bottomrule
 	\end{tabular}
 	\label{tkick}
@@ -313,10 +317,10 @@ A detailed description of the optimization work will be published soon.
 		Laser Radius & \SI{9}{mm}        & --    \\
 		Gun Gradient & \SI{65}{MV/m}     & --  \\ %[3pt]
 		Laser FWHM   & --      			 & \SI{1.5}{ps} $\leq F \leq $ \SI{10}{ps}	  \\ %[3pt]
-		Gun Phase    & -- 				 & \SI{-20}{}$^{\circ} \leq \phi_g \leq$ \SI{0}{}$^{\circ}$  \\	
-		Linac Phases & --		         & \SI{-20}{}$^{\circ} \leq \phi_l \leq$ \SI{0}{}$^{\circ}$ 	  \\	 
-		$S_1$        & --		 		 & \SI{300}{A} $\leq B \leq $ \SI{500}{A}	  \\
-		$S_2$		 & --  	 			 & \SI{180}{A} $\leq M \leq $ \SI{280}{A}	  \\
+		Gun Phase    & -- 				 & \SI{-30}{}$^{\circ} \leq \phi_g \leq$ \SI{0}{}$^{\circ}$  \\	
+		$S_1$        & --		 		 & \SI{350}{A} $\leq B \leq $ \SI{500}{A}	  \\
+		$S_2$		 & --  	 			 & \SI{170}{A} $\leq M \leq $ \SI{260}{A}	  \\
+		Quads 		 & --				 & \SI{-8}{Tm^{-1}} $\leq M \leq $ \SI{8}{Tm^{-1}}	  \\
 		\bottomrule
 	\end{tabular}
 	\label{simparam}
@@ -346,10 +350,8 @@ operated by the LCRC at Argonne National Laboratory.
 This material is based upon work supported by the 
 U.S. Department of Energy, Office of Science, under 
 contract number DE-AC02-06CH11357 and grant number DE-SC0015479. 
-Travel to IPAC'18 supported by the Division of Physics 
-of the United States National Science Foundation 
-Accelerator Science Program and the Division of 
-Beam Physics of the American Physical Society.
+Travel to IPAC'18 supported by the United States National Science Foundation, 
+the Division of Physics of Beams of the American Physical Society, and TRIUMF.
 
 
 \begin{thebibliography}{9}
