@@ -1,0 +1,312 @@
+\documentclass[portrait,final,paperwidth=92cm, paperheight=152cm,  fontscale=0.277]{baposter}
+%a0paper,
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage{vwcol} 
+\usepackage{varwidth}
+\usepackage{tikz}
+\usepackage{graphicx}
+\graphicspath{{/home/nicole/Documents/presentations/ipac2018/logos}{/home/nicole/Documents/presentations/ipac2018/tba-ipac18}}
+\usetikzlibrary{calc}
+%\usepackage{times}
+%\usepackage{helvet}
+%\usepackage{bookman}
+\usepackage{palatino}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+
+\newcommand{\captionfont}{\footnotesize}
+
+\graphicspath{{images/}{../images/}}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
+\usetikzlibrary{snakes,backgrounds,spy}
+\usepackage{tcolorbox}
+\newcommand{\SET}[1]  {\ensuremath{\mathcal{#1}}}
+\newcommand{\MAT}[1]  {\ensuremath{\boldsymbol{#1}}}
+\newcommand{\VEC}[1]  {\ensuremath{\boldsymbol{#1}}}
+\newcommand{\Video}{\SET{V}}
+\newcommand{\video}{\VEC{f}}
+\newcommand{\track}{x}
+\newcommand{\Track}{\SET T}
+\newcommand{\LMs}{\SET L}
+\newcommand{\lm}{l}
+\newcommand{\PosE}{\SET P}
+\newcommand{\posE}{\VEC p}
+\newcommand{\negE}{\VEC n}
+\newcommand{\NegE}{\SET N}
+\newcommand{\Occluded}{\SET O}
+\newcommand{\occluded}{o}
+\renewcommand{\baselinestretch}{-1.5} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Some math symbols used in the text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Multicol Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\columnsep}{1.5em}
+\setlength{\columnseprule}{0mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Save space in lists. Use this after the opening of the list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{%
+	\setlength{\itemsep}{1pt}%
+	\setlength{\parskip}{0pt}%
+	\setlength{\parsep}{0pt}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Here starts the poster
+%%%---------------------------------------------------------------------------
+%%% Format it to your taste with the options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{silver}{cmyk}{0,0,0,0.3}
+\definecolor{black}{cmyk}{0,0,0.0,1.0}
+\definecolor{darkYellow}{cmyk}{0,0,1.0,0.5}
+\definecolor{darkSilver}{cmyk}{0,0,0,0.1}
+
+\definecolor{KTHBlue}{cmyk}{.71,.37,0.07,0}
+\definecolor{KTHsilver}{cmyk}{0,0,0,0.35}
+\definecolor{KTHbeige}{cmyk}{0,0.03,0.19,0.04}
+
+
+\begin{poster}{
+  % Poster Options
+	% Show grid to help with alignment
+	grid=false,
+	columns=6,
+	% Column spacing
+	colspacing=1em,
+	% Color style
+	bgColorOne=white,
+	bgColorTwo=white,
+	borderColor=KTHBlue,
+	headerColorOne=black,
+	headerColorTwo=KTHBlue,
+	headerFontColor=white,
+	boxColorOne=white,
+	boxColorTwo=KTHBlue,
+	% Format of textbox
+	textborder=roundedleft,
+	% Format of text header
+	eyecatcher=true,
+	headerborder=closed,
+	headerheight=0.085\textheight,
+	%  textfont=\sc, An example of changing the text font
+	headershape=roundedright,
+	headershade=shadelr,
+	headerfont=\Large\bf\textsc, %Sans Serif
+	textfont={\setlength{\parindent}{0em}},
+	boxshade=plain,
+	%  background=shade-tb,
+	background=plain,
+	linewidth=2pt
+}
+% Eye Catcher
+{
+	
+	%\makebox[3em][l]{
+		
+} %}
+% Title
+{\bf\textsc{Photoinjector Optimization \\ Studies at the AWA}}%\vspace{10em}}
+% Authors
+{\vspace{1em}
+	N. Neveu\textsuperscript{1}, L. Spentzouris, Illinois Institute of Technology, Chicago, IL, USA \\
+	J. Larson, J. G. Power, \textsuperscript{1}Argonne National  Laboratory, Lemont, IL, USA \\
+    }
+% University logo
+{% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
+	%\makebox[3em][r]{
+		\includegraphics[height=9em]{logos/combo_logo}%}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{AWA Facility}{name=problem,column=0,row=0, span=2}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The Argonne Wakefield Accelerator (AWA) Facility houses two rf photoinjectors.
+Simulation codes used for experiments at
+the AWA include: PARMELA, GPT, 
+ASTRA, and more recently OPAL. 
+The latter is the code used for all simulations in this 
+study. 
+We also take advantage of the computing resources provided
+by the LCRC at ANL. Access to the 
+Blues, and recently installed Bebop clusters has significantly
+increased simulation productivity by providing the capability to run 
+all simulations in parallel, and large optimization cases
+on many cores.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Beam Line Layout}{name=sims,column=2,row=0,span=4, bottomaligned=problem}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centering
+\begin{tikzpicture}[scale=0.8, text=black]
+\input{THPMF049f1.tex}
+\end{tikzpicture}	
+
+Partial beam line layout at the AWA.
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Model Based Method}{name=beamline,column=0,below=problem, span=6}{%, bottomaligned=conclusion}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+Last year, we began with the optimization of the front end of 
+the high charge photoinjector at the AWA. A charge
+of \SI{40}{nC} was chosen to target the needs 
+for upcoming TBA experiments at AWA.
+The simulation model included the gun, two solenoids, 
+and six accelerating cavities.
+The quadrupoles and bending elements were not included in this first effort, they will be included later.
+We choose ten variables for the optimization parameters: 
+laser radius, laser full width half maximum, solenoid strength ($S_2$), 
+gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Experimental Stage}{name=stage3,column=4,below=beamline, span=2}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centering
+
+\vspace{1em}
+
+	
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Staging}{name=stage1,column=2,below=beamline, span=2, bottomaligned=stage3}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+	
+	
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{kicker}{name=kicker,column=0,row=0,span=2, below=beamline}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		
+\vspace{2.5em}
+\begin{center}
+	\begin{singlespace}
+			\begin{tabular}{lc}
+			\hline  %\toprule 
+			\textbf{Parameter} & \textbf{Value} \\ \hline
+			%\midrule
+			Charge       		& \SI{40}{nC}    \\ %[3pt]
+			Beam Energy  		& \SI{70}{MeV}  \\ %[3pt]
+			Angle 	     		& $2^{\circ}$ 	\\ 
+			Gap Between Plates  & \SI{40}{mm}	\\		 
+			Length of Plates    & \SI{1}{m}	\\
+			Pulsar Voltage      & $\pm$\SI{24}{kV} \\
+			Field Rise Time  	& \SI{3}{ns}    \\
+			Min Field Duration 	& \SI{12}{ns}  \\ \hline%[3pt]
+			%\bottomrule
+		\end{tabular}
+	\end{singlespace}
+
+\end{center}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{High Voltage Test}{name=hv,column=0,row=0,span=2, below=kicker}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+
+\vspace{1em}
+Kicker in high voltage (HV) testing cage at the Advanced Photon Source (APS). 
+%\vspace{1em}
+\end{center}
+
+	
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Optimization}{name=kicker,column=2,row=0,span=4, below=stage3}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace{-2em}
+\begin{center}
+	\begin{minipage}{0.3\textwidth}
+		\begin{singlespace}
+				\begin{tabular}{ l *{2}{c}}
+				\hline%\toprule
+				\textbf{Variable} & \textbf{Range} \\
+				\hline%\midrule
+				Solenoid Strength & $ 350 \le S_1[A] \le 500$   \\
+				Solenoid Strength & $ 170 \le S_2[A] \le 260$   \\
+				Phase of Gun & $-30 \le \phi_g \le 0.0$  \\
+				Laser FWHM & $1.5 \le T[ps] \le $10   \\
+				Quadrupoles & $-8 \le K[Tesla] \le 8$  \\
+				\hline%\bottomrule	
+			\end{tabular}
+		\end{singlespace}
+	\end{minipage}	\hspace{20mm}
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=1\textwidth]{paper-pareto-ex-vs-rmss}
+	\end{minipage}
+\end{center}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Conclusion}{name=ref,column=2,above=bottom, span=2}{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent 
+
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headerbox{Acknowlegements}{name=ref,column=4,above=bottom, span=2, above=bottom}{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent 
+We gratefully acknowledge the computing resources
+provided on Bebop, a HPC cluster operated by the LCRC at ANL.
+This work is supported by the U.S. DOE, OS,  
+contract DE-AC02-06CH11357 and grant DE-SC0015479. 
+Travel to IPAC'18 supported by the United States National Science Foundation, 
+the Division of Physics of Beams of the American Physical Society, and TRIUMF.
+\vspace{-1em}
+\hfill
+\begin{center}
+	\includegraphics[width=0.1\textwidth]{logos/nsf}\hspace{1em}
+\includegraphics[width=0.3\textwidth]{logos/DOE_logo_color_cmyk}\hspace{1em}
+\includegraphics[width=0.1\textwidth]{logos/aps-logo}
+\end{center}
+}
+
+
+\end{poster}%
+%
+\end{document}
