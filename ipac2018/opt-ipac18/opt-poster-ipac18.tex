@@ -146,8 +146,7 @@
 \headerbox{AWA Facility}{name=problem,column=0,row=0, span=2}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The Argonne Wakefield Accelerator (AWA) Facility houses two rf photoinjectors.
-Simulation codes used for experiments at
-the AWA include: PARMELA, GPT, 
+Simulation codes used for experiments at the AWA include: PARMELA, GPT, 
 ASTRA, and more recently OPAL. 
 The latter is the code used for all simulations in this 
 study. 
@@ -160,7 +159,7 @@ on many cores.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Beam Line Layout}{name=sims,column=2,row=0,span=4, bottomaligned=problem}{
+\headerbox{Beam Line Layout}{name=beamline,column=2,row=0,span=4, bottomaligned=problem}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \centering
 \begin{tikzpicture}[scale=0.8, text=black]
@@ -174,83 +173,84 @@ Partial beam line layout at the AWA.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Model Based Method}{name=beamline,column=0,below=problem, span=6}{%, bottomaligned=conclusion}{
+\headerbox{Model Based Method: BOBYQA}{name=bob,column=0,below=problem, span=6}{%, bottomaligned=conclusion}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \noindent
-Last year, we began with the optimization of the front end of 
-the high charge photoinjector at the AWA. A charge
-of \SI{40}{nC} was chosen to target the needs 
-for upcoming TBA experiments at AWA.
+Last year, we began with the optimization of 
+the high charge (\SI{40}{nC}) photoinjector at the AWA. 
 The simulation model included the gun, two solenoids, 
 and six accelerating cavities.
-The quadrupoles and bending elements were not included in this first effort, they will be included later.
 We choose ten variables for the optimization parameters: 
 laser radius, laser full width half maximum, solenoid strength ($S_2$), 
 gun cavity phase, and the six accelerating cavity phases ($\phi_{L_1}-\phi_{L_6}$).
 
+The objectives were emittance, and bunch length at the entrance of the quads. 
+We choose to use a local optimization method that is 
+freely available in the NLOPT package. 
+Bounded Optimization By Quadratic Approximation (BOBYA), 
+is a model based and derivative-free method 
+that builds a quadratic using the results of simulation evaluations. 
+The next point to evaluate is chosen by minimizing the quadratic.
+The initial probe of the parameter space was done with 1,000 random simulations.
+Simulations with the best emittance and bunch length were chosen 
+as starting points for ten BOBYQA runs.
+These local optimization runs were carried out until they converged.
+The results from all ten runs were used to form a Pareto front
+comparing transverse emittance and bunch length. 
+Details of this work were presented at IPAC'17.
+\vspace{-1em}
 
-}
+\begin{center}
+	\begin{minipage}{0.5\textwidth}
+The initial results were promising, and attempts to measure
+several points on the Pareto front took place.
+Experimentally, some of the parameter values were found to 
+be outside the normal operating conditions at the AWA.
+Using this experience, a second round of optimization 
+was done using the same procedure and method. The boundaries for the second
+round of optimization work can be found in the table below.
+Note that $\phi_L=[\phi_{L_1},\ldots,\phi_{L_6}]$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Experimental Stage}{name=stage3,column=4,below=beamline, span=2}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\centering
-
-\vspace{1em}
-
-	
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Staging}{name=stage1,column=2,below=beamline, span=2, bottomaligned=stage3}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-	
-	
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{kicker}{name=kicker,column=0,row=0,span=2, below=beamline}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+Several key points were learned from this work:
+\begin{itemize}
+	\item Varying the laser radius is unnecessary. 
+	All points on the Pareto front	had a laser radius of \SI{9}{mm}, the maximum value (results of strong space charge).
+	\item Phase boundaries were too large for gun and linac.
+	\item Phase can be used for velocity bunching	
+\end{itemize}
 		
-\vspace{2.5em}
-\begin{center}
-	\begin{singlespace}
-			\begin{tabular}{lc}
-			\hline  %\toprule 
-			\textbf{Parameter} & \textbf{Value} \\ \hline
-			%\midrule
-			Charge       		& \SI{40}{nC}    \\ %[3pt]
-			Beam Energy  		& \SI{70}{MeV}  \\ %[3pt]
-			Angle 	     		& $2^{\circ}$ 	\\ 
-			Gap Between Plates  & \SI{40}{mm}	\\		 
-			Length of Plates    & \SI{1}{m}	\\
-			Pulsar Voltage      & $\pm$\SI{24}{kV} \\
-			Field Rise Time  	& \SI{3}{ns}    \\
-			Min Field Duration 	& \SI{12}{ns}  \\ \hline%[3pt]
-			%\bottomrule
-		\end{tabular}
-	\end{singlespace}
-
-\end{center}
-
-}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{High Voltage Test}{name=hv,column=0,row=0,span=2, below=kicker}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{center}
-
-\vspace{1em}
-Kicker in high voltage (HV) testing cage at the Advanced Photon Source (APS). 
-%\vspace{1em}
-\end{center}
-
+\vspace{3em}
+		\begin{singlespace}
+			\centering
+			
+			Parameter Bounds for Linac Optimization
+			
+			\begin{tabular}{ l *{3}{c}}
+				\hline%\toprule
+				\textbf{Variable} & \textbf{Range} & \textbf{Unit} \\
+				\hline%\midrule
+				Solenoid Strength & $ 50 \le S_2 \le 440$  & amps \\
+				Phase of Gun & $-45 \le \phi_g \le 45$  & degrees \\
+				Laser Radius  & $3.5 \le R \le 9$  & mm \\
+				Laser FWHM & $1.5 \le T \le $10  & ps \\
+				Cavity Phase & $-40 \le \phi_L \le 40$  & degrees \\
+				\hline%\bottomrule	
+			\end{tabular}
+		\end{singlespace}
+	\end{minipage}\hspace{1em}
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{THPMF049f2}
+		
+		Pareto front for adjusted variable bounds at \SI{40}{nC}. 
+	\end{minipage}
 	
+\end{center}
 }
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headerbox{Optimization}{name=kicker,column=2,row=0,span=4, below=stage3}{
+\headerbox{Genetic Algorithm}{name=kicker,column=0,row=0,span=6, below=bob}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
