@@ -1,0 +1,290 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Select one of the options, and comment the rest of them
+
+%%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
+\documentclass[professionalfonts,t]{beamer}
+%sans font?
+
+%%%%%%%%%% Option 3: to create handout for print
+%\documentclass[t,handout]{beamer}
+%\usepackage{pgfpages}              % to put several slides on one page
+%\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]             % 2 slides on 1 page
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]   % 4 slides on 1 page, and landscaped
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Select the Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Dresden}     % OK
+%\usetheme{Berlin}
+%\usetheme{Bergen}      % NO
+%\usetheme{Boadilla}    % NO
+%\usetheme{Copenhagen}  % NO
+%\usetheme{Hannover}    % NO
+%\usetheme{Luebeck}     % NO
+%\usetheme{Marburg}     % NO
+%\usetheme{Pittsburgh}  % NO
+%\usetheme{default}
+%\usetheme{Singapore}   % OK
+%\usetheme{boxes}
+%\usecolortheme{structure}
+%\usecolortheme{rose}
+%\usecolortheme{beaver}
+
+
+\definecolor{mymaroon}{cmyk}{0.0, 1.0, 1.0, 0.498}
+\definecolor{myblue}{cmyk}{1.0, 1, 0, 0.5}
+\definecolor{mygreen}{cmyk}{100, 0, 100, 50}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=myblue}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=mymaroon}
+
+%\usepackage{beamerthemesplit}              %
+\beamertemplateballitem % fancy bullets and numbering
+
+\setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
+\addtobeamertemplate{frametitle}{}{%
+	\logo{../../images/IIT_logo}
+	\iffalse
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
+	{\includegraphics[height=1.1cm]{../images/Argonne_cmyk_black-eps-converted-to}\hspace{10cm}};
+	
+	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
+	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
+	\end{tikzpicture}
+    
+     \fi
+}
+% other possibilities to include LOGO. it puts it in RLC
+
+%
+%\pgfdeclareimage[width=1cm]{logo}{../images/IIT_Logo}
+%\logo{\pgfuseimage{logo}}
+
+
+% load additional packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{epstopdf}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
+
+% Your Abbreviations
+\newcommand\bE{{\mathbb{E}}}
+\newcommand\bR{{\mathbb{R}}}
+\newcommand\bH{{\mathbf{H}}}
+% End abbreviations
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%\textbf{}
+}
+
+%%%%%%%%%%%%%%%%%%%%% to edit the main text below
+%NOTES ON SOME TECHNICS
+%%%% Box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{\fbox{ \parbox[t]{10cm}{ SOME TEXT }}}
+
+%%% include a picture. The file should be with extention EPS, e.g. FILENAME.EPS
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=.7\linewidth]{FILENAME}
+%\caption{{\footnotesize PUT_CAPTION }}
+%\end{figure}
+
+%\subtitle{}
+%\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
+
+\title[May 2018]{Beam Studies}
+\author[N.Neveu]{{\Large Nicole Neveu}}
+\institute[ANL, IIT] % (optional, but mostly needed)
+{   Illinois Institute of Technology \\
+	Argonne National Laboratory \\
+    \url{nneveu@anl.gov} 
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{ \today \\
+\includegraphics[width=3cm,keepaspectratio]{../logos/Argonne_cmyk_black}%
+\hfill \hfill \hfill%
+\includegraphics[width=4cm,keepaspectratio]{../logos/IIT_Logo_blk-eps-converted-to}%
+}
+
+%\date[IIT, April 2009]{
+%           Space Charge 2017 \\ Oc 18, 2009  }
+
+
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+\begin{frame}
+	Steps to accomplish TBA:
+	\vspace{1em}
+
+		\begin{itemize}
+			\item Kicker test
+			\item Prepare of optimization, compare to simulations:
+			\item Phase test
+			\item Quad comparison
+			\item Optimize:
+			\item Quad parameters
+			\item Septum test
+			\item Power Measurements
+		\end{itemize}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kicker Test}
+\begin{frame}
+\frametitle{Kicker Test}
+Verify what kicker voltage gives correct deflection. 
+This check will depend heavily having a manageable beam size entering the kicker.
+If beam is scraping, measurement will not be clear.
+
+\vspace{0.5em}
+Measurements:
+\begin{itemize}
+	\item Verify energy and beam size upstream of kicker. If not scraping go on, else go back to adjust upstream settings. 
+	\item Verify quad settings
+	\item Step voltage up on kicker and measure
+	deflection (angle) for several settings.
+	Take measurements on scanning slit.  
+	\item Beam size on all possible YAGs. 
+	\item Measure energy after kicker. 
+\end{itemize}
+
+Add estimate of kicker deflection****.
+Add nominal beam size, nominal beam enregy, kicker aperture, kicker voltage.
+Add table of kicker voltage vs. deflection.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Phase Control}
+\begin{frame}
+\frametitle{Phase Scans}
+Test Liu's phase scan program.
+Two linacs at a time if possible.
+Take corresponding energy measurements to verify phase.
+Important for minimization of emittance into tba section. 
+
+\vspace{1em}
+Measurements:
+\begin{itemize}
+	\item Phase 
+	\item Energy 
+	\item Beam size on all possible YAGs
+	\item Low and high charge if possible
+\end{itemize}
+
+\vspace{1em}
+Goal: Minimize emittance and maximize energy
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Quad Comparison}
+\begin{frame}
+\frametitle{Quad Comparison}
+	Compare focusing strengths of quads to simulations.
+	Important for initial beam size into kicker.
+
+\vspace{1em}	
+Measurements
+	\begin{itemize}
+		\item Verify energy and beam size upstream of Quad. 
+		\item Based on optimization settings: Quad settings vs. beam sizes
+		\item Current readings on power supplies
+		\item Beam size on all possible YAGs
+		\item Low and high charge if possible.
+	\end{itemize}
+
+** Add a slide of quad settings vs. beam size.
+Add a table*****
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Power}
+\begin{frame}
+	\frametitle{Power Measurements}
+	Gun - Solenoid scan indicates energy is not matching. \\
+	Linac - No documentation of gradient/power in linac tanks. 
+	\vspace{1em}
+	
+	Goal: Redo measurement of power in gun and linacs (only the 2 with calibration numbers). 
+	Use pick up probe and cross check with bi-directional coupler as in Eric's thesis.
+	
+	\vspace{1em}
+	\begin{itemize}
+		\item Power measurements from rf pick ups using power meter.
+		\item Record traces from bi-directional coupler?
+		\item Energy measurements
+	\end{itemize} 
+
+Have procedural backup slide
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Summary}
+	End goals:
+	\begin{itemize}
+		\item Verify kicker is working properly
+		\item Compare optimization simulation parameters
+		\item Explore quadruple settings
+	\end{itemize}
+	
+	
+	
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Backup}
+\begin{frame}
+	Equipment and people needed for each experiment.
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
