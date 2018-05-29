@@ -109,7 +109,7 @@
 %\subtitle{}
 %\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
 
-\title[May 2018]{Beam Studies}
+\title[May 2018]{Preparations for TBA}
 \author[N.Neveu]{{\Large Nicole Neveu}}
 \institute[ANL, IIT] % (optional, but mostly needed)
 {   Illinois Institute of Technology \\
@@ -141,16 +141,15 @@
 \end{frame}
 
 \begin{frame}
-	Steps to accomplish TBA:
-	\vspace{1em}
+\frametitle{Beam Studies}
+	To accomplish TBA:
+	\vspace{0.5em}
 
 		\begin{itemize}
 			\item Kicker test
-			\item Prepare of optimization, compare to simulations:
+			\item Comparison of beam measurements to optimized simulations
 			\item Phase test
-			\item Quad comparison
-			\item Optimize:
-			\item Quad parameters
+			\item Quad settings comparison
 			\item Septum test
 			\item Power Measurements
 		\end{itemize}
@@ -162,26 +161,59 @@
 \begin{frame}
 \frametitle{Kicker Test}
 Verify what kicker voltage gives correct deflection. 
-This check will depend heavily having a manageable beam size entering the kicker.
-If beam is scraping, measurement will not be clear.
+This check will depend heavily on beam size entering the kicker.
+If beam is scraping, measurement will not be clear. Then, 
+preliminary upstream work would be required.
+\vspace{0.2em}
 
-\vspace{0.5em}
-Measurements:
-\begin{itemize}
-	\item Verify energy and beam size upstream of kicker. If not scraping go on, else go back to adjust upstream settings. 
-	\item Verify quad settings
-	\item Step voltage up on kicker and measure
-	deflection (angle) for several settings.
-	Take measurements on scanning slit.  
-	\item Beam size on all possible YAGs. 
-	\item Measure energy after kicker. 
-\end{itemize}
 
-Add estimate of kicker deflection****.
-Add nominal beam size, nominal beam enregy, kicker aperture, kicker voltage.
-Add table of kicker voltage vs. deflection.
+
 \end{frame}
 
+
+\begin{frame}
+	\begin{itemize}
+	\item Kicker gap = 40 mm
+	\item $\sigma_x \approxeq 1.4$ mm
+	\begin{itemize}
+		\item With no phase control
+		\item Full size 8.4 mm
+	\end{itemize}
+	\item Deflection exiting the kicker = XXX mm
+\end{itemize}
+\begin{minipage}{0.45\textwidth}
+		\centering
+\includegraphics[width=\textwidth]{/home/nicole/Documents/thesis_code/tba_traj/XoffsetVsEnergy}
+	
+\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{/home/nicole/Documents/thesis_code/tba_traj/AngleVsEnergy}
+	\end{minipage}
+\centering
+*Black line indicates $2^{\circ}$ kick
+\end{frame}
+
+\begin{frame}
+\frametitle{Kicker Test}
+Goal: Enter and exit kicker without scraping and achieve good beam quality.
+\vspace{1em}
+
+Measurement Steps:
+\begin{itemize}
+	\item Verify energy and beam size upstream of kicker. 
+	\begin{itemize}
+		\item i.e: quad settings give correct beam size.
+		\item Leave YAG before kicker in until beam size is correct.
+	\end{itemize}
+	
+	\item Step voltage up on kicker and measure
+	deflection (angle) for several settings.
+	\item Take measurements on scanning slit after kicker.  
+	\item Beam size on all possible YAGs. 
+	\item Measure energy before and after kicker. 
+\end{itemize}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Phase Control}
@@ -190,19 +222,18 @@ Add table of kicker voltage vs. deflection.
 Test Liu's phase scan program.
 Two linacs at a time if possible.
 Take corresponding energy measurements to verify phase.
-Important for minimization of emittance into tba section. 
+\vspace{1em}
+
+Goal: Minimize emittance and maximize energy into tba section. 
 
 \vspace{1em}
 Measurements:
 \begin{itemize}
-	\item Phase 
-	\item Energy 
-	\item Beam size on all possible YAGs
-	\item Low and high charge if possible
+	\item Phase (via Lui's program)
+	\item Energy - compare to simulation for various phases
+	\item Record beam size on all possible YAGs
+	\item Do above bullets for low and high charge if possible
 \end{itemize}
-
-\vspace{1em}
-Goal: Minimize emittance and maximize energy
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,7 +242,9 @@ Goal: Minimize emittance and maximize energy
 \begin{frame}
 \frametitle{Quad Comparison}
 	Compare focusing strengths of quads to simulations.
-	Important for initial beam size into kicker.
+	
+	\vspace{1em}
+	Goal: Achieve desired beam size at entrance of kicker.
 
 \vspace{1em}	
 Measurements
@@ -223,8 +256,12 @@ Measurements
 		\item Low and high charge if possible.
 	\end{itemize}
 
-** Add a slide of quad settings vs. beam size.
-Add a table*****
+\end{frame}
+
+\begin{frame}
+\frametitle{Quad Comparison}
+	** Add a slide of quad settings vs. beam size.
+	Add a table*****
 \end{frame}
 
 
@@ -233,20 +270,19 @@ Add a table*****
 \begin{frame}
 	\frametitle{Power Measurements}
 	Gun - Solenoid scan indicates energy is not matching. \\
-	Linac - No documentation of gradient/power in linac tanks. 
-	\vspace{1em}
+	Linac - No documentation of power/energy gain in each linac tank. 
 	
+	\vspace{0.5em}
 	Goal: Redo measurement of power in gun and linacs (only the 2 with calibration numbers). 
-	Use pick up probe and cross check with bi-directional coupler as in Eric's thesis.
 	
 	\vspace{1em}
 	\begin{itemize}
 		\item Power measurements from rf pick ups using power meter.
-		\item Record traces from bi-directional coupler?
-		\item Energy measurements
+		\item Record gun traces from bi-directional coupler (Eric's thesis)
+		\item Energy measurements gun alone, add linacs. 
 	\end{itemize} 
 
-Have procedural backup slide
+
 \end{frame}
 
 
@@ -268,6 +304,19 @@ Have procedural backup slide
 
 
 \section{Backup}
+\begin{frame}
+\frametitle{Kicker Run Plan}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Power Measurements Run Plan}
+	Have procedural backup slide
+\end{frame}
+
 \begin{frame}
 	Equipment and people needed for each experiment.
 \end{frame}
