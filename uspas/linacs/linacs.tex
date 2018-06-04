@@ -133,7 +133,7 @@
 {
 \begin{frame}[noframenumbering]
 	\frametitle{Outline}
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.45\textwidth}
 	\tableofcontents[currentsection]
 \end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
@@ -317,11 +317,13 @@ operate in L~and S band (in my experience).
 \end{itemize}
 \end{frame}
 
-
+\subsection{Rectangular Waveguides}
 \begin{frame}
 	\frametitle{Rectangular Waveguides}
 	The power cable for cavities!
-	*Include picture here*
+	\vspace{0.5em}
+	
+	\includegraphics[width=0.5\textheight]{waveguide_and_cavity}
 \end{frame}
 \begin{frame}
 \frametitle{Rectangular Waveguide}
@@ -335,13 +337,16 @@ Source L. Spentzouris and:
 \end{frame}
 
 \begin{frame}
-	Start with plane waves (electric and magnetic):
+		Start with plane waves (electric and magnetic):
 	\begin{equation}
-		E\left(z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
+	E\left(z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
 	\end{equation}
 	\begin{equation}
-		B\left(z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
+	B\left(z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
 	\end{equation}
+\end{frame}
+
+\begin{frame}
 	We have to introduce boundary conditions (metallic walls):
 		\begin{equation}
 			B_x\left(x=0,y\right) = B_x\left(x=a,y\right)= 0
@@ -349,7 +354,11 @@ Source L. Spentzouris and:
 		\begin{equation}
 			B_y\left(x,y=0\right) = B_y\left(x,y=b\right)=0
 		\end{equation}
-	
+		
+	\vspace{-0.3em}
+\centering
+\includegraphics[width=0.6\textwidth]{waveguide}	
+\small\url{http://uspas.fnal.gov/materials/10MIT/Lecture5.pdf}
 \end{frame}
 
 \subsection{Circular Waveguides}
