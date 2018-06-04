@@ -109,7 +109,7 @@
 %\subtitle{}
 %\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
 
-\title[USPAS 2018]{Accelerating Structures and Linear Machines}
+\title[USPAS Fundamentals, June 4-15, 2018]{Accelerating Structures and Linear Machines}
 \author[N.Neveu]{{\Large Nicole Neveu}}
 \institute[ANL, IIT] % (optional, but mostly needed)
 {   Illinois Institute of Technology \\
@@ -135,10 +135,12 @@
 	\frametitle{Outline}
 \begin{minipage}{0.4\textwidth}
 	\tableofcontents[currentsection]
-\end{minipage}
+\end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.8\textwidth]{linda_linac}
+	\includegraphics[width=0.85\textwidth]{linda_linac}
+	\vspace{-1em}
+	Source: L. Spentzouris
 \end{minipage}
 \end{frame}
 }
@@ -156,7 +158,8 @@
 	\end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.9\textwidth]{linda_linac}
+	\includegraphics[width=0.85\textwidth]{linda_linac}
+	Source: L. Spentzouris
 \end{minipage}
 \end{frame}
 
@@ -189,23 +192,25 @@
 
 \begin{frame}
 	\frametitle{Linear Accelerators (Linacs)}
-	\vspace{1em}
 	
-	\begin{minipage}{0.5\textwidth}
+	\vspace{1em}
+	Goals for this talk:
+	
+	\begin{minipage}{0.43\textwidth}
 		\begin{itemize}
 			\item What is a linac?
 			\item Why do we need them?
 			\item How do they work?
 		\end{itemize}
 	\end{minipage}
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.55\textwidth}
 	\centering
-	\includegraphics[width=0.9\textwidth]{awa_linac}
+	\includegraphics[width=0.95\textwidth]{awa_linac}
 	
 	Source: AWA-ANL and 
 \end{minipage}
 
-\vspace{2em}
+\vspace{1em}
 Note: this is not the end all be all talk on linacs!
 It's a general overview of some common machine types and techniques.
 
@@ -215,10 +220,9 @@ It's a general overview of some common machine types and techniques.
 \frametitle{Some Uses for Linacs}
 \vspace{-0.5em}
 \begin{minipage}{0.45\textwidth}
-	%\centering
 	\begin{itemize}
 		\item Colliders (SLAC...(?))
-		\item Source circular machines
+		\item Sources for circular machines
 		\item Light sources produce x-rays for experiments:
 		\begin{itemize}
 			\item Chemistry, Biology, Material Science, Engineering
@@ -249,7 +253,7 @@ It's a general overview of some common machine types and techniques.
 \begin{itemize}
 	\item Basically the speed of light after gun (large $\beta$)
 	\item Commonly use copper and superconducting cavities
-	\item Less radiation compared to protons / ions
+	\item Less radiation compared to protons/ions
 	\item Used for light sources (synchrotrons, FEL)
 	\item FEL = Free Electron Laser
 \end{itemize}
@@ -262,22 +266,23 @@ It's a general overview of some common machine types and techniques.
 
 
 \begin{frame}
-	\frametitle{Uses for Proton/Ion Linacs}
+	\frametitle{Proton/Ion Linacs}
 
 \begin{minipage}{0.45\textwidth}
 	\begin{itemize}
-		\item Colliders (LHC, etc)
-		\item Isotope production (?)
-		\item Spallation Neutron Sources (SNS)
+		\item Low $\beta$
+		\item Copper and superconducting
 		\item FRIB - here at MSU
 	\end{itemize}
 	\centering
 
 	\includegraphics[width=\textwidth]{outside_proton_linac}
+	Outside of Fermi proton linac.
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
-	%\vspace{-1em}
+	\vspace{-1em}
 	\centering
+	Inside of Fermi proton linac.
 	\includegraphics[width=\textwidth]{inside_proton_linac}
 	Picture(s) Source: E. Preybs
 \end{minipage}
@@ -312,6 +317,12 @@ operate in L~and S band (in my experience).
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{Rectangular Waveguides}
+	The power cable for cavities!
+	*Include picture here*
+\end{frame}
 \begin{frame}
 \frametitle{Rectangular Waveguide}
 \begin{center}
@@ -324,7 +335,38 @@ Source L. Spentzouris and:
 \end{frame}
 
 \begin{frame}
-	Equations rect WG. 
+	Start with plane waves (electric and magnetic):
+	\begin{equation}
+		E\left(z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
+	\end{equation}
+	\begin{equation}
+		B\left(z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
+	\end{equation}
+	We have to introduce boundary conditions (metallic walls):
+		\begin{equation}
+			B_x\left(x=0,y\right) = B_x\left(x=a,y\right)= 0
+		\end{equation}
+		\begin{equation}
+			B_y\left(x,y=0\right) = B_y\left(x,y=b\right)=0
+		\end{equation}
+	
+\end{frame}
+
+\subsection{Circular Waveguides}
+\begin{frame}
+\frametitle{Alireza Nassiri and Geoff Waldschmidt}
+\centering
+	\includegraphics[width=0.8\textwidth]{circ_modes}
+	
+	Source: L. Spentzouris
+\end{frame}
+\begin{frame}
+\frametitle{Alireza Nassiri and Geoff Waldschmidt}
+\centering
+	\includegraphics[width=0.6\textwidth]{coax_modes}
+	\vspace{-1em}
+	
+	Source: L. Spentzouris
 \end{frame}
 
 
@@ -333,7 +375,16 @@ Source L. Spentzouris and:
 %\subsection{Pill Box}
 \begin{frame}
 \frametitle{Accelerating Structures}
-
+Shape and material of accelerating structures depends heavily on: 
+\begin{itemize}
+	\item particle type (electron, proton, ions)
+	\item Beta, $\beta$ after source
+	\begin{itemize}
+		\item large $\beta$ for electrons
+		\item low $\beta$ for protons and ions
+	\end{itemize}
+	\item Final energy requirement
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -453,12 +504,8 @@ Do TBA on the board.
 
 \section{Energy Measurements}
 \begin{frame}
-	Introduce dipole....
-\end{frame}
-
-\begin{frame}
 	\frametitle{Energy Measurements}
-	Trajectory of a beam through a bending element is proportional to it's energy:
+	Trajectory of a beam through a dipole is proportional to it's energy:
 	\begin{equation}
 		B \rho = 0.2998 \, \beta \, E \, [GeV]
 	\end{equation}
@@ -480,31 +527,31 @@ Source: "Particle Accelerator Physics", H. Wiedemann
 
 \subsection{Experimental}
 \begin{frame}
-	\frametitle{Energy Measurements}
-	Hardware needed to do measurement:
+\frametitle{Energy Measurements}
+\centering
+\vspace{1em}
 
-		\begin{itemize}
-			\item Dipole
-			\item Imaging screen(s)
-			\item Actuators
-			\item Current monitors
-		\end{itemize}
-\end{frame}
+\begin{minipage}{0.35\textwidth}
+Hardware needed to do measurement:
+\begin{itemize}
+	\item Dipole
+	\item Imaging screen(s)
+	\item Actuators
+	\item Current monitors
+\end{itemize}	
+\end{minipage}\hfill \hfill
+\begin{minipage}{0.6\textwidth}
+\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
+\node (fig1) at (0,0)
+{\includegraphics[width=\textwidth]{awa_dipole}};
+\node[fill=white, inner sep=2pt] (txt2) at (32,45) {Actuator};
+\node[fill=white, inner sep=2pt] (txt2) at (30,11) {Window};	
+\node[fill=white, inner sep=2pt] (txt2) at (12,32) {Dipole};
+\end{tikzpicture}
+\end{minipage}
 
-
-\begin{frame}
-	\frametitle{Energy Measurements}
-	\centering
-	
-	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
-	\node (fig1) at (0,0)
-	{\includegraphics[width=0.8\textwidth]{awa_dipole}};
-	\node[fill=white, inner sep=2pt] (txt2) at (40,35) {YAG};
-	\node[fill=white, inner sep=2pt] (txt2) at (42,17) {Window};	
-	\node[fill=white, inner sep=2pt] (txt2) at (13,41) {Dipole};
-	\end{tikzpicture}
-	
-Picture courtesy AWA-ANL.	
+\vspace{1em}
+\hfill Source Picture: AWA-ANL
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
