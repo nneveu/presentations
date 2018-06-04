@@ -153,10 +153,10 @@
 	\frametitle{Outline}
 	\begin{minipage}{0.4\textwidth}
 		\tableofcontents
-	\end{minipage}
+	\end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.8\textwidth]{linda_linac}
+	\includegraphics[width=0.9\textwidth]{linda_linac}
 \end{minipage}
 \end{frame}
 
@@ -199,29 +199,56 @@
 		\end{itemize}
 	\end{minipage}
 \begin{minipage}{0.45\textwidth}
+	\centering
 	\includegraphics[width=0.9\textwidth]{awa_linac}
+	
+	Source: AWA-ANL and 
 \end{minipage}
 
-\vspace{1em}
-Another linac pic
+\vspace{2em}
+Note: this is not the end all be all talk on linacs!
+It's a general overview of some common machine types and techniques.
 
-\vspace{1em}
-\hfill Source: AWA-ANL and 
 \end{frame}
 
 \begin{frame}
-\frametitle{Linacs}
-Copper or superconducting cavities stacked together.
-Power from the wall (klyston) is pumped into the cavities.
-If timed right, each cavity gives the beam some energy.
+\frametitle{Some Uses for Linacs}
+\vspace{-0.5em}
+\begin{minipage}{0.45\textwidth}
+	%\centering
+	\begin{itemize}
+		\item Colliders (SLAC...(?))
+		\item Source circular machines
+		\item Light sources produce x-rays for experiments:
+		\begin{itemize}
+			\item Chemistry, Biology, Material Science, Engineering
+		\end{itemize}
+		\item Medical accelerators 
+		\begin{itemize}
+			\item Cancer therapy 
+			\item Isotope production
+		\end{itemize}
+	\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\vspace{-1.25em}
+	
+	\small Proton Improvement Plan (PIP-II)
+	\includegraphics[width=0.9\textwidth]{pip2}
+	
+	\vspace{-0.25em}
+	Picture Source: E. Prebys
+\end{minipage}
 \end{frame}
 
-\section{Types of Linacs}
+
+\subsection{Types of Linacs}
 \begin{frame}[containsverbatim]
 \frametitle{Electron Linacs}
 \begin{itemize}
-	\item Basically the speed of light after gun
-	\item Use copper and superconducting cavities
+	\item Basically the speed of light after gun (large $\beta$)
+	\item Commonly use copper and superconducting cavities
 	\item Less radiation compared to protons / ions
 	\item Used for light sources (synchrotrons, FEL)
 	\item FEL = Free Electron Laser
@@ -235,26 +262,25 @@ If timed right, each cavity gives the beam some energy.
 
 
 \begin{frame}
-\frametitle{Proton, Ion}
-Spoke cavities used for low Beta ($\beta$) particles:
-\vspace{0.25em}
+	\frametitle{Uses for Proton/Ion Linacs}
 
-\centering
 \begin{minipage}{0.45\textwidth}
+	\begin{itemize}
+		\item Colliders (LHC, etc)
+		\item Isotope production (?)
+		\item Spallation Neutron Sources (SNS)
+		\item FRIB - here at MSU
+	\end{itemize}
 	\centering
-	\includegraphics[width=0.2\textheight]{spoke1}
-	
-	Half-wave resonator
-\end{minipage}\hspace{-1em}
-\begin{minipage}{0.5\textwidth}
-	\centering
-	\includegraphics[width=\textwidth]{spoke2}
-	
-	(Triple) spoke resonator
-\end{minipage}
 
-\vspace{1em}
-\hfill Source: E. Prebys
+	\includegraphics[width=\textwidth]{outside_proton_linac}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+	%\vspace{-1em}
+	\centering
+	\includegraphics[width=\textwidth]{inside_proton_linac}
+	Picture(s) Source: E. Preybs
+\end{minipage}
 \end{frame}
 
 
@@ -300,6 +326,8 @@ Source L. Spentzouris and:
 \begin{frame}
 	Equations rect WG. 
 \end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Accelerating Structures}
 %\subsection{Pill Box}
@@ -321,6 +349,28 @@ Source L. Spentzouris and:
 	Give example of common copper structures. 
 \end{frame}
 
+\begin{frame}
+\frametitle{Proton, Ion}
+Spoke cavities used for low Beta ($\beta$) particles:
+\vspace{0.25em}
+
+\centering
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=0.2\textheight]{spoke1}
+	
+	Half-wave resonator
+\end{minipage}\hspace{-1em}
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{spoke2}
+	
+	(Triple) spoke resonator
+\end{minipage}
+
+\vspace{1em}
+\hfill Source: E. Prebys
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -414,13 +464,15 @@ Do TBA on the board.
 	\end{equation}
 	\begin{itemize}
 		\item $B = $ magnetic field in Tesla
-		\item $\rho =$ bending radius through magnet 
+		\item $\rho =$ bending radius through magnet in meters
 		\item $\beta =$ velocity of beam
-		\item $E = $ energy of beam in GeV
+		\item $E = $ energy of beam in GeV 
 	\end{itemize}
 
 \vspace{1em}
-$B\rho$ is often called "beam rigidity". 
+Reminder from Monday:
+
+$B\rho$ is called "beam rigidity"
 
 \vspace{1em}
 Source: "Particle Accelerator Physics", H. Wiedemann
