@@ -131,8 +131,15 @@
 
 \AtBeginSection[]
 {
-	\begin{frame}{Outline}
+\begin{frame}[noframenumbering]
+	\frametitle{Outline}
+\begin{minipage}{0.4\textwidth}
 	\tableofcontents[currentsection]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.8\textwidth]{linda_linac}
+\end{minipage}
 \end{frame}
 }
 
@@ -144,7 +151,13 @@
 \end{frame}
 \begin{frame}
 	\frametitle{Outline}
-	\tableofcontents
+	\begin{minipage}{0.4\textwidth}
+		\tableofcontents
+	\end{minipage}
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.8\textwidth]{linda_linac}
+\end{minipage}
 \end{frame}
 
 %\begin{frame}{Outline of the talk}
@@ -172,7 +185,7 @@
 
 
 \section{Linacs}
-\subsection{Introduction}
+%\subsection{Introduction}
 
 \begin{frame}
 	\frametitle{Linear Accelerators (Linacs)}
@@ -186,14 +199,14 @@
 		\end{itemize}
 	\end{minipage}
 \begin{minipage}{0.45\textwidth}
-	linac pic
+	\includegraphics[width=0.9\textwidth]{awa_linac}
 \end{minipage}
 
 \vspace{1em}
 Another linac pic
-	
-	
 
+\vspace{1em}
+\hfill Source: AWA-ANL and 
 \end{frame}
 
 \begin{frame}
@@ -201,51 +214,95 @@ Another linac pic
 Copper or superconducting cavities stacked together.
 Power from the wall (klyston) is pumped into the cavities.
 If timed right, each cavity gives the beam some energy.
-
-
-
-
 \end{frame}
 
+\section{Types of Linacs}
 \begin{frame}[containsverbatim]
 \frametitle{Electron Linacs}
-Basically at the speed of light already.
-Can use resonators, copper, iris loaded.
+\begin{itemize}
+	\item Basically the speed of light after gun
+	\item Use copper and superconducting cavities
+	\item Less radiation compared to protons / ions
+	\item Used for light sources (synchrotrons, FEL)
+	\item FEL = Free Electron Laser
+\end{itemize}
+
+\includegraphics[width=\textwidth]{awa-drawing}
+%\vspace{0.25em}
+
+\hfill Picture Source: AWA-ANL
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Proton, Ion}
-Spoke cavities used for low Beta particles.
+Spoke cavities used for low Beta ($\beta$) particles:
+\vspace{0.25em}
+
+\centering
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=0.2\textheight]{spoke1}
+	
+	Half-wave resonator
+\end{minipage}\hspace{-1em}
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{spoke2}
+	
+	(Triple) spoke resonator
+\end{minipage}
+
+\vspace{1em}
+\hfill Source: E. Prebys
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Waveguides}
-\subsection{Rectangular Waveguide}
+%\subsection{Rectangular Waveguide}
 \begin{frame}
-\frametitle{Electrical Engineering(?) Jargon}
+\frametitle{Some terms that might be useful...}
 \begin{itemize}
-	\item Radio Frequency (RF)
+	\item Radio Frequency (RF): 3Hz - 3 THz
 	\item Microwaves: 300 MHz to 300 GHz 
 	\begin{itemize}
 		\item L band: 1-3 GHz
 		\item S band: 2-4 GHz
 		\item C band: 4-8 GHz
-		\item 
+		\item X band: 8-12 GHz
+	\item Waveguide: used for high power transmission to cavities
 	\end{itemize}
 
-Most copper linacs operate in L and S band. 
+\vspace{1em}
+
+Most electron copper or superconducting linacs 
+operate in L~and S band (in my experience). 
+
+\vspace{1em}
+\url{https://en.wikipedia.org/wiki/Radio_spectrum}
+\url{https://en.wikipedia.org/wiki/Microwave}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Rectangular Waveguide}
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{rect_wg}
+\end{center}
+
+Source L. Spentzouris and:
+
+\tiny\url{http://www.kathrynindiana.com/pages/science/Physics/waveguides.html}
+\end{frame}
+
+\begin{frame}
+	Equations rect WG. 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Accelerating Structures}
-\subsection{Pill Box}
+%\subsection{Pill Box}
 \begin{frame}
 \frametitle{Accelerating Structures}
 
@@ -257,9 +314,6 @@ Most copper linacs operate in L and S band.
 	circuit equation, 
 \end{frame}
 
-\begin{frame}
-	\frame{Transit Factor}
-\end{frame}
 
 \subsection{Iris Loaded}
 \begin{frame}
@@ -272,45 +326,66 @@ Most copper linacs operate in L and S band.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Power and Energy}
-\subsection{Power Calcs}
+\section{Power and Energy }
+%\subsection{Power Calcs}
+\begin{frame}
+	\frametitle{Quality Factor}
+	\begin{equation}
+		Q= \frac{\omega U}{P}
+	\end{equation}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Gradient}
-	The electric field strength (*on axis) in cavity due to an externally applied power is:
+	The electric field strength (*on axis) in a cavity 
+	due to an externally applied power is:
 	\begin{equation}
-		E^2_a = 
+		E^2_z = \frac{P\omega}{v_g} \frac{R}{Q}
 	\end{equation}
+	\begin{itemize}
+		\item $E =$ electric field on axis
+		\item $P =$ power supplied to cavity
+		\item $v_g =$ group velocity
+		\item $R =$ Shunt impedance 
+		\item $Q =$ Quality factor of cavity
+	\end{itemize}
 
+\vspace{0.5em}
+This field contributes to the gradient of a cavity.
 \end{frame}
 
 \subsection{Energy Calculation}
 \begin{frame}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Calculate Energy Gain}
+\frametitle{Energy Gain}
 Given a gradient based on the information in the last slides...
 Calculating the expected energy gain is proportional to the gradient and length of the accelerating structure. 
 
 \begin{equation}
-	\Delta E = qGL_a
+	\Delta W = qE_zTL
 \end{equation}
 
 \begin{itemize}
-	\item $\Delta E = $ change (gain) in energy
+	\item $\Delta W = $ change in beam energy
 	\item $q =$ charge of particles
-	\item $G = $ gradient of cavity in $\frac{MV}{m}$
-	\item $L_a = $ length of accelerating structure 
+	\item $E_zT = $ accelerating gradient
+	\item $L = $ length of accelerating structure or cell 
 \end{itemize}
 
 \vspace{1em}
-Note, deceleration can occur as well...
+Source: Chp. 2, "RF Linear Accelerators", T. Wangler
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Transit Factor - Protons/Ions}
+\vspace{1em}
+Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 \end{frame}
 
 \begin{frame}
 	\frametitle{TBA Example}
+
+	
 	Two beam acceleration is a candidate technology for future machines.
 	CLIC, FELs, etc...
 	
@@ -319,12 +394,39 @@ How energy measurements are done, spectrometer.
 Calc energy from RF gradient
 calc shunt impedance and Q
 Do TBA on the board.	
+
+	Note, deceleration can occur as well...
 	
 \end{frame}
 
 
 
-\section{Energy Measurement}
+\section{Energy Measurements}
+\begin{frame}
+	Introduce dipole....
+\end{frame}
+
+\begin{frame}
+	\frametitle{Energy Measurements}
+	Trajectory of a beam through a bending element is proportional to it's energy:
+	\begin{equation}
+		B \rho = 0.2998 \, \beta \, E \, [GeV]
+	\end{equation}
+	\begin{itemize}
+		\item $B = $ magnetic field in Tesla
+		\item $\rho =$ bending radius through magnet 
+		\item $\beta =$ velocity of beam
+		\item $E = $ energy of beam in GeV
+	\end{itemize}
+
+\vspace{1em}
+$B\rho$ is often called "beam rigidity". 
+
+\vspace{1em}
+Source: "Particle Accelerator Physics", H. Wiedemann
+\end{frame}
+
+\subsection{Experimental}
 \begin{frame}
 	\frametitle{Energy Measurements}
 	Hardware needed to do measurement:
@@ -357,6 +459,7 @@ Picture courtesy AWA-ANL.
 \begin{frame}
 	\frametitle{Summary}
 
+	\large{Thanks for your attention!}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
