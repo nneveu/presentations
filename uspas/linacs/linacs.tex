@@ -1,0 +1,380 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Select one of the options, and comment the rest of them
+
+%%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
+\documentclass[professionalfonts,t]{beamer}
+%sans font?
+
+%%%%%%%%%% Option 3: to create handout for print
+%\documentclass[t,handout]{beamer}
+%\usepackage{pgfpages}              % to put several slides on one page
+%\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]             % 2 slides on 1 page
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]   % 4 slides on 1 page, and landscaped
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Select the Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Dresden}     % OK
+%\usetheme{Berlin}
+%\usetheme{Bergen}      % NO
+%\usetheme{Boadilla}    % NO
+%\usetheme{Copenhagen}  % NO
+%\usetheme{Hannover}    % NO
+%\usetheme{Luebeck}     % NO
+%\usetheme{Marburg}     % NO
+%\usetheme{Pittsburgh}  % NO
+%\usetheme{default}
+%\usetheme{Singapore}   % OK
+%\usetheme{boxes}
+%\usecolortheme{structure}
+%\usecolortheme{rose}
+%\usecolortheme{beaver}
+
+
+\definecolor{mymaroon}{cmyk}{0.0, 1.0, 1.0, 0.498}
+\definecolor{myblue}{cmyk}{1.0, 1, 0, 0.5}
+\definecolor{mygreen}{cmyk}{100, 0, 100, 50}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=myblue}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=mymaroon}
+
+%\usepackage{beamerthemesplit}              %
+\beamertemplateballitem % fancy bullets and numbering
+
+\setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
+\addtobeamertemplate{frametitle}{}{%
+	\logo{../images/IIT_logo}
+	\iffalse
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
+	{\includegraphics[height=1.1cm]{../images/Argonne_cmyk_black-eps-converted-to}\hspace{10cm}};
+	
+	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
+	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
+	\end{tikzpicture}
+    
+     \fi
+}
+% other possibilities to include LOGO. it puts it in RLC
+
+%
+%\pgfdeclareimage[width=1cm]{logo}{../images/IIT_Logo}
+%\logo{\pgfuseimage{logo}}
+
+
+% load additional packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{epstopdf}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
+
+% Your Abbreviations
+\newcommand\bE{{\mathbb{E}}}
+\newcommand\bR{{\mathbb{R}}}
+\newcommand\bH{{\mathbf{H}}}
+% End abbreviations
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%\textbf{}
+}
+
+%%%%%%%%%%%%%%%%%%%%% to edit the main text below
+%NOTES ON SOME TECHNICS
+%%%% Box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{\fbox{ \parbox[t]{10cm}{ SOME TEXT }}}
+
+%%% include a picture. The file should be with extention EPS, e.g. FILENAME.EPS
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=.7\linewidth]{FILENAME}
+%\caption{{\footnotesize PUT_CAPTION }}
+%\end{figure}
+
+%\subtitle{}
+%\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
+
+\title[USPAS 2018]{Accelerating Structures and Linear Machines}
+\author[N.Neveu]{{\Large Nicole Neveu}}
+\institute[ANL, IIT] % (optional, but mostly needed)
+{   Illinois Institute of Technology \\
+	Argonne National Laboratory \\
+    \url{nneveu@anl.gov} 
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{ June 8, 2018 \\ \vspace{0.5em}
+\includegraphics[width=3.5cm,keepaspectratio]{../../logos/Argonne_cmyk_black}%
+\hfill \hfill \hfill%
+\includegraphics[width=4cm,keepaspectratio]{../../logos/IIT_Logo_blk-eps-converted-to}%
+}
+
+%\date[IIT, April 2009]{
+%           Space Charge 2017 \\ Oc 18, 2009  }
+
+
+
+\AtBeginSection[]
+{
+	\begin{frame}{Outline}
+	\tableofcontents[currentsection]
+\end{frame}
+}
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+%\begin{frame}{Outline of the talk}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+
+\section{Linacs}
+\subsection{Introduction}
+
+\begin{frame}
+	\frametitle{Linear Accelerators (Linacs)}
+	\vspace{1em}
+	
+	\begin{minipage}{0.5\textwidth}
+		\begin{itemize}
+			\item What is a linac?
+			\item Why do we need them?
+			\item How do they work?
+		\end{itemize}
+	\end{minipage}
+\begin{minipage}{0.45\textwidth}
+	linac pic
+\end{minipage}
+
+\vspace{1em}
+Another linac pic
+	
+	
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Linacs}
+Copper or superconducting cavities stacked together.
+Power from the wall (klyston) is pumped into the cavities.
+If timed right, each cavity gives the beam some energy.
+
+
+
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Electron Linacs}
+Basically at the speed of light already.
+Can use resonators, copper, iris loaded.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Proton, Ion}
+Spoke cavities used for low Beta particles.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Waveguides}
+\subsection{Rectangular Waveguide}
+\begin{frame}
+\frametitle{Electrical Engineering(?) Jargon}
+\begin{itemize}
+	\item Radio Frequency (RF)
+	\item Microwaves: 300 MHz to 300 GHz 
+	\begin{itemize}
+		\item L band: 1-3 GHz
+		\item S band: 2-4 GHz
+		\item C band: 4-8 GHz
+		\item 
+	\end{itemize}
+
+Most copper linacs operate in L and S band. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Rectangular Waveguide}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Accelerating Structures}
+\subsection{Pill Box}
+\begin{frame}
+\frametitle{Accelerating Structures}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Pillbox Cavity}
+	similarity to wg, fundamental mode (first zero of the Bessel), 
+	circuit equation, 
+\end{frame}
+
+\begin{frame}
+	\frame{Transit Factor}
+\end{frame}
+
+\subsection{Iris Loaded}
+\begin{frame}
+	\frametitle{}
+	Give example of common copper structures. 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Power and Energy}
+\subsection{Power Calcs}
+\begin{frame}
+	\frametitle{Gradient}
+	The electric field strength (*on axis) in cavity due to an externally applied power is:
+	\begin{equation}
+		E^2_a = 
+	\end{equation}
+
+\end{frame}
+
+\subsection{Energy Calculation}
+\begin{frame}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Calculate Energy Gain}
+Given a gradient based on the information in the last slides...
+Calculating the expected energy gain is proportional to the gradient and length of the accelerating structure. 
+
+\begin{equation}
+	\Delta E = qGL_a
+\end{equation}
+
+\begin{itemize}
+	\item $\Delta E = $ change (gain) in energy
+	\item $q =$ charge of particles
+	\item $G = $ gradient of cavity in $\frac{MV}{m}$
+	\item $L_a = $ length of accelerating structure 
+\end{itemize}
+
+\vspace{1em}
+Note, deceleration can occur as well...
+\end{frame}
+
+\begin{frame}
+	\frametitle{TBA Example}
+	Two beam acceleration is a candidate technology for future machines.
+	CLIC, FELs, etc...
+	
+	TBA scheme, how measurements are done. 
+How energy measurements are done, spectrometer.
+Calc energy from RF gradient
+calc shunt impedance and Q
+Do TBA on the board.	
+	
+\end{frame}
+
+
+
+\section{Energy Measurement}
+\begin{frame}
+	\frametitle{Energy Measurements}
+	Hardware needed to do measurement:
+
+		\begin{itemize}
+			\item Dipole
+			\item Imaging screen(s)
+			\item Actuators
+			\item Current monitors
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Energy Measurements}
+	\centering
+	
+	\begin{tikzpicture}[every node/.style={anchor=south west,inner sep=0pt},x=1mm, y=1mm,]   
+	\node (fig1) at (0,0)
+	{\includegraphics[width=0.8\textwidth]{awa_dipole}};
+	\node[fill=white, inner sep=2pt] (txt2) at (40,35) {YAG};
+	\node[fill=white, inner sep=2pt] (txt2) at (42,17) {Window};	
+	\node[fill=white, inner sep=2pt] (txt2) at (13,41) {Dipole};
+	\end{tikzpicture}
+	
+Picture courtesy AWA-ANL.	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\frametitle{Summary}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
