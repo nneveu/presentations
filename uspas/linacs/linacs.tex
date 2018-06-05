@@ -129,21 +129,29 @@
 
 
 
-\AtBeginSection[]
-{
-\begin{frame}[noframenumbering]
-	\frametitle{Outline}
-\begin{minipage}{0.45\textwidth}
-	\tableofcontents[currentsection]
-\end{minipage}\hfill
-\begin{minipage}{0.5\textwidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Section title frame 
+\AtBeginSection[]{
+	\begin{frame}
+	\vfill
 	\centering
-	\includegraphics[width=0.85\textwidth]{linda_linac}
-	\vspace{-1em}
-	Source: L. Spentzouris
-\end{minipage}
-\end{frame}
+
+	\begin{minipage}{0.45\textwidth}
+	%\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+		\tableofcontents[currentsection]
+		%\usebeamerfont{title}\insertsectionhead\par%
+	%\end{beamercolorbox}	
+	\end{minipage}\hfill
+	\begin{minipage}{0.5\textwidth}
+	\includegraphics[width=4cm]{\secimage}
+	
+	%Source: Fermilab Media
+	\end{minipage}
+	%\vfill 
+	\end{frame}
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Section title frame
+
+\newcommand{\secimage}{linda_linac}
 
 \begin{document}
 
@@ -153,29 +161,36 @@
 \end{frame}
 \begin{frame}
 	\frametitle{About me...}
+	\vspace{-1em}
+	
 	\begin{itemize}
-		\item BS Electrical Engineering - University of Houston 
-		\item PhD Candidate in Physics - Illinois Institute of Technology
-		\item Thesis work on TBA at Argonne National Lab (ANL)
+		\item 20013: BS Electrical Engineering, University of Houston 
+		\item 2013-2018: PhD Student, Illinois Institute of Technology
 		\begin{itemize}
-			\item Part of the Argonne Wakefield Accelerator Group
+			\item Thesis work on beam line design
+			\item Part of the Argonne Wakefield Accelerator Group (ANL)
 			\item Lots of simulation work
-			\item Computational Accelerator Phys.
 			\item Comparison to experimental measurements
 		\end{itemize}
 	\end{itemize}
+
+\centering
+
+\Wider{
+\includegraphics[width=0.8\textheight]{awa_group}\includegraphics[width=0.8\textheight]{cyclotron}
+}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Outline}
-	\begin{minipage}{0.4\textwidth}
+	\begin{minipage}{0.5\textwidth}
 		\tableofcontents
 	\end{minipage}\hfill
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.45\textwidth}
 	\centering
 	\includegraphics[width=0.85\textwidth]{linda_linac}
-	Source: L. Spentzouris
+	Source: Fermilab Media
 \end{minipage}
 \end{frame}
 
@@ -210,36 +225,37 @@
 	\frametitle{Linear Accelerators (Linacs)}
 	
 	\vspace{1em}
-	Goals for this talk:
 	
 	\begin{minipage}{0.43\textwidth}
+		Goals for this talk:
+		
 		\begin{itemize}
 			\item What is a linac?
 			\item Why do we need them?
-			\item How do they work?
+			\item How do they work (conceptually)?
 		\end{itemize}
 	\end{minipage}
 \begin{minipage}{0.55\textwidth}
 	\centering
 	\includegraphics[width=0.95\textwidth]{awa_linac}
 	
-	Source: AWA-ANL and 
+	Source: AWA-ANL 
 \end{minipage}
 
 \vspace{1em}
-Note: this is not the end all be all talk on linacs!
-It's a general overview of some common machine types and techniques.
+Note: It's a general overview of some common machine types and techniques.
+Not a complete and thorough review!
 
 \end{frame}
 
 \begin{frame}
 \frametitle{Some Uses for Linacs}
-\vspace{-0.5em}
+\vspace{-1em}
 \begin{minipage}{0.45\textwidth}
 	\begin{itemize}
-		\item Colliders (SLAC...(?))
-		\item Sources for circular machines
-		\item Light sources produce x-rays for experiments:
+		\item Colliders 
+		\item Injectors for circular machines
+		\item Light sources to produce x-rays for experiments:
 		\begin{itemize}
 			\item Chemistry, Biology, Material Science, Engineering
 		\end{itemize}
@@ -252,13 +268,13 @@ It's a general overview of some common machine types and techniques.
 \end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\vspace{-1.25em}
+	\vspace{-1.5em}
 	
 	\small Proton Improvement Plan (PIP-II)
 	\includegraphics[width=0.9\textwidth]{pip2}
 	
 	\vspace{-0.25em}
-	Picture Source: E. Prebys
+	Source: Fermilab, E. Prebys
 \end{minipage}
 \end{frame}
 
@@ -277,7 +293,7 @@ It's a general overview of some common machine types and techniques.
 \includegraphics[width=\textwidth]{awa-drawing}
 %\vspace{0.25em}
 
-\hfill Picture Source: AWA-ANL
+\hfill Source: AWA-ANL
 \end{frame}
 
 
@@ -300,12 +316,16 @@ It's a general overview of some common machine types and techniques.
 	\centering
 	Inside of Fermi proton linac.
 	\includegraphics[width=\textwidth]{inside_proton_linac}
-	Picture(s) Source: E. Preybs
+	Source: Fermilab, E. Preybs
 \end{minipage}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{
+	\renewcommand{\secimage}{gun_wg}
+
 
 \section{Waveguides}
 %\subsection{Rectangular Waveguide}
@@ -333,45 +353,99 @@ operate in L~and S band (in my experience).
 \end{itemize}
 \end{frame}
 
-\subsection{Rectangular Waveguides}
+
 \begin{frame}
-	\frametitle{Rectangular Waveguides}
-	\centering
-	The power cable for cavities!
+	\frametitle{Waveguides in real life...}
+	The power cable for cavities! Why not use cable (coax)?
 	
-	\begin{minipage}{0.4\textwidth}
-		
-		Why not use cable?
-	\end{minipage}
-\begin{minipage}{0.5\textwidth}
-	\includegraphics[width=0.5\textheight]{waveguide_and_cavity}
-\end{minipage}
+	\centering
+	\vspace{0.5em}
+	
+	\centering
+	\Wider{
+		\includegraphics[width=0.5\textheight]{linac_wg}\hspace{0.5em}%
+		\includegraphics[width=0.5\textheight]{waveguide_and_cavity}\hspace{0.5em}%
+		\includegraphics[width=0.5\textheight]{gun_wg}
+	}
+
+\vspace{-19em}
+\hfill Source: AWA-ANL
+\end{frame}
+
+\begin{frame}
+	\frametitle{More waveguides...}
+	We use L band, 1.3 GHz klystrons. 
+	\vspace{1em}
+	
+	\Wider{
+		\centering
+	\includegraphics[width=0.49\linewidth]{roof_wg}\hspace{0.5em}%
+	\includegraphics[width=0.49\linewidth]{roof_wg2}
+}
+
+\hfill Source: AWA-ANL
 \end{frame}
 
 
+\subsection{Rectangular Waveguides}
 \begin{frame}
 \frametitle{Rectangular Waveguide}
 \begin{center}
 	\includegraphics[width=0.8\textwidth]{rect_wg}
 \end{center}
 
-Source L. Spentzouris and:
+Source: L. Spentzouris, and...
 
 \tiny\url{http://www.kathrynindiana.com/pages/science/Physics/waveguides.html}
 \end{frame}
 
 \begin{frame}
+\frametitle{Rectangular Waveguide}
+\begin{minipage}{0.6\linewidth}
+	The waves that propagate inside the waveguide depend on the size, 
+	shape, and filling material.
+	Some waveguides are pumped with gas to prevent electric breakdown. 
+	\begin{itemize}
+		\item TE$_{nm}$ = Transverse electric field
+		\item TM$_{nm}$ = Transverse magnetic field
+		\item Several modes can propagate at a time (usually not good)
+	\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.35\linewidth}
+	\includegraphics[width=\linewidth]{rect_modes}
+	Source: L. Spentzouris
+\end{minipage}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Rectangular Waveguide Derivation}
 		Start with plane waves (electric and magnetic):
 	\begin{equation}
-	E\left(x,y,z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
+	\vec{E}\left(x,y,z,t\right) =\vec{E}\left(x,y\right)\,e^{j\left(kz-\omega t\right)}
 	\end{equation}
 	\begin{equation}
-	B\left(x,y,z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
+	\vec{B}\left(x,y,z,t\right) =\vec{B}\left(x,y\right)\,e^{j\left(kz-\omega t\right)}
+	\end{equation}
+	
+	These equations can be written
+	\begin{equation}
+		\vec{B}\left(x,y,z,t\right) =X\left(x\right)Y\left(y\right)\,e^{j\left(kz-\omega t\right)}
+	\end{equation}
+	
+	Get the wave equation from Maxwell's equations...
+	\begin{equation}
+		\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + k^2_c\right)
+		B_z\left(x,y\right)=0
 	\end{equation}
 \end{frame}
 
+
 \begin{frame}
-	We have to introduce boundary conditions (metallic walls):
+\frametitle{TE Boundary Conditions}
+\vspace{-0.5em}
+	Due to metallic walls:
 		\begin{equation}
 			B_x\left(x=0,y\right) = B_x\left(x=a,y\right)= 0
 		\end{equation}
@@ -380,18 +454,33 @@ Source L. Spentzouris and:
 		\end{equation}
 		
 	\vspace{-0.3em}
-\centering
-\includegraphics[width=0.6\textwidth]{waveguide}	
+\begin{center}
+\includegraphics[width=0.6\textwidth]{waveguide}
+\end{center}
+
+\vspace{-1.5em}
+
+Figure and derivation also here:	
 \small\url{http://uspas.fnal.gov/materials/10MIT/Lecture5.pdf}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Cutoff Frequencies}
+	Add more here...
+	\begin{equation}
+		f_c = \frac{c}{2}\sqrt{\left(\frac{n}{a}\right)^2+\left(\frac{m}{b}\right)^2}
+	\end{equation}
+\end{frame}
+
 
 \subsection{Circular Waveguides}
 \begin{frame}
 \frametitle{Alireza Nassiri and Geoff Waldschmidt}
 \centering
 	\includegraphics[width=0.8\textwidth]{circ_modes}
+	\vspace{-1em}
 	
-	Source: L. Spentzouris
+	\hfill Source: L. Spentzouris
 \end{frame}
 \begin{frame}
 \frametitle{Alireza Nassiri and Geoff Waldschmidt}
@@ -399,39 +488,59 @@ Source L. Spentzouris and:
 	\includegraphics[width=0.6\textwidth]{coax_modes}
 	\vspace{-1em}
 	
-	Source: L. Spentzouris
+	\hfill Source: L. Spentzouris
 \end{frame}
 
-
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Accelerating Structures}
 %\subsection{Pill Box}
 \begin{frame}
 \frametitle{Accelerating Structures}
-Shape and material of accelerating structures depends heavily on: 
-\begin{itemize}
-	\item particle type (electron, proton, ions)
-	\item Beta, $\beta$ after source
+
+\Wider{
+
+\begin{minipage}{0.5\textwidth}
+		Shape and material of acc. structures depends heavily on: 
 	\begin{itemize}
-		\item large $\beta$ for electrons
-		\item low $\beta$ for protons and ions
+		\item particle type (electron, proton, ions)
+		\item Beta, $\beta$ after source
+		\begin{itemize}
+			\item large $\beta$ for electrons
+			\item low $\beta$ for protons/ions
+		\end{itemize}
+		\item Final energy requirement
+		\item Continuous or pulsed operation?
+		\vspace{-1em}
+		\begin{itemize}
+			\item This determines superconducting or not!
+			\item SC saves power, but cryoplant is expensive.
+		\end{itemize}
 	\end{itemize}
-	\item Final energy requirement
-\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+	\includegraphics[width=0.8\linewidth]{cryo}
+	Source: Fermilab, E. Harms
+\end{minipage}
+
+}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Pillbox Cavity}
-	similarity to wg, fundamental mode (first zero of the Bessel), 
-	circuit equation, 
-\end{frame}
 
-
-\subsection{Iris Loaded}
+\subsection{Common Structures}
 \begin{frame}
-	\frametitle{}
+	\frametitle{Normal Conducting}
 	Give example of common copper structures. 
 \end{frame}
+\begin{frame}
+	\frametitle{Superconducting}
+	LCLS-II, Fermilab, Jlab, Europe, Japan, etc...
+	
+	\includegraphics[width=0.75\textheight]{sc_elvin}
+	
+	Source: Fermilab, E. Harms
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Proton, Ion}
@@ -455,12 +564,20 @@ Spoke cavities used for low Beta ($\beta$) particles:
 \vspace{1em}
 \hfill Source: E. Prebys
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Pillbox Cavity}
+similarity to wg, fundamental mode (first zero of the Bessel), 
+circuit equation, 
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Power and Energy }
+\section{Power and Energy in Cavities }
 %\subsection{Power Calcs}
 \begin{frame}
 	\frametitle{Quality Factor}
@@ -483,14 +600,15 @@ Spoke cavities used for low Beta ($\beta$) particles:
 	\end{equation}
 	\begin{itemize}
 		\item $E =$ electric field on axis
+		\begin{itemize}
+			\item This field contributes to the gradient of a cavity.
+		\end{itemize}
 		\item $P =$ power supplied to cavity
 		\item $v_g =$ group velocity
 		\item $R =$ Shunt impedance 
 		\item $Q =$ Quality factor of cavity
 	\end{itemize}
 
-\vspace{0.5em}
-This field contributes to the gradient of a cavity.
 \end{frame}
 
 \subsection{Energy Calculation}
@@ -526,19 +644,8 @@ Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 \end{frame}
 
 \begin{frame}
-	\frametitle{TBA Example}
+	\frametitle{RLC Circuit Model of Cavity}
 
-	
-	Two beam acceleration is a candidate technology for future machines.
-	CLIC, FELs, etc...
-	
-	TBA scheme, how measurements are done. 
-How energy measurements are done, spectrometer.
-Calc energy from RF gradient
-calc shunt impedance and Q
-Do TBA on the board.	
-
-	Note, deceleration can occur as well...
 	
 \end{frame}
 
@@ -599,7 +706,14 @@ Hardware needed to do measurement:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Summary}
+	\begin{itemize}
+		\item Rectangular waveguides
+		\item Q, gradient, and energy calculations
+		\item 
+		\item 
+	\end{itemize}
 
+	\centering
 	\large{Thanks for your attention!}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
