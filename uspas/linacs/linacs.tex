@@ -152,6 +152,22 @@
   \titlepage
 \end{frame}
 \begin{frame}
+	\frametitle{About me...}
+	\begin{itemize}
+		\item BS Electrical Engineering - University of Houston 
+		\item PhD Candidate in Physics - Illinois Institute of Technology
+		\item Thesis work on TBA at Argonne National Lab (ANL)
+		\begin{itemize}
+			\item Part of the Argonne Wakefield Accelerator Group
+			\item Lots of simulation work
+			\item Computational Accelerator Phys.
+			\item Comparison to experimental measurements
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{Outline}
 	\begin{minipage}{0.4\textwidth}
 		\tableofcontents
@@ -320,11 +336,19 @@ operate in L~and S band (in my experience).
 \subsection{Rectangular Waveguides}
 \begin{frame}
 	\frametitle{Rectangular Waveguides}
+	\centering
 	The power cable for cavities!
-	\vspace{0.5em}
 	
+	\begin{minipage}{0.4\textwidth}
+		
+		Why not use cable?
+	\end{minipage}
+\begin{minipage}{0.5\textwidth}
 	\includegraphics[width=0.5\textheight]{waveguide_and_cavity}
+\end{minipage}
 \end{frame}
+
+
 \begin{frame}
 \frametitle{Rectangular Waveguide}
 \begin{center}
@@ -339,10 +363,10 @@ Source L. Spentzouris and:
 \begin{frame}
 		Start with plane waves (electric and magnetic):
 	\begin{equation}
-	E\left(z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
+	E\left(x,y,z,t\right) =E_0\,e^{j\left(kz-\omega t\right)}
 	\end{equation}
 	\begin{equation}
-	B\left(z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
+	B\left(x,y,z,t\right) =B_0\,e^{j\left(kz-\omega t\right)}
 	\end{equation}
 \end{frame}
 
@@ -443,6 +467,11 @@ Spoke cavities used for low Beta ($\beta$) particles:
 	\begin{equation}
 		Q= \frac{\omega U}{P}
 	\end{equation}
+	\begin{itemize}
+		\item $Q =$ quality factor
+		\item $\omega =$ frequency of cavity
+		\item $U =$ stored energy
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -471,23 +500,27 @@ Given a gradient based on the information in the last slides...
 Calculating the expected energy gain is proportional to the gradient and length of the accelerating structure. 
 
 \begin{equation}
-	\Delta W = qE_zTL
+	\Delta W = qE_zTL\, cos\phi
 \end{equation}
 
 \begin{itemize}
-	\item $\Delta W = $ change in beam energy
+	\item $\Delta W = $ change in beam energy (also $\Delta E$ sometimes)
+	\begin{itemize}
+		\item "on crest": $ \phi=0$
+	\end{itemize}
 	\item $q =$ charge of particles
 	\item $E_zT = $ accelerating gradient
 	\item $L = $ length of accelerating structure or cell 
 \end{itemize}
 
-\vspace{1em}
+\vspace{0.25em}
 Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Transit Factor - Protons/Ions}
+
 \vspace{1em}
 Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 \end{frame}
