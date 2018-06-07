@@ -75,6 +75,7 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \usepackage{epstopdf}
+\usepackage{xmpmulti}
 \usepackage[export]{adjustbox}
 \usepackage{tikz}
 \usetikzlibrary{shapes.misc}
@@ -154,6 +155,11 @@
 \newcommand{\secimage}{linda_linac}
 
 \begin{document}
+
+
+\iftrue
+
+
 
 
 \begin{frame}
@@ -244,7 +250,7 @@
 
 \vspace{1em}
 Note: It's a general overview of some common machine types and techniques.
-Not a complete and thorough review!
+Not a complete and thorough review of all machines!
 
 \end{frame}
 
@@ -257,13 +263,14 @@ Not a complete and thorough review!
 		\item Injectors for circular machines
 		\item Light sources to produce x-rays for experiments:
 		\begin{itemize}
-			\item Chemistry, Biology, Material Science, Engineering
+			\item Chemistry, Biology, Material Science, Engineering, etc.
 		\end{itemize}
 		\item Medical accelerators 
 		\begin{itemize}
 			\item Cancer therapy 
 			\item Isotope production
 		\end{itemize}
+		\item Semiconductor industry
 	\end{itemize}
 \end{minipage}\hfill
 \begin{minipage}{0.5\textwidth}
@@ -283,9 +290,9 @@ Not a complete and thorough review!
 \begin{frame}[containsverbatim]
 \frametitle{Electron Linacs}
 \begin{itemize}
-	\item Basically the speed of light after gun (large $\beta$)
+	\item Usually the speed of light after gun (large $\beta$)
 	\item Commonly use copper and superconducting cavities
-	\item Less radiation compared to protons/ions
+	\item Usually less radiation compared to protons/ions
 	\item Used for light sources (synchrotrons, FEL)
 	\item FEL = Free Electron Laser
 \end{itemize}
@@ -309,7 +316,7 @@ Not a complete and thorough review!
 	\centering
 
 	\includegraphics[width=\textwidth]{outside_proton_linac}
-	Outside of Fermi proton linac.
+	Low energy Fermi proton linac.
 \end{minipage}\hfill
 \begin{minipage}{0.45\textwidth}
 	\vspace{-1em}
@@ -320,8 +327,11 @@ Not a complete and thorough review!
 \end{minipage}
 \end{frame}
 
-
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iftrue
+
 
 {
 	\renewcommand{\secimage}{gun_wg}
@@ -375,6 +385,8 @@ operate in L~and S band (in my experience).
 \begin{frame}
 	\frametitle{More waveguides...}
 	We use L band, 1.3 GHz klystrons. 
+	
+	This is the roof of the AWA-ANL bunker.
 	\vspace{1em}
 	
 	\Wider{
@@ -386,6 +398,27 @@ operate in L~and S band (in my experience).
 \hfill Source: AWA-ANL
 \end{frame}
 
+
+\begin{frame}
+	\frametitle{Klystrons}
+	Mini accelerators that generate high power RF waves.
+	\Wider{
+	\begin{minipage}{0.5\linewidth}
+		\includegraphics[width=\linewidth]{klystron3}
+		
+		
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\includegraphics[width=0.5\textwidth]{klystron2}
+	\end{minipage}
+}
+
+Video of how klystrons work:
+
+\url{https://www.youtube.com/watch?v=TsBTI3tO5-8}
+
+\small Source: \url{https://en.wikipedia.org/wiki/Klystron} , E. Prebys
+\end{frame}
 
 \subsection{Rectangular Waveguides}
 \begin{frame}
@@ -453,48 +486,66 @@ Source: L. Spentzouris, and...
 			B_y\left(x,y=0\right) = B_y\left(x,y=b\right)=0
 		\end{equation}
 		
-	\vspace{-0.3em}
+\vspace{-1em}
+
 \begin{center}
-\includegraphics[width=0.6\textwidth]{waveguide}
+\includegraphics[width=0.5\textwidth]{waveguide}
 \end{center}
 
 \vspace{-1.5em}
 
-Figure and derivation also here:	
+Figure and derivation of resulting fields here:	
 \small\url{http://uspas.fnal.gov/materials/10MIT/Lecture5.pdf}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Cutoff Frequencies}
-	Add more here...
+	Cut off frequencies tell us what waves will propagate in the waveguides. 
+	Derived from Maxwell's equations and boundary conditions.
 	\begin{equation}
-		f_c = \frac{c}{2}\sqrt{\left(\frac{n}{a}\right)^2+\left(\frac{m}{b}\right)^2}
+		f_{nm} = \frac{1}{2\sqrt{\mu \epsilon}}\sqrt{\left(\frac{n}{a}\right)^2+\left(\frac{m}{b}\right)^2}
 	\end{equation}
+	
+	In class exercise:
+	\begin{enumerate}
+		\item Calculate the cutoff frequencies for the following modes:
+		\begin{itemize}
+			\item $f_{01}$, $f_{10}$, $f_{20}$, $f_{11}$
+		\end{itemize}
+		\item In what frequency range is only one mode propagating?
+		\item In what frequency range are three modes propagating?
+		\item Is it good or bad to have more than one mode propagating?
+	\end{enumerate}	
 \end{frame}
 
 
 \subsection{Circular Waveguides}
 \begin{frame}
 \frametitle{Alireza Nassiri and Geoff Waldschmidt}
+This theory applies to circular geometries too.
+
 \centering
 	\includegraphics[width=0.8\textwidth]{circ_modes}
 	\vspace{-1em}
-	
-	\hfill Source: L. Spentzouris
 \end{frame}
 \begin{frame}
 \frametitle{Alireza Nassiri and Geoff Waldschmidt}
+Coaxial (coax) cables are a commonly used example of this.
+
 \centering
 	\includegraphics[width=0.6\textwidth]{coax_modes}
 	\vspace{-1em}
-	
-	\hfill Source: L. Spentzouris
 \end{frame}
 
 }
+
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\iftrue
+
 \section{Accelerating Structures}
-%\subsection{Pill Box}
 \begin{frame}
 \frametitle{Accelerating Structures}
 
@@ -530,15 +581,27 @@ Figure and derivation also here:
 \subsection{Common Structures}
 \begin{frame}
 	\frametitle{Normal Conducting}
-	Give example of common copper structures. 
+	\vspace{-1em}
+	\includegraphics[width=1\textwidth]{copper1}\\%
+	\includegraphics[width=0.5\textwidth]{tw}\hfill%
+	\includegraphics[width=0.45\textwidth]{copper2}
+
+Source: Fermilab, SLAC
 \end{frame}
 \begin{frame}
 	\frametitle{Superconducting}
+		\vspace{-0.5em}
 	LCLS-II, Fermilab, Jlab, Europe, Japan, etc...
+
 	
-	\includegraphics[width=0.75\textheight]{sc_elvin}
+	\centering
 	
-	Source: Fermilab, E. Harms
+	\includegraphics[width=0.75\textheight]{sc_elvin}%
+	\includegraphics[width=0.5\textwidth]{pi_cavity}\vfill 
+	\includegraphics[width=0.53\textwidth]{cryo2}\hspace{1em}%
+	\includegraphics[width=0.25\textwidth]{cryo3}\\
+	
+	Sources: Fermilab, E. Harms, E. Prebys
 \end{frame}
 
 
@@ -566,29 +629,91 @@ Spoke cavities used for low Beta ($\beta$) particles:
 \end{frame}
 
 
-
 \begin{frame}
 \frametitle{Pillbox Cavity}
-similarity to wg, fundamental mode (first zero of the Bessel), 
-circuit equation, 
+\vspace{-2em}
+\hfill Source: T. Wangler, E. Prebys
+
+\begin{minipage}{0.6\textwidth}
+	\includegraphics[width=\textwidth]{pillbox}
+	
+	Boundary conditions: 
+\end{minipage}
+\begin{minipage}{0.34\textwidth}
+	\begin{equation}
+	\vec{E} = \vec{E}\left(r,t\right)\hat{z}
+	\end{equation}
+	\begin{equation}
+	\vec{B} = \vec{B}\left(r,t\right)\hat{\phi}
+	\end{equation}
+	\begin{equation}
+		E_z = E \left(r\right) e^{i \omega t}
+	\end{equation}
+\end{minipage}
+
+Using Maxwell's and a wave equation again:
+
+\begin{equation}
+\frac{\partial^2 E_z}{\partial r^2} + \frac{1}{r} \frac{\partial E_z}{\partial r} = \frac{1}{c^2} \frac{\partial^2 E_z}{\partial t^2}
+\end{equation}
+
+Assume Ez is the form of eq. 3 to solve pde in eq. 4.  
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Bessel Functions}
+\vspace{-1em}
+\hfill Source: T. Wangler, E. Prebys
+	
+	Solutions include Bessel functions. 
+	
+	0th order gives the first mode of the cavity.
+
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{bessel}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+	\begin{equation}
+		E_z\left(r\right) = E_0 J_0 \left(\frac{\omega}{c} r\right)
+	\end{equation}
+	
+	First zero at J(2.405):
+	\begin{equation}
+		f_0 = 2.405 \frac{c}{2 \pi R}
+	\end{equation}
+	\end{minipage}
+
+\end{frame}
+
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftrue
+
 \section{Power and Energy in Cavities }
 %\subsection{Power Calcs}
+
 \begin{frame}
 	\frametitle{Quality Factor}
+	A measure of how fast power is dissipated. 
+	High Q means slower power loss, i.e. oscillations in resonator die out more slowly. 
+	\url{https://en.wikipedia.org/wiki/Q_factor}
 	\begin{equation}
 		Q= \frac{\omega U}{P}
 	\end{equation}
 	\begin{itemize}
 		\item $Q =$ quality factor
 		\item $\omega =$ frequency of cavity
-		\item $U =$ stored energy
+		\item $U =$ stored energy in the cavity 
 	\end{itemize}
+
+\vspace{1em}
+
+Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 \end{frame}
 
 \begin{frame}
@@ -637,7 +762,33 @@ Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 
 
 \begin{frame}
-\frametitle{Transit Factor - Protons/Ions}
+\frametitle{Transit Factor (T) - Protons/Ions}
+
+\Wider{
+\begin{itemize}
+	\item Need to account for this in drift tube linacs (protons, ions), etc.
+	\item Usually not an issue for high $\beta$ electron machines 
+	\begin{itemize}
+		\item Energy gain equation reduces to: $\Delta W = qE_zL$
+		\item On crest energy gain
+	\end{itemize}
+
+\url{http://uspas.fnal.gov/materials/09VU/Lecture4.pdf}
+\end{itemize}
+
+\centering
+\begin{minipage}{0.6\textwidth}
+	\includegraphics[width=0.8\textheight]{drift_transit}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+	\begin{equation}
+	d = \frac{v}{f}
+	\end{equation}
+\end{minipage}
+}
+
+\vspace{1em}
+Let's watch a gif!
 
 \vspace{1em}
 Source: Chp. 2, "RF Linear Accelerators", T. Wangler
@@ -645,12 +796,34 @@ Source: Chp. 2, "RF Linear Accelerators", T. Wangler
 
 \begin{frame}
 	\frametitle{RLC Circuit Model of Cavity}
+	%\vspace{-1em}
+		\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{rlc}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		We can model a resonant (accelerating) cavity as a RLC circuit. 
+		Circuit analysis tells us the impedance (similar to resistance) is:
+	\end{minipage}
 
+\vspace{1em}
+
+\Wider{
+\begin{equation}
+Z =  \left| \frac{V_0}{I_0} \right| = \frac{1}{\sqrt{\left(\frac{1}{R}\right)^2
+	+ \left(\omega C - \frac{1}{\omega L}\right)}} 
+\end{equation}	
+}
+\vspace{1em}
+
+	In class practice problem: R=8, L=0.2, C=0.8 
 	
+	What does a plot of $\left| \frac{ V_0 }{I_0} \right| $
+	vs. $\omega$ look like? What does this mean?
 \end{frame}
 
+\fi
 
-
+\iftrue
 \section{Energy Measurements}
 \begin{frame}
 	\frametitle{Energy Measurements}
@@ -673,6 +846,7 @@ $B\rho$ is called "beam rigidity"
 \vspace{1em}
 Source: "Particle Accelerator Physics", H. Wiedemann
 \end{frame}
+
 
 \subsection{Experimental}
 \begin{frame}
@@ -703,21 +877,23 @@ Hardware needed to do measurement:
 \hfill Source Picture: AWA-ANL
 \end{frame}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\frametitle{Summary}
 	\begin{itemize}
 		\item Rectangular waveguides
 		\item Q, gradient, and energy calculations
-		\item 
-		\item 
+		\item Klystron $\rightarrow$ waveguide $\rightarrow$ cavity $\rightarrow$ beam
 	\end{itemize}
+
+\vspace{1em}
 
 	\centering
 	\large{Thanks for your attention!}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\fi
 
 \end{document}
 
