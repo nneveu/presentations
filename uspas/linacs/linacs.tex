@@ -503,12 +503,12 @@ Figure and derivation of resulting fields here:
 	Cut off frequencies tell us what waves will propagate in the waveguides. 
 	Derived from Maxwell's equations and boundary conditions.
 	\begin{equation}
-		f_{nm} = \frac{1}{2\sqrt{\mu \epsilon}}\sqrt{\left(\frac{n}{a}\right)^2+\left(\frac{m}{b}\right)^2}
+		f_{nm} = \frac{1}{2\sqrt{\mu_0 \epsilon_0}}\sqrt{\left(\frac{n}{a}\right)^2+\left(\frac{m}{b}\right)^2}
 	\end{equation}
 	
 	In class exercise:
 	\begin{enumerate}
-		\item Calculate the cutoff frequencies for the following modes:
+		\item Calculate the cutoff frequencies for the following modes: a=0.02, b=0.06
 		\begin{itemize}
 			\item $f_{01}$, $f_{10}$, $f_{20}$, $f_{11}$
 		\end{itemize}
@@ -581,7 +581,7 @@ Coaxial (coax) cables are a commonly used example of this.
 \subsection{Common Structures}
 \begin{frame}
 	\frametitle{Normal Conducting}
-	\vspace{-1em}
+	\vspace{-0.5em}
 	\includegraphics[width=1\textwidth]{copper1}\\%
 	\includegraphics[width=0.5\textwidth]{tw}\hfill%
 	\includegraphics[width=0.45\textwidth]{copper2}
@@ -637,7 +637,7 @@ Spoke cavities used for low Beta ($\beta$) particles:
 \begin{minipage}{0.6\textwidth}
 	\includegraphics[width=\textwidth]{pillbox}
 	
-	Boundary conditions: 
+	Boundary conditions +
 \end{minipage}
 \begin{minipage}{0.34\textwidth}
 	\begin{equation}
@@ -647,17 +647,17 @@ Spoke cavities used for low Beta ($\beta$) particles:
 	\vec{B} = \vec{B}\left(r,t\right)\hat{\phi}
 	\end{equation}
 	\begin{equation}
-		E_z = E \left(r\right) e^{i \omega t}
+		E_z = E \left(r\right) e^{i \omega t} \label{p1}
 	\end{equation}
 \end{minipage}
 
 Using Maxwell's and a wave equation again:
 
 \begin{equation}
-\frac{\partial^2 E_z}{\partial r^2} + \frac{1}{r} \frac{\partial E_z}{\partial r} = \frac{1}{c^2} \frac{\partial^2 E_z}{\partial t^2}
+\frac{\partial^2 E_z}{\partial r^2} + \frac{1}{r} \frac{\partial E_z}{\partial r} = \frac{1}{c^2} \frac{\partial^2 E_z}{\partial t^2} \label{p2}
 \end{equation}
 
-Assume Ez is the form of eq. 3 to solve pde in eq. 4.  
+Assume Ez is the form of eq. \ref{p1} to solve PDE in eq. \ref{p2}.  
 \end{frame}
 
 
@@ -882,7 +882,9 @@ Hardware needed to do measurement:
 \begin{frame}
 	\frametitle{Summary}
 	\begin{itemize}
+		\item Linacs
 		\item Rectangular waveguides
+		\item Accelerating Structures
 		\item Q, gradient, and energy calculations
 		\item Klystron $\rightarrow$ waveguide $\rightarrow$ cavity $\rightarrow$ beam
 	\end{itemize}
