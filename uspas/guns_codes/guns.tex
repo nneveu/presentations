@@ -1,0 +1,478 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Select one of the options, and comment the rest of them
+
+%%%%%%%%%% Option 1:  to compile with pdflatex : parameter "t" - to align to the top
+\documentclass[professionalfonts,t]{beamer}
+%sans font?
+
+%%%%%%%%%% Option 3: to create handout for print
+%\documentclass[t,handout]{beamer}
+%\usepackage{pgfpages}              % to put several slides on one page
+%\pgfpagesuselayout{2 on 1}[a4paper, border shrink=5mm]             % 2 slides on 1 page
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape, border shrink=5mm]   % 4 slides on 1 page, and landscaped
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Select the Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Dresden}     % OK
+%\usetheme{Berlin}
+%\usetheme{Bergen}      % NO
+%\usetheme{Boadilla}    % NO
+%\usetheme{Copenhagen}  % NO
+%\usetheme{Hannover}    % NO
+%\usetheme{Luebeck}     % NO
+%\usetheme{Marburg}     % NO
+%\usetheme{Pittsburgh}  % NO
+%\usetheme{default}
+%\usetheme{Singapore}   % OK
+%\usetheme{boxes}
+%\usecolortheme{structure}
+%\usecolortheme{rose}
+%\usecolortheme{beaver}
+
+
+\definecolor{mymaroon}{cmyk}{0.0, 1.0, 1.0, 0.498}
+\definecolor{myblue}{cmyk}{1.0, 1, 0, 0.5}
+\definecolor{mygreen}{cmyk}{100, 0, 100, 50}
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=myblue}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=mymaroon}
+
+%\usepackage{beamerthemesplit}              %
+\beamertemplateballitem % fancy bullets and numbering
+
+\setbeamertemplate{navigation symbols}{}   % suppress navigation symbols
+\addtobeamertemplate{frametitle}{}{%
+	\logo{../../images/IIT_logo}
+	\iffalse
+	
+	\begin{tikzpicture}[remember picture,overlay]
+	\node[anchor=center, yshift=-13pt, xshift=-5pt] at (current page.north) 
+	{\includegraphics[height=1.1cm]{../images/Argonne_cmyk_black-eps-converted-to}\hspace{10cm}};
+	
+	\node[anchor=north east, yshift=3pt, xshift=0pt] at (current page.north east) 
+	{\includegraphics[height=0.7cm]{../images/IIT_Logo_blk}};
+	\end{tikzpicture}
+    
+     \fi
+}
+% other possibilities to include LOGO. it puts it in RLC
+
+%
+%\pgfdeclareimage[width=1cm]{logo}{../images/IIT_Logo}
+%\logo{\pgfuseimage{logo}}
+
+
+% load additional packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{epstopdf}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{shapes,arrows,decorations.markings,shadows,positioning}
+
+% Your Abbreviations
+\newcommand\bE{{\mathbb{E}}}
+\newcommand\bR{{\mathbb{R}}}
+\newcommand\bH{{\mathbf{H}}}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+% End abbreviations
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%\textbf{}
+}
+
+%%%%%%%%%%%%%%%%%%%%% to edit the main text below
+%NOTES ON SOME TECHNICS
+%%%% Box %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%{\fbox{ \parbox[t]{10cm}{ SOME TEXT }}}
+
+%%% include a picture. The file should be with extention EPS, e.g. FILENAME.EPS
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=.7\linewidth]{FILENAME}
+%\caption{{\footnotesize PUT_CAPTION }}
+%\end{figure}
+
+%\subtitle{}
+%\institute[ANL/IIT]{Argonne National Laboratory\\Illinois Institute of Technology}
+
+\title[USPAS Fundamentals, June 4-15, 2018]{Guns and Codes}
+\author[N.Neveu]{{\Large Nicole Neveu}}
+\institute[ANL, IIT] % (optional, but mostly needed)
+{   Illinois Institute of Technology \\
+	Argonne National Laboratory \\
+    \url{nneveu@anl.gov} 
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{ \today \\
+\includegraphics[width=3cm,keepaspectratio]{../../logos/Argonne_cmyk_black}%
+\hfill \hfill \hfill%
+\includegraphics[width=4cm,keepaspectratio]{../../logos/IIT_Logo_blk-eps-converted-to}%
+}
+
+%\date[IIT, April 2009]{
+%           Space Charge 2017 \\ Oc 18, 2009  }
+
+\AtBeginSection[]{
+	\begin{frame}
+	\vfill
+	\centering
+	
+	\begin{minipage}{0.45\textwidth}
+		%\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+		\tableofcontents[currentsection]
+		%\usebeamerfont{title}\insertsectionhead\par%
+		%\end{beamercolorbox}	
+	\end{minipage}\hfill
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=4cm]{\secimage}
+		
+		%Source: Fermilab Media
+	\end{minipage}
+	%\vfill 
+\end{frame}
+}
+
+\newcommand{\secimage}{awa_gun}
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+%\begin{frame}{Outline of the talk}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution:
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+
+\section{Guns}
+
+\begin{frame}
+	\frametitle{What's a gun?}
+	A few key parts are needed:
+	\begin{itemize}
+		\item Cathode (Source of particles)
+		\item Focusing (usually solenoids)
+		\item Vacuum (strict for electron machines w/ semiconductors)
+		\item Accelerating field
+	\end{itemize}
+
+\vspace{1em}
+\centering
+\includegraphics[width=0.5\textwidth]{proton}
+
+\tiny
+\url{https://www.lhc-closer.es/taking_a_closer_look_at_lhc/0.proton_source}
+\end{frame}
+
+\subsection{Sources}
+\begin{frame}
+\frametitle{Sources of particles: Cathodes}
+The particles have to come from somewhere:
+\begin{itemize}
+	\item metals and semiconductors
+	\item gas
+	\item filament
+\end{itemize} 
+\hfill \includegraphics[width=0.5\textwidth]{../../space_charge_2017/cathode1}%
+
+\hfill Source: AWA-ANL
+
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{Thermionic Cathodes}
+	\vspace{-0.75em}
+	
+	A filament is heated up until electrons are emitted.
+	\includegraphics[width=0.5\textwidth]{therm}%
+	\includegraphics[width=0.5\textwidth]{thermcut}
+	
+	\tiny
+	Sources: \url{https://www.sciencedirect.com/science/article/pii/S0168900213014381\#f0005}
+	\url{https://nau.edu/cefns/labs/electron-microprobe/glg-510-class-notes/instrumentation/}
+	
+	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Photocathodes}
+\vspace{-1em}
+\begin{itemize}
+	\item Needs a laser
+	\item Photoelectric effect
+\end{itemize}
+
+\centering
+\includegraphics[width=0.7\textwidth]{photocathode}
+
+\tiny
+\url{https://phys.org/news/2013-02-black-gold-enabling-bright-high.html}
+\end{frame}
+
+\subsection{Photoinjectors}
+\begin{frame}
+\frametitle{AWA-ANL Gun}
+\centering
+RF Photoinjector, 1.5 cell
+
+\vspace{1em}
+\includegraphics[width=\linewidth]{gun_cartoon}
+\end{frame}
+
+\begin{frame}
+	\frametitle{AWA Gun fields}
+	\centering
+	\includegraphics[width=0.8\linewidth]{/home/nicole/Documents/thesis_code/regtest/benchmark/gun_EM_fields}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Gun Types}
+\vspace{1em}
+
+\begin{minipage}{0.49\textwidth}
+	DC Guns
+	\begin{itemize}
+		\item Bunch compression usually required
+	\end{itemize}
+\includegraphics[width=1\textwidth]{dc}
+\end{minipage}
+\begin{minipage}{0.49\textwidth}
+	RF Guns
+	\begin{itemize}
+		\item Energy chirp, but bunched
+	\end{itemize}
+\includegraphics[width=\textwidth]{cw}
+\includegraphics[width=\textwidth]{pulsed}
+
+\end{minipage}
+
+\vspace{2em}
+\tiny
+\url{https://www.classe.cornell.edu/~hoff/LECTURES/08S_688/08S_688_080225.pdf}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Simulations}
+\begin{frame}
+\frametitle{Simulations}
+Simulations give help with design and prediction of accelerators.
+Two main types of simulations:
+
+\vspace{1em}
+\begin{itemize}
+	\item PIC: Particle in Cell
+	\begin{itemize}
+		\item Model particles individually 
+	\end{itemize}
+	\item Envelope
+	\begin{itemize}
+		\item Use matrices to look at envelope behavior
+	\end{itemize}
+\end{itemize}
+
+\vspace{1em}
+Historically, envelope codes were first. 
+Now computing resources are good enough to use PIC in more situations.
+\end{frame}
+
+\subsection{Codes}
+\begin{frame}
+	\frametitle{Some Envelope Codes}
+	These codes do matrix multiplication, and use input beam parameters to find Twiss parameters around a beam line.
+	
+	\vspace{1em}
+	\begin{itemize}
+		\item MADX - \url{http://mad.web.cern.ch/mad/}
+		\item Elegant (also a PIC code) - \url{https://beta.sirepo.com/elegant\#/simulations}
+		\item Accelerator Toolbox (AT) - \url{https://www.slac.stanford.edu/grp/ssrl/spear/at/}
+		\item TRACE - \url{http://laacg.lanl.gov/laacg/services/download_trace.phtml}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{PIC Codes}
+	PIC = Particle in Cell 
+	\vspace{1em}
+	
+	Distribute particles on a grid and solve equations numerically.
+	\begin{itemize}
+		\item Particle-Particle Forces (space charge)
+		\item E\&M Forces
+		\item Apertures 
+	\end{itemize}
+	
+	\vspace{1em}
+	Draw some things on the board....
+	
+	Meshes, particle push, etc.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Some PIC codes for beam line modeling...}
+	\vspace{-1em}
+	\small
+	\begin{itemize}
+		\item Parmela - \url{http://laacg.lanl.gov/laacg/services/serv_codes.phtml} 
+		\item ASTRA - \url{http://www.desy.de/~mpyflo/}
+		\item GPT - \url{http://www.pulsar.nl/gpt/}
+		\item OPAL - \url{https://gitlab.psi.ch/OPAL/src/wikis/home}
+		\item Synergia -  \url{https://web.fnal.gov/sites/Synergia/SitePages/Synergia\%20Home.aspx}
+		\item Bmad - \url{https://www.classe.cornell.edu/bmad/}
+		\item G4beamline - \url{http://www.muonsinternal.com/muons3/G4beamline}
+		\item WARP - \url{http://blast.lbl.gov/blast-codes-warp/}
+		\item IMPACT - \url{http://blast.lbl.gov/blast-codes-impact/}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Some Pic Codes cont..}
+\begin{itemize}
+	\item Elegant (also a PIC code) - \url{https://beta.sirepo.com/elegant\#/simulations}
+\end{itemize}
+
+\centering
+\includegraphics[width=0.5\textwidth]{elegant}%
+\includegraphics[width=0.5\textwidth]{xyelegant}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{PIC Code Comparison}
+\centering
+\vspace{-0.2cm}
+\begin{table}
+	\begin{minipage}{0.8\textwidth}
+		\begin{center}	
+			\begin{tabular}{l c c c}
+				\toprule
+				\textbf{Feature} & \textbf{ASTRA} & \textbf{GPT} & \textbf{OPAL}\\
+				\midrule
+				Windows     		& \cmark & \cmark & \alert \xmark \\ 
+				Mac         		& \cmark & \cmark & \cmark \\
+				Linux       		& \cmark & \cmark & \cmark \\
+				Open Source 		& \alert \xmark & \alert \xmark & \color{black!30!green}\cmark \\
+				Parallel    		& \alert \xmark * & \alert \xmark * & \color{black!30!green}\cmark \\
+				Autophase   		& \cmark & \xmark & \cmark \\
+				Adaptive Time Step 	& \xmark & \cmark & \xmark \\
+				3D Space Charge 	& \cmark & \cmark & \cmark \\
+				Wakefields  		& \cmark & \xmark * & \color{black!30!green}\cmark \\
+				CSR         		& \alert \xmark & \xmark * & \color{black!30!green}\cmark \\
+				\bottomrule
+			\end{tabular}
+			%\caption{Table caption}
+		\end{center}
+	\end{minipage}
+\end{table}
+* features available on request or in specific versions.
+\end{frame}
+
+
+
+
+\subsection{PIC Results}
+\begin{frame}
+\frametitle{PIC results: Statistics, beam parameters w.r.t. bunch.}
+\vspace{-0.5em}
+\centering
+
+	\includegraphics[width=0.75\linewidth]{/home/nicole/Documents/thesis_code/regtest/benchmark/benchmark_gun}
+%Phase space, stats, trajectory
+\end{frame}
+
+
+
+
+
+\section{Big Computers}
+\begin{frame}
+	Why PIC codes need supercomputers.
+\end{frame}
+
+\begin{frame}
+Computing resources
+\begin{itemize}
+	\item LCRC-ANL: Bebop
+	\item ALCF-ANl: Theta, Mira
+	\item NERSC-LBNL: Edison, Cori
+	\item ORNL: Titan, Summit
+	\item FNL: Local resources
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	Computer Jargon / typical hardware / software.
+	\begin{itemize}
+		\item Linux
+		\item KNL's
+		\item slurm / batch jobs
+	\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
